@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
   m_Name: Bass
   m_EditorClassIdentifier: 
+  isQuestItem: 0
+  itemID: 
   item_name: Bass
   item_sprite: {fileID: -337617536, guid: 7f0ce61fc5059cc4d81b1c914cc5005d, type: 3}
   item_prefab: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: this is a fucking bass
+  HintDescription: Play the basss

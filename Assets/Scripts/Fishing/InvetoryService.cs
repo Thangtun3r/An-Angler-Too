@@ -1,8 +1,10 @@
+using System;
+    
 public static class InventoryService
 {
-    //this script acts as a global access point for the player's inventory 
-    //register it with player or else booom.
     public static FishInventory PlayerInventory { get; private set; }
+
+    public static event Action<ItemSO> OnItemAdded;
 
     public static void RegisterPlayerInventory(FishInventory inventory)
     {
@@ -12,7 +14,15 @@ public static class InventoryService
     public static bool AddToPlayer(ItemSO item)
     {
         if (PlayerInventory == null) return false;
-        return PlayerInventory.AddItem(item);
+
+        bool added = PlayerInventory.AddItem(item);
+
+        if (added)
+        {
+            OnItemAdded?.Invoke(item);
+        }
+
+        return added;
     }
 
     public static bool RemoveFromPlayer(ItemSO item)

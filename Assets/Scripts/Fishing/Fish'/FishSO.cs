@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class ItemSO : ScriptableObject
 {
     public bool isQuestItem;
+    public string itemID;
     public string item_name;
     public Sprite item_sprite;
     public GameObject item_prefab;
     [TextArea(3, 10)]
     public string ItemDescription;
+    
+    [TextArea(3, 10)]
+    public string HintDescription;
 }
 
