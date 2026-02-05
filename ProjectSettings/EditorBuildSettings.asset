@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Thang-atmospheric.unity
     guid: 8a4007e388a8baa47930d0cc27e9b96a
+  - enabled: 1
+    path: Assets/Scenes/Debugging.unity
+    guid: 3573fbdb161c3ca4d95283dbbeae328c
   m_configObjects: {}

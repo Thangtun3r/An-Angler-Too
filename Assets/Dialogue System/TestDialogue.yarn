@@ -10,6 +10,7 @@ title: Ready
 when: once
 ---
 YOU'RE READY, FIND THE LEGENDARY FISH!
+    <<changeScene DialogueSystem Debugging>>
 ===
 
 
@@ -27,10 +28,10 @@ position: 106,-88
 YOU: Hello good sir, rumour has brought me here searching for the LEGENDARY fish, you must know where it is?
 BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help finding a new steering wheel.
 -> Sure, I can help you find it.
-    BOB: Great! Just cast your line at the board behind me and reel it in, you should get a fresh steering wheel.
+    BOB: Great! Just cast your line at the billboard behind me and reel in a fresh steering wheel.
         <<jump Tutorial>>
--> Im an angler, I don't know how to find steering wheels.
-    BOB: Why not, silly boy! Just cast your line at the billboard behind me and fish out a fresh steering wheel.
+-> Im an angler, I don't know where to find steering wheels.
+    BOB: Silly boy... Just cast your line at the billboard behind me and fish out a fresh steering wheel.
         <<jump Tutorial>>
 ===
 
@@ -38,9 +39,8 @@ title:Tutorial
 position: 107,179
 ---
 YOU: Fish it our from a billboard? That sounds... ridiculous.
-BOB: Trust me, it works! Just give it a go. I'd do it myself, but these old hands can no longer handle the rod.
+BOB: Trust me, it works! Just give it a go.
 YOU: Alright, I'll try.
-        <<jump Bobby>>
 ===
 
 title:Bobby
@@ -48,11 +48,8 @@ when: always
 position: 389,-87
 ---
 BOB: Did you do it?
--> I tried. Fishing at a billboard doesn't work, man. <<if $failedFishing>>
-    BOB: Hermmm... That's odd. It must be because the board isn't BLUE enough. Here, wipe the dust away with this cloth and try again.
-        <<jump End>>
--> I got your steering wheel <<if $gotSteeringWheel>>
-    BOB: Heh! Told ya it'd work. Keep it up kid, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
+-> Does this fish works? <<if $gotSteeringWheel>>
+    BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
         <<jump Shopkeeper>>
 <<jump End>>
 ===
@@ -68,9 +65,4 @@ title: Cannot
 ---
 <<set $failedFishing = true>>
 YOU: This isn't working, I should tell him...
-===
-
-title: Shopkeeper
----
-Shopkeeper: 
 ===
