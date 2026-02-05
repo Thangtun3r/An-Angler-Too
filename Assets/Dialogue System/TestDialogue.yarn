@@ -1,0 +1,52 @@
+﻿title:Setup
+position: 234,-374
+---
+<<declare $failedFishing = false>>
+===
+
+title:Bobby
+when: once
+position: 106,-88
+---
+Bob: Hi! You look like an angler, can you help me find my steering wheel?
+-> Steering wheel?
+    Bob: Yes. My steering wheel, for my car over there. You're an angler right? Try fish it out.
+        <<jump Tutorial>>
+-> What?
+    Bob: My steering wheel. You are an angler right? Try fish it out.
+        <<jump Tutorial>>
+===
+
+title:Tutorial
+position: 107,179
+---
+How exactly do I fish out a steering wheel?
+Bob: It's stuck inside this automobile billboard over here, cast your line in and yank him out.
+-> I can do that?!
+    Bob: Yes, I though all anglers know how to do that. Just look at the board and press Left Click.
+        <<jump End>>
+-> Sounds like magic.
+    Bob: Yes it does, All anglers know how to do that. Just look at the board and press Left Click.
+        <<jump End>>
+===
+
+title:Bobby
+when: always
+position: 389,-87
+---
+Bob: Did you do it?
+    <<jump End>>
+Bob: Did you do it?
+-> I casted the line at the board, didn't work. <<if $failedFishing>> 
+    Bob: Ah, you gotta make the board blue first.
+        <<jump End>>
+-> I got your steering wheel
+    Bob: Thanks!!!!!!!!!!!!!!!!!!!!!!!!!!!
+===
+
+title:End
+position: 392,178
+---
+I'll get to it
+Bob: Okay good luck.
+===
