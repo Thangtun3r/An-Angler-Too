@@ -6,6 +6,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float raycastDistance = 5f;
 
     private Camera mainCamera;
+    private IPlayerInteraction currentInteractable;
 
     [HideInInspector] public bool isTalking = false;
 
@@ -24,27 +25,36 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInteraction()
     {
-        //bool interactableInSight = false;
-
         // Get the ray from the center of the screen
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.red);
 
+        IPlayerInteraction hitInteractable = null;
+
         if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance))
         {
-            IPlayerInteraction interactable = hit.collider.GetComponent<IPlayerInteraction>();
+            hitInteractable = hit.collider.GetComponent<IPlayerInteraction>();
+        }
 
-            if (interactable != null)
+        if (hitInteractable != currentInteractable)
+        {
+            if (currentInteractable != null)
             {
-                interactable.Highlight();
-                //interactableInSight = true;
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    interactable.Interact();
-                }
+                currentInteractable.Unhighlight();
             }
+
+            currentInteractable = hitInteractable;
+
+            if (currentInteractable != null)
+            {
+                currentInteractable.Highlight();
+            }
+        }
+
+        if (currentInteractable != null && Input.GetKeyDown(KeyCode.E))
+        {
+            currentInteractable.Interact();
         }
     }
 }

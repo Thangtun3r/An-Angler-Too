@@ -10,7 +10,7 @@ public class PromptZoom : MonoBehaviour
     [SerializeField] private float zoomDuration = 0.2f;
     [SerializeField] private Ease zoomEase = Ease.OutBack;
 
-  private Tween currentTween;
+    private Tween currentTween;
     private Tween reverseTween;
 
     void Awake()
