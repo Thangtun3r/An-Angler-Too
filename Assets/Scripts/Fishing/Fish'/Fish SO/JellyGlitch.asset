@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isQuestItem: 0
   itemID: JellyGlitch
-  item_name: JellyGlitch
-  item_sprite: {fileID: 0}
+  item_name: Jelly Glitch
+  item_sprite: {fileID: 21300000, guid: 930abf0b8d037694a8aee0387bca3c28, type: 3}
   item_prefab: {fileID: 5018792642928505626, guid: b8daaa40c9764dd45b1e38df359ed7f4,
     type: 3}
   ItemDescription: 

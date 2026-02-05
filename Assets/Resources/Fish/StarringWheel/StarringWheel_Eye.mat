@@ -40,7 +40,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 87f7d25d32ce9d3498d015ec49c477e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86d0effdb32209b4e832d53eef02d78d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseRamp:
@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 87f7d25d32ce9d3498d015ec49c477e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86d0effdb32209b4e832d53eef02d78d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseMap:
