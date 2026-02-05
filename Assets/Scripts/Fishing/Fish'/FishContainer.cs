@@ -83,7 +83,7 @@ public class FishContainer : MonoBehaviour, IFish
             // Pause before inventory
             DOVirtual.DelayedCall(2f, () =>
             {
-                InventoryService.AddToPlayer(fishSO);// call inventory service to add fish to player inventory
+                InventoryService.AddToPlayer(fishSO);
                 Destroy(fishObj);
             });
         });
