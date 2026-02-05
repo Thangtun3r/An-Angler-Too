@@ -16,7 +16,7 @@ public class RotateTowardsPlayer : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         }
     }
 }

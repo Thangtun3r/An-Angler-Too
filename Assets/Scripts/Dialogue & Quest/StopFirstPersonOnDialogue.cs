@@ -11,6 +11,7 @@ public class StopFirstPersonOnDialogue: MonoBehaviour
     private FishingCast fishingCast;
     private PlayerInteraction playerInteraction;
     private DialogueRunner dialogueRunner;
+    private PlayerInventory playerInventory;
 
     void Awake()
     {
@@ -20,8 +21,9 @@ public class StopFirstPersonOnDialogue: MonoBehaviour
         playerMovement = playerGameObject.GetComponent<PlayerMovement>();
         fishingCast = playerGameObject.GetComponent<FishingCast>();
         playerInteraction = playerGameObject.GetComponent<PlayerInteraction>();
+        playerInventory = playerGameObject.GetComponent<PlayerInventory>();
 
-        Debug.Log(dialogueRunner.gameObject.name);
+        //Debug.Log(dialogueRunner.gameObject.name);
     } 
 
     public void DisablePlayer()
@@ -33,6 +35,7 @@ public class StopFirstPersonOnDialogue: MonoBehaviour
         fishingCast.isTalking = true;
         player.FreezeMovementOnly();
         player.DisablePlayer();
+        Debug.Log("Returned Player Control - Dialogue Started");
     }
 
     public void ReturnPlayer()
@@ -43,6 +46,7 @@ public class StopFirstPersonOnDialogue: MonoBehaviour
         fishingCast.isTalking = false;
         player.UnFreezeMovementOnly();
         player.EnablePlayer();
+        Debug.Log("Returned Player Control - Dialogue Ended");
     }
 
     void OnEnable()
