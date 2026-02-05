@@ -16,7 +16,7 @@ MonoBehaviour:
   itemID: CanTuna
   item_name: CanTuna
   item_sprite: {fileID: 0}
-  item_prefab: {fileID: 4045235347776049986, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+  item_prefab: {fileID: 2968311528089866289, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
     type: 3}
   ItemDescription: 
   HintDescription: 
