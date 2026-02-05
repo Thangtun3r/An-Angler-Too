@@ -29,7 +29,7 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
-        Debug.Log("collided");
+        //Debug.Log("collided");
         HandleExit(other.gameObject);
     }
 
