@@ -8,6 +8,9 @@ public class FishingCast : MonoBehaviour
     [Header("Bobber Setup")]
     public Rigidbody bobberRT;
     public Bobber bobber;
+    public bool HasCasted => hasCasted;
+    public bool IsReeling => isReeling;
+
     
     [Header("Rod Setup")]
     public Transform head;
@@ -67,14 +70,20 @@ public class FishingCast : MonoBehaviour
 
     private void StartReel()
     {
+        if (bobber.currentFish != null)
+        {
+            bobber.currentFish.BobberLeft();
+        }
+
         if (bobber.currentFish != null && bobber.currentFish.IsBiting())
         {
-            bobber.currentFish.TryCatchFish(handTransform.transform);
+            bobber.currentFish.TryCatchFish(handTransform);
         }
 
         isReeling = true;
-        bobberRT.isKinematic = true; 
+        bobberRT.isKinematic = true;
     }
+
 
     private void ReelMovement()
     {
