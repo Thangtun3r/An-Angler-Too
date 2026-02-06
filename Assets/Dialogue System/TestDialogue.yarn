@@ -126,7 +126,7 @@ when: always
 ---
 KITTY: Mrrr... Meow (I love laying in the sun)
 -> [Pick up] the cat
-    
+    <<toggleCat Player_(Fisher_class)>>
 -> Pet the cat
 
 ===
