@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef5b39a597e47479bb521335faabaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishSO: {fileID: 11400000, guid: 2e101ac411eb65a448a03a86701abe23, type: 2}
+  fishSO: {fileID: 11400000, guid: 249140d3a549d9b47868bf5c95e8d625, type: 2}
   minWaitTime: 2
   maxWaitTime: 5
   biteWindow: 1.5
