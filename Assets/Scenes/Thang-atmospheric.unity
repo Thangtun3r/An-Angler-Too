@@ -6947,7 +6947,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.94558215, b: 0.7971698, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.39
   m_Range: 10
   m_SpotAngle: 30
@@ -7006,13 +7006,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362624327}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11989851, y: -0.4304418, z: 0.7998759, w: 0.4006778}
+  m_LocalRotation: {x: -0.031814337, y: -0.25021484, z: 0.8731977, w: 0.41702068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 36.336, y: -41.782, z: 112.506}
+  m_LocalEulerAnglesHint: {x: 24.232, y: -16.845, z: 125.302}
 --- !u!114 &362624330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31493,6 +31493,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1656610107
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.329
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484402835296225931, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968311528089866289, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
+        type: 3}
+      propertyPath: m_Name
+      value: Can Tuna
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c25507d4ecb1ae449dd1ae961b79eea, type: 3}
 --- !u!1 &1658534195
 GameObject:
   m_ObjectHideFlags: 0
@@ -42464,3 +42532,4 @@ SceneRoots:
   - {fileID: 538383757}
   - {fileID: 840809302}
   - {fileID: 306873635}
+  - {fileID: 1656610107}

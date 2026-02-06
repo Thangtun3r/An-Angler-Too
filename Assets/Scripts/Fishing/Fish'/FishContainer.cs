@@ -104,17 +104,31 @@ public class FishContainer : MonoBehaviour, IFish
 
     void AnimateFishToHand(GameObject fishObj, Transform hand)
     {
-        float travelTime = 0.5f;
+        float travelTime = 1.5f;
+        float spinPerMeter = 360f;
+
+        Vector3 startPos = fishObj.transform.position;
+        Vector3 endPos = hand.position;
+
+        float distance = Vector3.Distance(startPos, endPos);
+        float totalSpin = distance * spinPerMeter;
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(fishObj.transform.DOMove(hand.position, travelTime));
+
+        seq.Append(
+            fishObj.transform.DOMove(endPos, travelTime)
+        );
+
         seq.Join(
             fishObj.transform.DORotate(
-                new Vector3(0, 1440f, 0),
-                travelTime,
-                RotateMode.FastBeyond360
-            )
+                    new Vector3(0f, totalSpin, 0f),
+                    travelTime,
+                    RotateMode.FastBeyond360
+                )
+                .SetRelative(true)
+                .SetEase(Ease.OutQuad)
         );
+
 
         seq.OnComplete(() =>
         {
@@ -129,4 +143,5 @@ public class FishContainer : MonoBehaviour, IFish
             });
         });
     }
+
 }

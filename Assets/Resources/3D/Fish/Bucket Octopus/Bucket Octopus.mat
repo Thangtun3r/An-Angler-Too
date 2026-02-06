@@ -213,7 +213,7 @@ Material:
     - _AdditionalLightsFalloff: 0.679
     - _AdditionalLightsThreshold: 0.572
     - _AdvancedTab: 1
-    - _AlbedoMapIntensity: 1
+    - _AlbedoMapIntensity: 0.543
     - _AlembicMotionVectors: 0
     - _AlphaClip: 0
     - _AlphaClipping: 0
