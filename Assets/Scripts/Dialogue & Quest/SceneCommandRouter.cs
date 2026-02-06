@@ -9,6 +9,6 @@ public class SceneCommandRouter : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        Debug.Log("attempted change scene");
+        //Debug.Log("attempted change scene");
     }
 }
