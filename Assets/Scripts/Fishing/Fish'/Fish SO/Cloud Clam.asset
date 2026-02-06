@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
+  m_Name: Cloud Clam
+  m_EditorClassIdentifier: 
+  isQuestItem: 0
+  itemID: CloudClam
+  item_name: Cloud Clam
+  item_sprite: {fileID: 21300000, guid: f004f328958e6a7478fdcf7f5ed47636, type: 3}
+  item_prefab: {fileID: 2550319684618975683, guid: ef0907b9aa9ddb14fb6300760b87bb5a,
+    type: 3}
+  ItemDescription: 
+  HintDescription: 
