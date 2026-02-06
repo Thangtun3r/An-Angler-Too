@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket Octopus
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34ac9b81c4ee631448e9968bf02b916c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fish
+      objectReference: {fileID: 0}
     - target: {fileID: 5404139932348574068, guid: 34ac9b81c4ee631448e9968bf02b916c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 492741903}
   - component: {fileID: 492741902}
   - component: {fileID: 492741906}
+  - component: {fileID: 492741907}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -669,10 +670,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef5b39a597e47479bb521335faabaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishSO: {fileID: 11400000, guid: 249140d3a549d9b47868bf5c95e8d625, type: 2}
+  fishSO: {fileID: 11400000, guid: 2e101ac411eb65a448a03a86701abe23, type: 2}
   minWaitTime: 2
   maxWaitTime: 5
   biteWindow: 1.5
+--- !u!114 &492741907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492741901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666184dff6fe55e41a1eed411add79ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  node: Ready
+  triggerTag: Fish
+  attempts: 1
+  attemptsCounter: 0
 --- !u!850595691 &505518358
 LightingSettings:
   m_ObjectHideFlags: 0

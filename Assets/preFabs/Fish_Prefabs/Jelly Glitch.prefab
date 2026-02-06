@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jelly Glitch
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b9bf4c073ee15946a0e83bd3634a6e4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fish
+      objectReference: {fileID: 0}
     - target: {fileID: 1746654310787607633, guid: 5b9bf4c073ee15946a0e83bd3634a6e4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
