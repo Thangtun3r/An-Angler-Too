@@ -23,7 +23,7 @@ public class RodAnimationController : MonoBehaviour
     public float biteShakeAmount = 8f;
     public float biteShakeSpeed = 18f;
 
-    public float castEaseOut = 1.5f;
+    public float castEaseOut = 3f;
 
     public enum RodState
     {
@@ -45,7 +45,6 @@ public class RodAnimationController : MonoBehaviour
 
     public RodState CurrentState { get; private set; }
 
-    bool bobberLanded;
     bool fishBiting;
     IFish currentFish;
 
@@ -60,12 +59,12 @@ public class RodAnimationController : MonoBehaviour
 
     void OnEnable()
     {
-        Bobber.OnBobberLanded += OnBobberLanded;
+        Bobber.OnBobberLanded += HandleBobberLanded;
     }
 
     void OnDisable()
     {
-        Bobber.OnBobberLanded -= OnBobberLanded;
+        Bobber.OnBobberLanded -= HandleBobberLanded;
         UnsubscribeFromFish();
     }
 
@@ -77,20 +76,43 @@ public class RodAnimationController : MonoBehaviour
 
     void Update()
     {
-        TrySubscribeToFish();
         UpdateStateFromGameplay();
         UpdateReelSpin();
     }
 
+    void HandleBobberLanded()
+    {
+        castImpulseActive = false;
+
+        UnsubscribeFromFish();
+
+        if (fishingCast == null || fishingCast.bobber == null)
+            return;
+
+        IFish fish = fishingCast.bobber.currentFish;
+        if (fish == null)
+            return;
+
+        currentFish = fish;
+        currentFish.OnFishBite += OnFishBite;
+        currentFish.OnFishGoAway += OnFishGoAway;
+
+        if (currentFish.IsBiting())
+            OnFishBite();
+    }
+
+    void UnsubscribeFromFish()
+    {
+        if (currentFish == null)
+            return;
+
+        currentFish.OnFishBite -= OnFishBite;
+        currentFish.OnFishGoAway -= OnFishGoAway;
+        currentFish = null;
+    }
+
     void UpdateStateFromGameplay()
     {
-        if (currentFish != null && currentFish.IsBiting())
-        {
-            fishBiting = true;
-            SetState(RodState.FishBite_Rod);
-            return;
-        }
-
         if (fishBiting && !fishingCast.IsReeling)
         {
             SetState(RodState.FishBite_Rod);
@@ -101,7 +123,6 @@ public class RodAnimationController : MonoBehaviour
         {
             fishBiting = false;
             SetState(RodState.Reel_Rod);
-            bobberLanded = false;
             return;
         }
 
@@ -127,50 +148,19 @@ public class RodAnimationController : MonoBehaviour
             castImpulseActive = true;
         }
 
-        if (rodAnimator != null)
-            rodAnimator.SetInteger(rodStateParam, (int)newState);
-    }
-
-    void OnBobberLanded()
-    {
-        bobberLanded = true;
-        castImpulseActive = false;
-    }
-
-    void TrySubscribeToFish()
-    {
-        if (currentFish != null)
-            return;
-
-        if (fishingCast == null || fishingCast.bobber == null)
-            return;
-
-        IFish fish = fishingCast.bobber.currentFish;
-        if (fish == null)
-            return;
-
-        currentFish = fish;
-        currentFish.OnFishBite += OnFishBite;
-        currentFish.OnFishGoAway += OnFishGoAway;
-    }
-
-    void UnsubscribeFromFish()
-    {
-        if (currentFish == null)
-            return;
-
-        currentFish.OnFishBite -= OnFishBite;
-        currentFish.OnFishGoAway -= OnFishGoAway;
-        currentFish = null;
+        rodAnimator.SetInteger(rodStateParam, (int)newState);
     }
 
     void OnFishBite()
     {
         fishBiting = true;
+
         biteCurrentAngle = 0f;
         biteTargetAngle = GetNextBiteStep();
         biteHoldTimer = 0f;
+        biteShakeTimer = 0f;
         currentBiteHoldTime = Random.Range(biteHoldTimeMin, biteHoldTimeMax);
+
         SetState(RodState.FishBite_Rod);
     }
 
@@ -235,27 +225,46 @@ public class RodAnimationController : MonoBehaviour
             return;
         }
 
-        float targetSpeed = 0f;
+        if (CurrentState == RodState.Cast_Rod && castImpulseActive)
+        {
+            reelTransform.Rotate(
+                Vector3.up,
+                currentSpinSpeed * Time.deltaTime,
+                Space.Self
+            );
+            return;
+        }
 
         if (CurrentState == RodState.Reel_Rod)
         {
-            targetSpeed = reelSpinSpeed;
+            currentSpinSpeed = reelSpinSpeed;
+
+            reelTransform.Rotate(
+                Vector3.up,
+                currentSpinSpeed * Time.deltaTime,
+                Space.Self
+            );
+            return;
         }
-        else if (CurrentState == RodState.Cast_Rod && castImpulseActive)
+
+        if (!castImpulseActive)
         {
-            targetSpeed = currentSpinSpeed;
+            float sign = Mathf.Sign(currentSpinSpeed);
+
+            float speed = Mathf.Lerp(
+                Mathf.Abs(currentSpinSpeed),
+                0f,
+                Time.deltaTime * castEaseOut
+            );
+
+            currentSpinSpeed = sign * speed;
+
+            reelTransform.Rotate(
+                Vector3.up,
+                currentSpinSpeed * Time.deltaTime,
+                Space.Self
+            );
         }
 
-        currentSpinSpeed = Mathf.Lerp(
-            currentSpinSpeed,
-            targetSpeed,
-            Time.deltaTime * castEaseOut
-        );
-
-        reelTransform.Rotate(
-            Vector3.up,
-            currentSpinSpeed * Time.deltaTime,
-            Space.Self
-        );
     }
 }
