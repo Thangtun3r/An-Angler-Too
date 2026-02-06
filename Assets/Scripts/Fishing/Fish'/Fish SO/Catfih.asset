@@ -15,7 +15,7 @@ MonoBehaviour:
   isQuestItem: 0
   itemID: Catfih
   item_name: Catfih
-  item_sprite: {fileID: 0}
+  item_sprite: {fileID: 21300000, guid: 206be407c7bdda64cb8ab7f5c02d5759, type: 3}
   item_prefab: {fileID: 892424818784162608, guid: 46912190477cd8b438d0903e25715b60,
     type: 3}
   ItemDescription: 
