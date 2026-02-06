@@ -99,4 +99,18 @@ public class FishInventory : MonoBehaviour
     {
         OnInventoryChanged?.Invoke();
     }
+
+    public bool Contains(ItemSO item)
+    {
+        if (item == null)
+        return false;
+
+        for (int i = 0; i< slotCount; i++)
+        {
+            if(slots[i].itemData == item)
+            return true;
+        }
+        return false;
+
+    }
 }

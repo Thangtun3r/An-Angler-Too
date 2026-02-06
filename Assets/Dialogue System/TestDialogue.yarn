@@ -18,7 +18,7 @@ title:Setup
 position: 234,-374
 ---
 <<declare $failedFishing = false>>
-<<declare $gotSteeringWheel = false>>
+<<declare $StarringWheel = false>>
 ===
 
 title:Bobby
@@ -47,10 +47,11 @@ title:Bobby
 when: always
 position: 389,-87
 ---
+    <<checkForItem Bobby StarringWheel>>
 BOB: Did you do it?
--> Does this fish works? <<if $gotSteeringWheel>>
+-> Does this fish works? <<if $StarringWheel == true>>
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
-        <<jump Shopkeeper>>
+        //<<jump Shopkeeper>>
 <<jump End>>
 ===
 

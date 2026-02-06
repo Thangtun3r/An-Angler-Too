@@ -10,10 +10,10 @@ namespace Yarn.Unity.ExposedVariables {
             set => this.SetValue<bool>("$failedFishing", value);
         }
 
-        // Accessor for Bool $gotSteeringWheel
-        public bool GotSteeringWheel {
-            get => this.GetValueOrDefault<bool>("$gotSteeringWheel");
-            set => this.SetValue<bool>("$gotSteeringWheel", value);
+        // Accessor for Bool $StarringWheel
+        public bool StarringWheel {
+            get => this.GetValueOrDefault<bool>("$StarringWheel");
+            set => this.SetValue<bool>("$StarringWheel", value);
         }
 
     }
