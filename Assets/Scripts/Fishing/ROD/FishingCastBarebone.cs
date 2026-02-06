@@ -70,19 +70,19 @@ public class FishingCast : MonoBehaviour
 
     private void StartReel()
     {
-        if (bobber.currentFish != null)
-        {
-            bobber.currentFish.BobberLeft();
-        }
-
         if (bobber.currentFish != null && bobber.currentFish.IsBiting())
         {
             bobber.currentFish.TryCatchFish(handTransform);
+        }
+        else if (bobber.currentFish != null)
+        {
+            bobber.currentFish.BobberLeft();
         }
 
         isReeling = true;
         bobberRT.isKinematic = true;
     }
+
 
 
     private void ReelMovement()

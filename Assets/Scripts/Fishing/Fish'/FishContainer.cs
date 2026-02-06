@@ -66,19 +66,23 @@ public class FishContainer : MonoBehaviour, IFish
 
     IEnumerator FishBiteRoutine()
     {
-        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
-
-        fishIsBiting = true;
-        OnFishBite?.Invoke();
-
-        yield return new WaitForSeconds(biteWindow);
-
-        if (fishIsBiting)
+        while (currentBobber != null)
         {
-            fishIsBiting = false;
-            OnFishGoAway?.Invoke();
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+
+            fishIsBiting = true;
+            OnFishBite?.Invoke();
+
+            yield return new WaitForSeconds(biteWindow);
+
+            if (fishIsBiting)
+            {
+                fishIsBiting = false;
+                OnFishGoAway?.Invoke();
+            }
         }
     }
+
 
     void StopAllInternal()
     {

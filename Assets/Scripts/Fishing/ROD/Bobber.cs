@@ -36,20 +36,18 @@ public class Bobber : MonoBehaviour
     private void HandleLanding(RaycastHit hit)
     {
         hasLanded = true;
-        
+
         transform.position = hit.point + (hit.normal * groundCheckRadius);
-        
+
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
-
-        OnBobberLanded?.Invoke();
-        
         currentFish = hit.collider.GetComponent<IFish>();
-
+        
         if (currentFish != null)
         {
             currentFish.BobberLanded(transform);
         }
+        OnBobberLanded?.Invoke();
     }
 
     public void ResetBobber()
@@ -66,8 +64,6 @@ public class Bobber : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 direction = rb.velocity.normalized;
         float dist = Mathf.Max(rb.velocity.magnitude * Time.fixedDeltaTime, 0.5f);
-        
-        // Visualize the predictive path
         Gizmos.DrawWireSphere(transform.position + (direction * dist), groundCheckRadius);
         Gizmos.DrawLine(transform.position, transform.position + (direction * dist));
     }
