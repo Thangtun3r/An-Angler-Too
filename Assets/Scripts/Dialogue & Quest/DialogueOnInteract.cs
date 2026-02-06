@@ -9,13 +9,17 @@ using System;
 
 public class DialogueOnInteract : MonoBehaviour, IPlayerInteraction
 {
-    [SerializeField] private DialogueRunner dialogueRunner;
+    private DialogueRunner dialogueRunner;
     [SerializeField] private string node;
     [SerializeField] private PromptZoom highlightZoom;
 
     void Awake()
     {
         dialogueRunner = GameObject.FindFirstObjectByType<DialogueRunner>();
+        if (node != null)
+        {
+            node = this.gameObject.name;
+        }
     }
     public void Highlight()
     {

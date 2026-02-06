@@ -170,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 7918875057074298442}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.39743477, z: -0, w: 0.9176305}
-  m_LocalPosition: {x: -4.85056, y: 2.9575725, z: -2.256483}
+  m_LocalPosition: {x: -7.66, y: 2.9575725, z: -2.256483}
   m_LocalScale: {x: 4.21854, y: 4.784872, z: 1.4313719}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef5b39a597e47479bb521335faabaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishSO: {fileID: 11400000, guid: 249140d3a549d9b47868bf5c95e8d625, type: 2}
+  fishSO: {fileID: 11400000, guid: 6628026412ce14748832179fdb7a09ab, type: 2}
   minWaitTime: 2
   maxWaitTime: 5
   biteWindow: 1.5
@@ -497,7 +497,12 @@ PrefabInstance:
     - target: {fileID: 3975056149312370398, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
         type: 3}
       propertyPath: m_Name
-      value: Vinyl Player
+      value: VinylPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714440982016055275, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
+        type: 3}
+      propertyPath: node
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6273991086198080629, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
         type: 3}

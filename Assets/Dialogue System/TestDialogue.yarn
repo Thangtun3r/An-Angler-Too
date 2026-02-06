@@ -1,4 +1,17 @@
-﻿title: Start
+﻿title:Setup
+position: 234,-374
+---
+//Bob scenario
+<<declare $StarringWheel = false>>
+
+//King in Yellow scenario
+<<declare $VinEel = false>>
+<<declare $TurnedBlue = false>>
+
+// scenario
+===
+
+title: Start
 when: once
 ---
 YOU ARE AN ANGLER. LEFT CLICK TO PROGRESS DIALOGUE
@@ -14,14 +27,10 @@ YOU'RE READY, FIND THE LEGENDARY FISH!
 ===
 
 
-title:Setup
-position: 234,-374
----
-<<declare $failedFishing = false>>
-<<declare $StarringWheel = false>>
-===
+//_______________________________________________
 
-title:Bobby
+
+title:Bob
 when: once
 position: 106,-88
 ---
@@ -43,11 +52,11 @@ BOB: Trust me, it works! Just give it a go.
 YOU: Alright, I'll try.
 ===
 
-title:Bobby
+title:Bob
 when: always
 position: 389,-87
 ---
-    <<checkForItem Bobby StarringWheel>>
+<<checkForItem Bobby StarringWheel>>
 BOB: Did you do it?
 -> Does this fish works? <<if $StarringWheel == true>>
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
@@ -62,8 +71,62 @@ I'll get to it...
 BOB: Okay good luck.
 ===
 
-title: Cannot
+
+//____________________________________________
+
+
+title: VinylPlayer
+when: once
 ---
-<<set $failedFishing = true>>
-YOU: This isn't working, I should tell him...
+YOU: Hi.
+VINYL PLAYER: ...
+YOU: Hello!
+VINYL PLAYER: Why are you talking to a Vinyl Player?
+-> There's a quest marker on you.
+    VINYL PLAYER: Peculiar... Fortunately, I do have a favor to ask.
+    VINYL PLAYER: I want to make the big guy there feel BLUE.
+        <<jump FeelingBlue>>
+-> I wanted to change the music.
+    VINYL PLAYER: You'll need vinyl records for that, go find some.
+    VINYL PLAYER: Before you go I have a favor to ask. Find me a really sad song.
+    VINYL PLAYER: I want to make the big guy there feel BLUE.
+        <<jump FeelingBlue>>
+===
+
+title: FeelingBlue
+---
+-> Feel BLUE? As in feel sad?
+    VINYL PLAYER: Exactly! Bring me a vinyl record with a really sad song, I'll play it our loud.
+===
+
+title: VinylPlayer
+when: always
+---
+<<checkForItem VinylPlayer VinEel>>
+VINYL PLAYER: Found the sad song yet?
+-> Not yet.
+    VINYL PLAYER: Well, get going!
+-> I found a vin-eel disk. <<if $VinEel == true>>
+    VINYL PLAYER: Perfect? Put it on me and let's see if it works.
+        <<set $TurnedBlue = true>>
+        <<changeMaterial KingInYellow>>
+===
+
+title: VinylPlayer
+when: $TurnedBlue == true
+---
+VINYL PLAYER: Cry me a river, hehe.
+===
+
+//____________________________________________
+
+
+title: Kitty
+when: always
+---
+KITTY: Mrrr... Meow.
+-> Pick up the cat
+    YOU: Hey there little guy.
+-> Pet the cat
+    YOU: Who's a good kitty?
 ===

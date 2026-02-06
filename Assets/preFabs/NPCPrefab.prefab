@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 323133046516875483}
   - component: {fileID: 5714440982016055275}
   - component: {fileID: 5780047130144531731}
+  - component: {fileID: 7540565977823068029}
   - component: {fileID: 613912789778415513}
   m_Layer: 0
   m_Name: NPCPrefab
@@ -141,8 +142,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomTarget: {fileID: 2610267910217194495}
   reverseZoomTarget: {fileID: 6273991086198080629}
-  zoomDuration: 0.2
+  zoomDuration: 0.3
   zoomEase: 27
+--- !u!114 &7540565977823068029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3975056149312370398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ff71c4e5d74644da4d171b47586f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &613912789778415513
 CapsuleCollider:
   m_ObjectHideFlags: 0

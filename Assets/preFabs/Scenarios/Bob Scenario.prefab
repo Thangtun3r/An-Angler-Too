@@ -261,35 +261,18 @@ PrefabInstance:
     - target: {fileID: 3975056149312370398, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
         type: 3}
       propertyPath: m_Name
-      value: Bobby
+      value: Bob
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714440982016055275, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
+        type: 3}
+      propertyPath: node
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3975056149312370398, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
-        type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2952544929374769386}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad, type: 3}
---- !u!1 &4977592623599243708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3975056149312370398, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 8230832581126530914}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2952544929374769386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4977592623599243708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ff71c4e5d74644da4d171b47586f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8521432082500954041 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 323133046516875483, guid: 4a85cb04aec0a914e8bc67ffdbfb7bad,
