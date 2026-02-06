@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
-  m_Name: CloudClam
+  m_Name: Koi-tious
   m_EditorClassIdentifier: 
   isQuestItem: 0
-  itemID: CloudClam
-  item_name: Cloud Clam
-  item_sprite: {fileID: 21300000, guid: f004f328958e6a7478fdcf7f5ed47636, type: 3}
-  item_prefab: {fileID: 2550319684618975683, guid: ef0907b9aa9ddb14fb6300760b87bb5a,
+  itemID: KoiTious
+  item_name: Koi-tious
+  item_sprite: {fileID: 21300000, guid: 2d343f03aa115d643a22ad414447f4eb, type: 3}
+  item_prefab: {fileID: 5079826121028838841, guid: d811e51bace7a4843998c2ed170cb4d3,
     type: 3}
   ItemDescription: 
   HintDescription: 
