@@ -124,9 +124,9 @@ VINYL PLAYER: Cry me a river, hehe.
 title: Kitty
 when: always
 ---
-KITTY: Mrrr... Meow.
--> Pick up the cat
-    YOU: Hey there little guy.
+KITTY: Mrrr... Meow (I love laying in the sun)
+-> [Pick up] the cat
+    
 -> Pet the cat
-    YOU: Who's a good kitty?
+
 ===
