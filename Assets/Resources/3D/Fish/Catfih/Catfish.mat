@@ -25,7 +25,6 @@ Material:
   - _MK_ARTISTIC_ANIMATION_STUTTER
   - _MK_DETAIL_BLEND_MIX
   - _MK_WRAPPED_DIFFUSE
-  - _OUTLINECONSTANTSIZE_ON
   - _RECEIVESHADOWS_ON
   - _WRAPPEDLIGHTING_ON
   m_LightmapFlags: 4
@@ -250,7 +249,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DetailUVSet: 0
     - _Diffuse: 0
-    - _DiffuseSmoothness: 0.2
+    - _DiffuseSmoothness: 1
     - _DiffuseThresholdOffset: 0.25
     - _Dissolve: 2
     - _DissolveAmount: 0.5
@@ -301,7 +300,7 @@ Material:
     - _OptionsTab: 1
     - _Outline: 1
     - _OutlineClipOffset: 1
-    - _OutlineConstantSize: 1
+    - _OutlineConstantSize: 0
     - _OutlineData: 0
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25

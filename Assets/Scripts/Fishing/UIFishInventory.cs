@@ -34,4 +34,5 @@ public class UIFishInventory : MonoBehaviour
             fishSlots[i].RefreshSlot();
         }
     }
+    
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   isQuestItem: 0
   itemID: Rugfish
   item_name: Rugfish
-  item_sprite: {fileID: 21300000, guid: 3810db3ead65f8a4bab0e3fedc905726, type: 3}
+  item_sprite: {fileID: 21300000, guid: 98011bd538dc181449859ad48573a460, type: 3}
   item_prefab: {fileID: 8949644257746499597, guid: f82b85bf63d40b946a2879f009153eba,
     type: 3}
   ItemDescription: 
