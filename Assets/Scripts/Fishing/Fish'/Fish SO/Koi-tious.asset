@@ -16,7 +16,7 @@ MonoBehaviour:
   itemID: KoiTious
   item_name: Koi-tious
   item_sprite: {fileID: 21300000, guid: 1fdfd82dfbb36fa49b99a745233f9784, type: 3}
-  item_prefab: {fileID: 5079826121028838841, guid: d811e51bace7a4843998c2ed170cb4d3,
+  item_prefab: {fileID: 4543679944413041189, guid: d811e51bace7a4843998c2ed170cb4d3,
     type: 3}
   ItemDescription: 
   HintDescription: 
