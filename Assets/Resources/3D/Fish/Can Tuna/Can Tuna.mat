@@ -211,8 +211,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AdditionalLightsFalloff: 0.782
-    - _AdditionalLightsThreshold: 0.729
+    - _AdditionalLightsFalloff: 0
+    - _AdditionalLightsThreshold: 0.376
     - _AdvancedTab: 1
     - _AlbedoMapIntensity: 1
     - _AlembicMotionVectors: 0
@@ -286,7 +286,7 @@ Material:
     - _Light: 1
     - _LightBands: 4
     - _LightBandsScale: 0.5
-    - _LightThreshold: 0.592
+    - _LightThreshold: 0
     - _LightTransmission: 0
     - _LightTransmissionDistortion: 0.25
     - _LightTransmissionIntensity: 1

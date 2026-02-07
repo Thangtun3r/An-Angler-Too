@@ -4,12 +4,12 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public FishInventory Inventory { get; private set; }
-
     public Animator inventoryAnimator;
 
     private bool isOpen;
 
     public static event Action<bool> OnInventoryToggled;
+    public static event Action OnInventoryClosed; 
 
     private void Awake()
     {
@@ -36,9 +36,13 @@ public class PlayerInventory : MonoBehaviour
         if (inventoryAnimator == null) return;
 
         isOpen = !isOpen;
-
         inventoryAnimator.SetBool("isOpen", isOpen);
 
         OnInventoryToggled?.Invoke(isOpen);
+
+        if (!isOpen)
+        {
+            OnInventoryClosed?.Invoke(); 
+        }
     }
 }
