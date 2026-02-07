@@ -3,11 +3,10 @@ using UnityEngine;
 public class UIFishInventory : MonoBehaviour
 {
     private UIFishSlot[] fishSlots;
-    private FishInventory fishInventory;
+    public FishInventory fishInventory;
 
     void Awake()
     {
-        fishInventory = FindObjectOfType<PlayerInventory>().Inventory;
 
         fishSlots = GetComponentsInChildren<UIFishSlot>();
 

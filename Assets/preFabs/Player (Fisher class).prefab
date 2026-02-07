@@ -3929,6 +3929,7 @@ GameObject:
   - component: {fileID: 2838010877595461504}
   - component: {fileID: 7730030968981746941}
   - component: {fileID: 321564045695394099}
+  - component: {fileID: 6678274085709290848}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -4045,6 +4046,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6678274085709290848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021698543472178224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb8f3d5b8d50ba42aa097451962d299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 321564045695394099}
+  isStoringParam: isStoring
+  handHold: {fileID: 7749978886529170988}
 --- !u!1 &5342091868520168227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,7 +4110,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5342091868520168227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5038,6 +5054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd2b1ef3499d1c4e807e395dc93d75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishInventory: {fileID: 4803948588363629937}
 --- !u!1 &6581664155564500422
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,7 +6209,6 @@ GameObject:
   - component: {fileID: 6426297953874156319}
   - component: {fileID: 6030266711345211679}
   - component: {fileID: 5981470515377206349}
-  - component: {fileID: 2753573670514057921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6462,20 +6478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a5bd4f4f3b5ea4c80ab7d29cb01d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2753573670514057921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8438185086753282887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb8f3d5b8d50ba42aa097451962d299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 321564045695394099}
-  isStoringParam: isStoring
 --- !u!1 &8478570230082086037
 GameObject:
   m_ObjectHideFlags: 0
