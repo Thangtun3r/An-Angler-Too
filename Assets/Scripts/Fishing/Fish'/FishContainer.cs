@@ -14,7 +14,7 @@ public class FishContainer : MonoBehaviour, IFish
 
     public event System.Action OnFishBite;
     public event System.Action OnFishGoAway;
-
+    public static event System.Action OnStoreStarted;
     bool fishIsBiting;
     Transform currentBobber;
 
@@ -83,7 +83,6 @@ public class FishContainer : MonoBehaviour, IFish
         }
     }
 
-
     void StopAllInternal()
     {
         if (fishIsBiting)
@@ -107,41 +106,41 @@ public class FishContainer : MonoBehaviour, IFish
         float travelTime = 1.5f;
         float spinPerMeter = 360f;
 
-        Vector3 startPos = fishObj.transform.position;
-        Vector3 endPos = hand.position;
-
-        float distance = Vector3.Distance(startPos, endPos);
+        float distance = Vector3.Distance(fishObj.transform.position, hand.position);
         float totalSpin = distance * spinPerMeter;
 
+        fishObj.transform.SetParent(hand, worldPositionStays: true);
         Sequence seq = DOTween.Sequence();
-
-        seq.Append(
-            fishObj.transform.DOMove(endPos, travelTime)
-        );
-
+        seq.Append(fishObj.transform.DOLocalMove(Vector3.zero, travelTime).SetEase(Ease.OutQuad));
         seq.Join(
-            fishObj.transform.DORotate(
-                    new Vector3(0f, totalSpin, 0f),
-                    travelTime,
-                    RotateMode.FastBeyond360
-                )
-                .SetRelative(true)
-                .SetEase(Ease.OutQuad)
+            fishObj.transform.DOLocalRotate(
+                new Vector3(0f, totalSpin, 0f),
+                travelTime,
+                RotateMode.FastBeyond360
+            ).SetEase(Ease.OutQuad)
         );
-
 
         seq.OnComplete(() =>
         {
-            fishObj.transform.SetParent(hand);
-            fishObj.transform.localPosition = Vector3.zero;
-            fishObj.transform.localRotation = Quaternion.identity;
+            Sequence settle = DOTween.Sequence();
 
-            DOVirtual.DelayedCall(2f, () =>
+            settle.Append(fishObj.transform.DOLocalMove(Vector3.zero, 0.20f).SetEase(Ease.OutQuad));
+            float currentY = fishObj.transform.localEulerAngles.y;
+            settle.Join(fishObj.transform.DOLocalRotate(new Vector3(0f, currentY, 0f), 0.20f)
+                .SetEase(Ease.OutQuad));
+
+            settle.Join(fishObj.transform.DOLocalRotate(Vector3.zero, 0.20f).SetEase(Ease.OutQuad));
+
+            settle.OnComplete(() =>
             {
-                InventoryService.AddToPlayer(fishSO);
-                Destroy(fishObj);
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    OnStoreStarted?.Invoke();
+                    InventoryService.AddToPlayer(fishSO);
+
+                    Destroy(fishObj);
+                });
             });
         });
     }
-
 }

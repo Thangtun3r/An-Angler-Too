@@ -10,6 +10,11 @@ public class FishingCast : MonoBehaviour
     public Bobber bobber;
     public bool HasCasted => hasCasted;
     public bool IsReeling => isReeling;
+    
+    [Header("Hand")]
+    [SerializeField] private Animator handAnimator;   
+    [SerializeField] private string isStoringParam = "isStoring";
+
 
     
     [Header("Rod Setup")]
