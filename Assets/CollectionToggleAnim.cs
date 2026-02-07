@@ -41,6 +41,19 @@ public class CollectionToggleAnim : MonoBehaviour,
         PlayerInventory.OnInventoryClosed -= ForceToggleOff;
     }
 
+    void Update()
+    {
+        if (!isToggled) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!IsPointerInside())
+            {
+                ToggleOff();
+            }
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isToggled) return;
@@ -56,9 +69,7 @@ public class CollectionToggleAnim : MonoBehaviour,
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!isToggled)
-        {
             ToggleOn();
-        }
     }
 
     private void ToggleOn()
@@ -72,11 +83,25 @@ public class CollectionToggleAnim : MonoBehaviour,
         isToggled = false;
         MoveY(originalPos.y, toggleDuration, toggleOffEase);
     }
-    
+
     public void ForceToggleOff()
     {
         if (!isToggled) return;
         ToggleOff();
+    }
+
+    private bool IsPointerInside()
+    {
+        Camera cam = null;
+
+        if (GetComponentInParent<Canvas>().renderMode != RenderMode.ScreenSpaceOverlay)
+            cam = GetComponentInParent<Canvas>().worldCamera;
+
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            rect,
+            Input.mousePosition,
+            cam
+        );
     }
 
     private void MoveY(float y, float duration, Ease ease)

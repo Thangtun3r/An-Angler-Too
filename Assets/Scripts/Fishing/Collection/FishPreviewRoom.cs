@@ -95,7 +95,6 @@ public class FishPreviewRoom : MonoBehaviour
             GameObject go = Instantiate(fish.item_prefab, holder);
             go.transform.localPosition = Vector3.zero;
             go.transform.localRotation = Quaternion.identity;
-            // IMPORTANT: do NOT force localScale = Vector3.one (keeps prefab's authored scale)
             go.SetActive(false);
 
             if (previewLayer != -1)
@@ -136,15 +135,12 @@ public class FishPreviewRoom : MonoBehaviour
     private void PopHolder()
     {
         if (holder == null) return;
-
-        // keep rotation seamless: only animate SCALE
+        
         popTween?.Kill();
-
-        // snap to "from" then tween to default
         holder.localScale = holderDefaultScale * popFromScale;
         popTween = holder.DOScale(holderDefaultScale, popDuration)
                          .SetEase(popEase)
-                         .SetUpdate(true); // optional: still animates if timescale=0
+                         .SetUpdate(true); 
     }
 
     private void StartRotation()

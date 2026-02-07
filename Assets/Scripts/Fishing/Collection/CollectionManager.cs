@@ -7,17 +7,23 @@ public class CollectionManager : MonoBehaviour
 {
     public static CollectionManager Instance { get; private set; }
 
-    [Header("UI")]
     public Image infoIcon;
     public TMP_Text infoName;
     public TMP_Text infoDesc;
 
-    [Header("Locked")]
+    public TMP_Text collectionProgressText;
+
+    public RawImage fishPreviewImage;
+    public Color previewLockedTint = Color.black;
+    public Color previewUnlockedTint = Color.white;
+
     public Sprite lockedSprite;
 
     private readonly HashSet<string> discovered = new HashSet<string>();
 
     public event System.Action<ItemSO> OnFishDiscovered;
+
+    private CollectionUIBuilder uiBuilder;
 
     private void Awake()
     {
@@ -27,6 +33,12 @@ public class CollectionManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        uiBuilder = FindObjectOfType<CollectionUIBuilder>();
+        UpdateProgressText();
     }
 
     private void OnEnable()
@@ -43,12 +55,11 @@ public class CollectionManager : MonoBehaviour
     {
         if (item == null) return;
         if (string.IsNullOrEmpty(item.itemID)) return;
-
-        if (discovered.Contains(item.itemID))
-            return;
+        if (discovered.Contains(item.itemID)) return;
 
         discovered.Add(item.itemID);
         OnFishDiscovered?.Invoke(item);
+        UpdateProgressText();
     }
 
     public bool IsUnlocked(ItemSO item)
@@ -60,8 +71,7 @@ public class CollectionManager : MonoBehaviour
 
     public void GetDisplaySprite(ItemSO item, out Sprite sprite)
     {
-        bool unlocked = IsUnlocked(item);
-        sprite = unlocked ? item.item_sprite : lockedSprite;
+        sprite = IsUnlocked(item) ? item.item_sprite : lockedSprite;
     }
 
     public void ShowInfo(ItemSO item)
@@ -76,8 +86,8 @@ public class CollectionManager : MonoBehaviour
             if (infoName) infoName.text = item.item_name;
             if (infoDesc) infoDesc.text = item.ItemDescription;
 
-            if (FishPreviewRoom.Instance != null)
-                FishPreviewRoom.Instance.Show(item);
+            FishPreviewRoom.Instance?.Show(item);
+            if (fishPreviewImage) fishPreviewImage.color = previewUnlockedTint;
         }
         else
         {
@@ -85,32 +95,36 @@ public class CollectionManager : MonoBehaviour
             if (infoName) infoName.text = "???";
             if (infoDesc) infoDesc.text = item.HintDescription;
 
-            if (FishPreviewRoom.Instance != null)
-                FishPreviewRoom.Instance.Clear();
+            FishPreviewRoom.Instance?.Show(item);
+            if (fishPreviewImage) fishPreviewImage.color = previewLockedTint;
         }
+    }
+
+    private void UpdateProgressText()
+    {
+        if (collectionProgressText == null || uiBuilder == null || uiBuilder.allFish == null) return;
+
+        int collected = discovered.Count;
+        int total = uiBuilder.allFish.Count;
+
+        collectionProgressText.text = $"{collected}/{total} Fih collected!";
     }
 
     [ContextMenu("DEBUG Unlock All Fish")]
     public void DebugUnlockAllFish()
     {
-        CollectionUIBuilder builder = FindObjectOfType<CollectionUIBuilder>();
-        if (builder == null || builder.allFish == null)
-        {
-            Debug.LogWarning("No CollectionUIBuilder / allFish found.");
-            return;
-        }
+        if (uiBuilder == null || uiBuilder.allFish == null) return;
 
-        foreach (var fish in builder.allFish)
+        foreach (var fish in uiBuilder.allFish)
         {
             if (fish == null) continue;
             if (string.IsNullOrEmpty(fish.itemID)) continue;
-
             if (discovered.Contains(fish.itemID)) continue;
 
             discovered.Add(fish.itemID);
             OnFishDiscovered?.Invoke(fish);
         }
 
-        Debug.Log("All fish unlocked for testing.");
+        UpdateProgressText();
     }
 }
