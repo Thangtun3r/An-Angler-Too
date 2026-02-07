@@ -24,7 +24,7 @@ public class StopFirstPersonOnDialogue : MonoBehaviour
     {
         if (dialogueRunner == null)
         {
-            Debug.LogError("StopFirstPersonOnDialogue: no DialogueRunner in scene");
+            //Debug.LogError("StopFirstPersonOnDialogue: no DialogueRunner in scene");
             enabled = false;
             return;
         }

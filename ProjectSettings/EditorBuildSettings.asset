@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/WIP Scence/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Thang-atmospheric.unity
+    path: Assets/Scenes/WIP Scence/Thang-atmospheric.unity
     guid: 8a4007e388a8baa47930d0cc27e9b96a
   - enabled: 1
-    path: Assets/Scenes/Debugging.unity
+    path: Assets/Scenes/WIP Scence/Debugging.unity
     guid: 3573fbdb161c3ca4d95283dbbeae328c
   m_configObjects: {}

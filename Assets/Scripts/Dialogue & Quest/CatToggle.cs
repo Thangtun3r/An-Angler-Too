@@ -11,26 +11,61 @@ public class CatToggle : MonoBehaviour
     void Awake()
     {
         catLay = GameObject.FindGameObjectWithTag("KittyLay");
-        catLay.SetActive(true);
+        if (catLay != null)
+        {
+            catLay.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("CatToggle: No GameObject found with tag 'KittyLay'");
+        }
 
         catOnRug = GameObject.FindGameObjectWithTag("KittyOnRug");
-        catOnRug.SetActive(false);
+        if (catOnRug != null)
+        {
+            catOnRug.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("CatToggle: No GameObject found with tag 'KittyOnRug'");
+        }
     }
 
-    [YarnCommand ("toggleCat")]
+    [YarnCommand("toggleCat")]
     public void ToggleCat()
     {
+        if (catLay == null || catOnHand == null)
+        {
+            Debug.LogWarning("CatToggle: toggleCat called but references are missing");
+            return;
+        }
+
         bool isCatLayActive = catLay.activeSelf;
 
         catLay.SetActive(!isCatLayActive);
         catOnHand.SetActive(isCatLayActive);
     }
 
-    [YarnCommand ("toggleRugCat")]
+    [YarnCommand("toggleRugCat")]
     public void ToggleRugCat()
     {
-        catOnRug.SetActive(true);
-        Destroy(catOnHand);
-        Destroy(catLay);
+        if (catOnRug != null)
+        {
+            catOnRug.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("CatToggle: catOnRug is null");
+        }
+
+        if (catOnHand != null)
+        {
+            Destroy(catOnHand);
+        }
+
+        if (catLay != null)
+        {
+            Destroy(catLay);
+        }
     }
 }
