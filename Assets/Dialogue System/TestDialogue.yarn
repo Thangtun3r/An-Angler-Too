@@ -149,7 +149,7 @@ title: PutDown
 -> Lay cat on the rug <<if $OnRug>>
     KITTY: Prrrrrr... (I love you)
     <<toggleRugCat Player>>
--> Put the cat down. <<if $OnRug>>
+-> Put the cat down.
     KITTY: [Kitty hops back on you]
     KITTY: Ks! (Hey! Only put me down somewhere indoor, soft and bright.)
 -> Pet the cat.

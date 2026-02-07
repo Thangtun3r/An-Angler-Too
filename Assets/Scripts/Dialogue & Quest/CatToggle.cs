@@ -22,22 +22,16 @@ public class CatToggle : MonoBehaviour
             catOnRug.SetActive(false);
         }
 
-        catLay = GameObject.FindGameObjectWithTag("KittyOnHand");
-        if (catLay != null)
+        catOnHand = GameObject.FindGameObjectWithTag("KittyOnHand");
+        if (catOnHand != null)
         {
-            catLay.SetActive(true);
+            catOnHand.SetActive(false);
         }
     }
 
     [YarnCommand("toggleCat")]
     public void ToggleCat()
     {
-        if (catLay == null || catOnHand == null)
-        {
-            Debug.LogWarning("CatToggle: toggleCat called but references are missing");
-            return;
-        }
-
         bool isCatLayActive = catLay.activeSelf;
 
         catLay.SetActive(!isCatLayActive);
