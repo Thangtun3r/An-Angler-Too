@@ -46,8 +46,10 @@ GameObject:
   - component: {fileID: 175588743372846468}
   - component: {fileID: 4126022044314113088}
   - component: {fileID: 3629174528057548635}
+  - component: {fileID: 8219002817326165678}
+  - component: {fileID: 7348253772298254003}
   m_Layer: 0
-  m_Name: King in Yellow
+  m_Name: KingInYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +141,35 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8219002817326165678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223508394956317088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1e7c5762e96d46a4fde72b30099f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask: 6
+  material: {fileID: 2100000, guid: 262b09a8156906f4f9f05fb623366acf, type: 2}
+--- !u!114 &7348253772298254003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223508394956317088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fef5b39a597e47479bb521335faabaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishSO: {fileID: 11400000, guid: f51053e434d6351448d972efd075a2f1, type: 2}
+  minWaitTime: 2
+  maxWaitTime: 5
 --- !u!1 &7918875057074298442
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 7918875057074298442}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.39743477, z: -0, w: 0.9176305}
-  m_LocalPosition: {x: -7.66, y: 2.9575725, z: -2.256483}
+  m_LocalPosition: {x: -4.72, y: 2.9575725, z: -2.35}
   m_LocalScale: {x: 4.21854, y: 4.784872, z: 1.4313719}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,7 +293,6 @@ MonoBehaviour:
   fishSO: {fileID: 11400000, guid: 6628026412ce14748832179fdb7a09ab, type: 2}
   minWaitTime: 2
   maxWaitTime: 5
-  biteWindow: 1.5
 --- !u!54 &8624488658420076146
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -673,7 +673,6 @@ MonoBehaviour:
   fishSO: {fileID: 11400000, guid: 249140d3a549d9b47868bf5c95e8d625, type: 2}
   minWaitTime: 2
   maxWaitTime: 5
-  biteWindow: 1.5
 --- !u!114 &492741907
 MonoBehaviour:
   m_ObjectHideFlags: 0

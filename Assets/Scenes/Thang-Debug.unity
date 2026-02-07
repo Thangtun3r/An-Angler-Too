@@ -12755,11 +12755,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2383891554588355650, guid: 59409c00e7c04bd4183d874f45f16406,
-        type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4319397483745935586, guid: 59409c00e7c04bd4183d874f45f16406,
         type: 3}
       propertyPath: inventoryAnimator
@@ -12769,16 +12764,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (Fisher class)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7315017857481366789, guid: 59409c00e7c04bd4183d874f45f16406,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.010791779
-      objectReference: {fileID: 0}
-    - target: {fileID: 7315017857481366789, guid: 59409c00e7c04bd4183d874f45f16406,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.15472299
       objectReference: {fileID: 0}
     - target: {fileID: 7451902117449861152, guid: 59409c00e7c04bd4183d874f45f16406,
         type: 3}

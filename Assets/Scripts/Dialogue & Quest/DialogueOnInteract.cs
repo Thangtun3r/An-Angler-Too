@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using Yarn.Unity;
-using UnityEngine;
-using DG.Tweening;
-using System;
 
 public class DialogueOnInteract : MonoBehaviour, IPlayerInteraction
 {
@@ -16,10 +10,7 @@ public class DialogueOnInteract : MonoBehaviour, IPlayerInteraction
     void Awake()
     {
         dialogueRunner = GameObject.FindFirstObjectByType<DialogueRunner>();
-        if (node != null)
-        {
-            node = this.gameObject.name;
-        }
+        node = this.gameObject.name;
     }
     public void Highlight()
     {

@@ -22,5 +22,17 @@ namespace Yarn.Unity.ExposedVariables {
             set => this.SetValue<bool>("$TurnedBlue", value);
         }
 
+        // Accessor for Bool $OnRug
+        public bool OnRug {
+            get => this.GetValueOrDefault<bool>("$OnRug");
+            set => this.SetValue<bool>("$OnRug", value);
+        }
+
+        // Accessor for Bool $JellyGlitch
+        public bool JellyGlitch {
+            get => this.GetValueOrDefault<bool>("$JellyGlitch");
+            set => this.SetValue<bool>("$JellyGlitch", value);
+        }
+
     }
 }

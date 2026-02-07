@@ -18,7 +18,7 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
     {
         if (!other.CompareTag(triggerTag))
             return;
-
+    
         attemptsCounter++;
     }
 
@@ -29,7 +29,6 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
-        //Debug.Log("collided");
         HandleExit(other.gameObject);
     }
 
