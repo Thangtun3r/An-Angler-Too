@@ -6,9 +6,10 @@ public class CheckQuestItem : MonoBehaviour
 {
     private DialogueRunner diagRunner;
 
-void Awake() {
-    diagRunner = GameObject.FindFirstObjectByType<DialogueRunner>();
-}
+    void Awake() 
+    {
+        diagRunner = GameObject.FindFirstObjectByType<DialogueRunner>();
+    }
 
     [YarnCommand("checkForItem")]
     public void CheckForItem(string itemName)

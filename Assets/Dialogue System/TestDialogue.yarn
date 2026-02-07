@@ -8,7 +8,11 @@ position: 234,-374
 <<declare $VinEel = false>>
 <<declare $TurnedBlue = false>>
 
-// scenario
+//Kitty scenario
+<<declare $OnRug = false>>
+
+//BSOD scenario
+<<declare $JellyGlitch = false>>
 ===
 
 title: Start
@@ -56,18 +60,22 @@ title:Bob
 when: always
 position: 389,-87
 ---
-<<checkForItem Bobby StarringWheel>>
+<<checkForItem Bob StarringWheel>>
 BOB: Did you do it?
--> Does this fish works? <<if $StarringWheel == true>>
+<<if $StarringWheel>>
+-> Does this fish works?
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
         //<<jump Shopkeeper>>
-<<jump End>>
+
+<<else>>
+    <<jump End>>
+<<endif>>
 ===
 
 title:End
 position: 392,178
 ---
-I'll get to it...
+YOU: I'll get to it...
 BOB: Okay good luck.
 ===
 
@@ -95,7 +103,7 @@ VINYL PLAYER: Why are you talking to a Vinyl Player?
 
 title: FeelingBlue
 ---
--> Feel BLUE? As in feel sad?
+YOU: Feel BLUE? As in feel sad?
     VINYL PLAYER: Exactly! Bring me a vinyl record with a really sad song, I'll play it our loud.
 ===
 
@@ -104,12 +112,17 @@ when: always
 ---
 <<checkForItem VinylPlayer VinEel>>
 VINYL PLAYER: Found the sad song yet?
--> Not yet.
-    VINYL PLAYER: Well, get going!
--> I found a vin-eel disk. <<if $VinEel == true>>
+
+<<if $VinEel>>
+-> I found a vin-eel disk.
     VINYL PLAYER: Perfect? Put it on me and let's see if it works.
         <<set $TurnedBlue = true>>
         <<changeMaterial KingInYellow>>
+
+<<else>>
+YOU: Not yet.
+VINYL PLAYER: Well, get going.
+<<endif>>
 ===
 
 title: VinylPlayer
@@ -124,9 +137,56 @@ VINYL PLAYER: Cry me a river, hehe.
 title: Kitty
 when: always
 ---
-KITTY: Mrrr... Meow.
--> Pick up the cat
-    YOU: Hey there little guy.
+KITTY: Mrrr... Meow (I love laying in the sun)
+-> [Pick up] the cat
+    <<toggleCat Player>>
 -> Pet the cat
-    YOU: Who's a good kitty?
+    KITTY: Mrrrrrrrrrrrrrrrrrrrrrrrrrr...
+===
+
+title: PutDown
+---
+-> Lay cat on the rug <<if $OnRug>>
+    KITTY: Prrrrrr... (I love you)
+    <<toggleRugCat Player>>
+-> Put the cat down. <<if $OnRug>>
+    KITTY: [Kitty hops back on you]
+    KITTY: Ks! (Hey! Only put me down somewhere indoor, soft and bright.)
+-> Pet the cat.
+    KITTY: Aur... Mrrrrr...
+-> Teleport the cat back to where it was
+    KITTY: OOOooo..
+        <<toggleCat Player>>
+===
+
+title: KittyOnRug
+---
+It's sleeping... And BLUE!
+===
+
+
+//____________________________________________
+
+
+title: Puter
+when: once
+---
+PUTER: I've been rendering videos for 10 days boss...
+PUTER: You have to crash the system, let me rest.
+YOU: Leave it to me, brother.
+===
+
+title: Puter
+when: always
+---
+<<checkForItem Puter JellyGlitch>>
+PUTER: Ohh... The headache...
+
+<<if $JellyGlitch>>
+-> I'll short the system. Good night, brother.
+    <<changeMaterial Puter>>
+
+<<else>>
+YOU: Hang on, brother.
+<<endif>>
 ===
