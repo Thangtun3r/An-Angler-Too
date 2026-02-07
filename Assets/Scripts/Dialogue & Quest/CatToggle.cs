@@ -5,7 +5,7 @@ using Yarn.Unity;
 public class CatToggle : MonoBehaviour
 {
     private GameObject catLay;
-    public GameObject catOnHand;
+    private GameObject catOnHand;
     private GameObject catOnRug;
 
     void Awake()
@@ -15,19 +15,17 @@ public class CatToggle : MonoBehaviour
         {
             catLay.SetActive(true);
         }
-        else
-        {
-            Debug.LogWarning("CatToggle: No GameObject found with tag 'KittyLay'");
-        }
 
         catOnRug = GameObject.FindGameObjectWithTag("KittyOnRug");
         if (catOnRug != null)
         {
             catOnRug.SetActive(false);
         }
-        else
+
+        catLay = GameObject.FindGameObjectWithTag("KittyOnHand");
+        if (catLay != null)
         {
-            Debug.LogWarning("CatToggle: No GameObject found with tag 'KittyOnRug'");
+            catLay.SetActive(true);
         }
     }
 
