@@ -40,7 +40,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoMap:
-        m_Texture: {fileID: 2800000, guid: a288bc6bffa438d4aab7a585b1afa81a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7c7a421bba36cea43bcfb908ee0abdea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseRamp:
@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a288bc6bffa438d4aab7a585b1afa81a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7c7a421bba36cea43bcfb908ee0abdea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseMap:
@@ -134,13 +134,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AdditionalLightsFalloff: 0.031
-    - _AdditionalLightsThreshold: 0.048
+    - _AdditionalLightsFalloff: 0.13
+    - _AdditionalLightsThreshold: 0.078
     - _AdvancedTab: 1
     - _AlbedoMapIntensity: 1
     - _AlembicMotionVectors: 0
     - _AlphaClipping: 1
-    - _AlphaCutoff: 0.3
+    - _AlphaCutoff: 0.766
     - _Artistic: 0
     - _ArtisticFrequency: 1
     - _ArtisticProjection: 0
@@ -153,7 +153,7 @@ Material:
     - _Brightness: 1
     - _ColorGrading: 0
     - _Contrast: 1
-    - _Cutoff: 0.3
+    - _Cutoff: 0.766
     - _DetailUVSet: 0
     - _DiffuseSmoothness: 0
     - _DiffuseThresholdOffset: 0.25
@@ -181,7 +181,7 @@ Material:
     - _Light: 1
     - _LightBands: 4
     - _LightBandsScale: 0.5
-    - _LightThreshold: 0.035
+    - _LightThreshold: 0.061
     - _NormalMapIntensity: 1
     - _OptionsTab: 1
     - _Outline: 3
@@ -191,7 +191,7 @@ Material:
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
     - _OutlineNoise: 1
-    - _OutlineSize: 5
+    - _OutlineSize: 12
     - _OutlineTab: 1
     - _ReceiveShadows: 1
     - _RenderFace: 2
@@ -219,14 +219,14 @@ Material:
     - _Surface: 0
     - _ThresholdMapScale: 1
     - _VertexAnimation: 2
-    - _VertexAnimationIntensity: 0.03
+    - _VertexAnimationIntensity: 0.04
     - _VertexAnimationStutter: 0
     - _WrappedLighting: 1
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 0.64483446, g: 0.7994123, b: 0.98490566, a: 1}
-    - _Color: {r: 0.64483446, g: 0.7994123, b: 0.98490566, a: 1}
+    - _AlbedoColor: {r: 0.91886795, g: 1, b: 0.98094195, a: 1}
+    - _Color: {r: 0.91886795, g: 1, b: 0.98094195, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GoochBrightColor: {r: 1, g: 1, b: 1, a: 1}
