@@ -4,6 +4,7 @@ public class HandAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private string isStoringParam = "isStoring";
+    [SerializeField] private Transform handHold;
 
     private void Awake()
     {
@@ -13,9 +14,7 @@ public class HandAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        {
-            FishContainer.OnStoreStarted += OnStoreStarted;
-        }
+        FishContainer.OnStoreStarted += OnStoreStarted;
     }
 
     private void OnDisable()
@@ -25,7 +24,17 @@ public class HandAnimation : MonoBehaviour
 
     private void OnStoreStarted()
     {
-            animator.SetBool(isStoringParam, true);
+        animator.SetBool(isStoringParam, true);
     }
-    
+    public void OnStoreFinished()
+    {
+        if (animator != null)
+            animator.SetBool(isStoringParam, false);
+
+        if (handHold == null) return;
+        for (int i = handHold.childCount - 1; i >= 0; i--)
+        {
+            Destroy(handHold.GetChild(i).gameObject);
+        }
+    }
 }

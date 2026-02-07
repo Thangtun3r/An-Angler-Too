@@ -137,8 +137,6 @@ public class FishContainer : MonoBehaviour, IFish
                 {
                     OnStoreStarted?.Invoke();
                     InventoryService.AddToPlayer(fishSO);
-
-                    Destroy(fishObj);
                 });
             });
         });

@@ -3,6 +3,9 @@ using UnityEngine;
 public class FishingCast : MonoBehaviour
 {
 
+    [SerializeField] private Camera cam;   // assign in Inspector (or use Camera.main)
+    public float aimDistance = 25f;
+    
     [Header("Player Setup")] 
     public Transform handTransform;
     [Header("Bobber Setup")]
@@ -60,17 +63,28 @@ public class FishingCast : MonoBehaviour
     {
         hasCasted = true;
         isReeling = false;
-        
+    
         bobber.ResetBobber();
-
+    
         bobberRT.transform.parent = null;
-        bobberRT.transform.position = head.position;
+    
+        bobberRT.transform.position = rodHead.position;
 
+        if (cam == null) cam = Camera.main;
+    
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+ 
+        Vector3 targetPoint = ray.origin + ray.direction * aimDistance;
+        if (Physics.Raycast(ray, out RaycastHit hit, aimDistance))
+            targetPoint = hit.point;
+    
+        Vector3 dir = (targetPoint - rodHead.position).normalized;
+    
         bobberRT.isKinematic = false;
         bobberRT.velocity = Vector3.zero;
         bobberRT.angularVelocity = Vector3.zero;
-
-        bobberRT.AddForce(head.forward * castForce, ForceMode.Impulse);
+    
+        bobberRT.AddForce(dir * castForce, ForceMode.Impulse);
     }
 
     private void StartReel()
