@@ -1,0 +1,92 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+using DG.Tweening;
+
+public class CollectionToggleAnim : MonoBehaviour,
+    IPointerEnterHandler,
+    IPointerExitHandler,
+    IPointerClickHandler
+{
+    [Header("Positions")]
+    [SerializeField] private float toggledY = 300f;
+    [SerializeField] private float hoverOffsetY = 20f;
+
+    [Header("Tween Settings")]
+    [SerializeField] private float hoverDuration = 0.15f;
+    [SerializeField] private float toggleDuration = 0.25f;
+
+    [SerializeField] private Ease hoverEase = Ease.OutBack;
+    [SerializeField] private Ease toggleOnEase = Ease.OutCubic;
+    [SerializeField] private Ease toggleOffEase = Ease.OutExpo;
+
+    [Header("Toggle Off Control")]
+    [SerializeField] private RectTransform toggleOffRect;
+
+    private RectTransform rect;
+    private Vector2 originalPos;
+    private bool isToggled;
+
+    private Tween activeTween;
+
+    void Awake()
+    {
+        rect = GetComponent<RectTransform>();
+        originalPos = rect.anchoredPosition;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isToggled) return;
+
+        MoveY(originalPos.y + hoverOffsetY, hoverDuration, hoverEase);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isToggled) return;
+
+        MoveY(originalPos.y, hoverDuration, hoverEase);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!isToggled)
+        {
+            ToggleOn();
+        }
+    }
+
+    void Update()
+    {
+        if (!isToggled || toggleOffRect == null) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                toggleOffRect,
+                Input.mousePosition,
+                null))
+            {
+                ToggleOff();
+            }
+        }
+    }
+
+    private void ToggleOn()
+    {
+        isToggled = true;
+        MoveY(toggledY, toggleDuration, toggleOnEase);
+    }
+
+    private void ToggleOff()
+    {
+        isToggled = false;
+        MoveY(originalPos.y, toggleDuration, toggleOffEase);
+    }
+
+    private void MoveY(float y, float duration, Ease ease)
+    {
+        activeTween?.Kill();
+        activeTween = rect.DOAnchorPosY(y, duration).SetEase(ease);
+    }
+}
