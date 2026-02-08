@@ -1,0 +1,6 @@
+﻿title: Teleport
+hen: once
+---
+YOU'RE READY, FIND THE LEGENDARY FISH!
+    <<teleport Waltuh>>
+===

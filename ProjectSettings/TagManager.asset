@@ -10,6 +10,7 @@ TagManager:
   - KittyLay
   - KittyOnRug
   - KittyOnHand
+  - Marker
   layers:
   - Default
   - TransparentFX
