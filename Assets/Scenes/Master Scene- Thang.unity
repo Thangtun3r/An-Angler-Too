@@ -22246,6 +22246,8 @@ MonoBehaviour:
     _prefab: Assets/Resources/3D/Scenerios/Piano.fbx
   - _gameObject: {fileID: 1669921643}
     _prefab: Assets/Resources/3D/Scenerios/Pc .fbx
+  - _gameObject: {fileID: 2003190088}
+    _prefab: Assets/preFabs/AudioManager.prefab
 --- !u!4 &1698574706
 Transform:
   m_ObjectHideFlags: 11
@@ -24020,6 +24022,80 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0097d5ef415d1ef4992758aa31c00e54,
     type: 3}
   m_PrefabInstance: {fileID: 1990577261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2003190087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 147.67934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6662925
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -309.54684
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9812fdf1e123a4c82cfb7a2455b71b, type: 3}
+--- !u!1 &2003190088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003190087}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2004327461
 GameObject:
@@ -28633,6 +28709,7 @@ MonoBehaviour:
   head: {fileID: 8557152400449265336}
   rodHead: {fileID: 2483455355635703607}
   line: {fileID: 6900437161952032768}
+  rodAnimationController: {fileID: 0}
   castForce: 15
   reelSpeed: 50
   isTalking: 0
@@ -41475,3 +41552,4 @@ SceneRoots:
   - {fileID: 1322148858}
   - {fileID: 1669921642}
   - {fileID: 581585949}
+  - {fileID: 2003190087}
