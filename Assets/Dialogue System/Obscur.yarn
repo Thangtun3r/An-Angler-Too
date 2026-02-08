@@ -1,0 +1,46 @@
+title: Setup_Obscur
+position: 214,-314
+---
+//Obscur quest
+<<declare $bluePaint = false>>
+<<declare $ObscurQuestComplete = false>>
+===
+
+title: Obscur
+when: once
+position: 215,-110
+---
+YOU: A giant canvas? 
+YOU: Who put it here?
+YOU: Hmm...
+YOU: Hey you! Can you talk?
+OBSCUR: *stays still*
+YOU: Huh...
+YOU: Yea right, it's a canvas.
+YOU: I wonder what I can do with it...
+===
+
+title: Obscur
+when: always
+position: 458,-112
+---
+<<checkForItem Obscur bluePaint>>
+OBSCUR: *Take a look at the canvas?*
+
+<<if $bluePaint>>
+-> Okay
+    YOU: *give it some simple strokes*
+    <<set $ObscurQuestComplete = true>>
+<<else>>
+    OBSCUR: *Nothing special*
+<<endif>>
+===
+
+title: Obscur
+when: $ObscurQuestComplete == true
+position: 458,76
+---
+YOU: *give it some simple strokes*
+YOU: There we go!
+<<changeMaterial Obscur>>
+===

@@ -4,6 +4,18 @@ namespace Yarn.Unity.ExposedVariables {
 
     [System.CodeDom.Compiler.GeneratedCode("YarnSpinner", "3.1.3.0")]
     public partial class YarnVariables : Yarn.Unity.InMemoryVariableStorage, Yarn.Unity.IGeneratedVariableStorage {
+        // Accessor for Bool $bluePaint
+        public bool BluePaint {
+            get => this.GetValueOrDefault<bool>("$bluePaint");
+            set => this.SetValue<bool>("$bluePaint", value);
+        }
+
+        // Accessor for Bool $ObscurQuestComplete
+        public bool ObscurQuestComplete {
+            get => this.GetValueOrDefault<bool>("$ObscurQuestComplete");
+            set => this.SetValue<bool>("$ObscurQuestComplete", value);
+        }
+
         // Accessor for Bool $StarringWheel
         public bool StarringWheel {
             get => this.GetValueOrDefault<bool>("$StarringWheel");
