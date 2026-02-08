@@ -1,0 +1,101 @@
+using UnityEngine;
+using DG.Tweening;
+
+public class PriceHandGesture : MonoBehaviour
+{
+    [Header("Renderer")]
+    [SerializeField] private SpriteRenderer handRenderer;
+
+    [Header("Animated Object")]
+    [SerializeField] private Transform handVisual; // CHILD transform to move
+
+    [Header("Gesture Sprites (index = amount - 1)")]
+    [SerializeField] private Sprite[] gestureSprites;
+
+    [Header("Positions")]
+    [SerializeField] private float shownY;
+    [SerializeField] private float hiddenY;
+
+    [Header("Tween Settings")]
+    [SerializeField] private float tweenDuration = 0.2f;
+    [SerializeField] private Ease tweenEase = Ease.InOutSine;
+
+    private Tween currentTween;
+
+    private void Awake()
+    {
+        if (handVisual == null)
+            handVisual = transform;
+
+        // Auto-capture shown position if not set
+        if (Mathf.Approximately(shownY, 0f))
+            shownY = handVisual.localPosition.y;
+    }
+
+    private void OnEnable()
+    {
+        UIStoreSlot.OnStoreSlotSelected += UpdateGesture;
+    }
+
+    private void OnDisable()
+    {
+        UIStoreSlot.OnStoreSlotSelected -= UpdateGesture;
+    }
+
+    private void UpdateGesture(UIStoreSlot slot, ItemSO item)
+    {
+        int amount = GetPriceAmount(slot);
+        AnimateGestureChange(amount);
+    }
+
+    int GetPriceAmount(UIStoreSlot slot)
+    {
+        if (slot.acceptAnyFish)
+            return slot.anyFishAmount;
+
+        int total = 0;
+        foreach (var cost in slot.costs)
+            total += cost.amount;
+
+        return total;
+    }
+
+    void AnimateGestureChange(int amount)
+    {
+        if (handRenderer == null || gestureSprites.Length == 0 || handVisual == null)
+            return;
+
+        int index = Mathf.Clamp(amount - 1, 0, gestureSprites.Length - 1);
+
+        currentTween?.Kill();
+
+        // Hide
+        currentTween = handVisual.DOLocalMoveY(hiddenY, tweenDuration)
+            .SetEase(tweenEase)
+            .OnComplete(() =>
+            {
+                // Swap sprite while hidden
+                handRenderer.sprite = gestureSprites[index];
+                handRenderer.enabled = true;
+
+                // Show
+                handVisual.DOLocalMoveY(shownY, tweenDuration)
+                    .SetEase(tweenEase);
+            });
+    }
+
+    public void HideInstant()
+    {
+        currentTween?.Kill();
+
+        if (handRenderer != null)
+            handRenderer.enabled = false;
+
+        if (handVisual != null)
+            handVisual.localPosition = new Vector3(
+                handVisual.localPosition.x,
+                hiddenY,
+                handVisual.localPosition.z
+            );
+    }
+}

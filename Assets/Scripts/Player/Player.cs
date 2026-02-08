@@ -4,8 +4,12 @@ public class Player : MonoBehaviour
 {
     private PlayerMovement movement;
     private PlayerInteraction interaction;
-    public CharacterController characterController;
     private FishingCast fishingCast;
+    public CharacterController characterController;
+
+    // Track who is currently locking the player
+    private bool inventoryOpen;
+    private bool shopOpen;
 
     private void Awake()
     {
@@ -18,22 +22,18 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         PlayerInventory.OnInventoryToggled += HandleInventoryToggle;
+        StoreYarn.OnStoreOpened += HandleShopToggle;
     }
 
     private void OnDisable()
     {
         PlayerInventory.OnInventoryToggled -= HandleInventoryToggle;
-    }
-
-    private void HandleInventoryToggle(bool isOpen)
-    {
-        if (isOpen) DisablePlayer();
-        else EnablePlayer();
+        StoreYarn.OnStoreOpened -= HandleShopToggle;
     }
 
     private void Start()
     {
-        // Default: lock mouse only if no UI is requesting it unlocked
+        // Default mouse state
         if (!CursorLockManager.IsUnlockedBySomeone)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -41,41 +41,76 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ---------------- Inventory ----------------
+
+    private void HandleInventoryToggle(bool isOpen)
+    {
+        inventoryOpen = isOpen;
+        RefreshPlayerState();
+    }
+
+    // ---------------- Shop ----------------
+
+    private void HandleShopToggle()
+    {
+        // Shop toggle event has no bool → flip state
+        shopOpen = !shopOpen;
+        RefreshPlayerState();
+    }
+
+    // ---------------- Core Logic ----------------
+
+    private void RefreshPlayerState()
+    {
+        if (inventoryOpen || shopOpen)
+            DisablePlayer();
+        else
+            EnablePlayer();
+    }
+
     public void DisablePlayer()
     {
         if (movement != null) movement.enabled = false;
         if (interaction != null) interaction.enabled = false;
-        if (characterController != null) characterController.enabled = false;
         if (fishingCast != null) fishingCast.enabled = false;
+        if (characterController != null) characterController.enabled = false;
     }
 
     public void EnablePlayer()
     {
         if (movement != null) movement.enabled = true;
         if (interaction != null) interaction.enabled = true;
-        if (characterController != null) characterController.enabled = true;
         if (fishingCast != null) fishingCast.enabled = true;
+        if (characterController != null) characterController.enabled = true;
     }
+
+    // ---------------- Partial Control ----------------
 
     public void FreezeMovementOnly()
     {
-        if (movement != null) movement.IsFrozen = true;
+        if (movement != null)
+            movement.IsFrozen = true;
     }
 
     public void UnFreezeMovementOnly()
     {
-        if (movement != null) movement.IsFrozen = false;
+        if (movement != null)
+            movement.IsFrozen = false;
     }
+
+    // ---------------- Spawn ----------------
 
     public void SetPlayerSpawnPoint(Transform spawnPoint)
     {
         if (characterController == null) return;
 
         characterController.enabled = false;
+
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
 
-        if (movement != null) movement.ResetHead();
+        if (movement != null)
+            movement.ResetHead();
 
         characterController.enabled = true;
     }
