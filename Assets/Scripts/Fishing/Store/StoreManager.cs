@@ -4,28 +4,33 @@ using System.Collections.Generic;
 
 public class StoreManager : MonoBehaviour
 {
+    [Header("UI")]
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemDescriptionText;
     public TextMeshProUGUI itemPriceText;
 
+    [Header("Feedback")]
+    [SerializeField] private NotEnoughFihFeedback notEnoughFeedback;
+
     private UIStoreSlot currentStoreSlot;
     private FishInventory playerInventory;
 
-    void Start()
-    {
-        playerInventory = FindObjectOfType<PlayerInventory>().Inventory;
-    }
-
-
-    private void OnEnable()
+    private void Awake()
     {
         UIStoreSlot.OnStoreSlotSelected += DisplayItemDetails;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         UIStoreSlot.OnStoreSlotSelected -= DisplayItemDetails;
     }
+
+    private void Start()
+    {
+        playerInventory = FindObjectOfType<PlayerInventory>().Inventory;
+    }
+
+    // ---------------- Display ----------------
 
     public void DisplayItemDetails(UIStoreSlot storeSlot, ItemSO item)
     {
@@ -36,13 +41,18 @@ public class StoreManager : MonoBehaviour
         itemPriceText.text = BuildPriceText(storeSlot);
     }
 
+    // ---------------- Buy ----------------
+
     public void BuyItem()
     {
         if (currentStoreSlot == null) return;
         if (currentStoreSlot.soldOut) return;
 
         if (!CanAfford(playerInventory, currentStoreSlot))
+        {
+            notEnoughFeedback?.Play(); // 👈 ONLY ADDITION
             return;
+        }
 
         PayCost(playerInventory, currentStoreSlot);
 
@@ -52,7 +62,8 @@ public class StoreManager : MonoBehaviour
             currentStoreSlot.iconImage.color = Color.gray;
         }
     }
-    
+
+    // ---------------- Cost Logic ----------------
 
     bool CanAfford(FishInventory inv, UIStoreSlot slot)
     {
@@ -81,7 +92,6 @@ public class StoreManager : MonoBehaviour
             RemoveItemAmount(inv, cost.fish, cost.amount);
         }
     }
-    
 
     int CountItem(FishInventory inv, ItemSO item)
     {
@@ -143,7 +153,7 @@ public class StoreManager : MonoBehaviour
     string BuildPriceText(UIStoreSlot slot)
     {
         if (slot.acceptAnyFish)
-            return $"Cost:\n{slot.anyFishAmount}x Different Fish";
+            return $"Cost:\n{slot.anyFishAmount}x Different fih";
 
         string text = "Cost:\n";
 
