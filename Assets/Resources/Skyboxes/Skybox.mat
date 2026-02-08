@@ -133,13 +133,13 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Exponent: 1.86
+    - _Exponent: 2.8
     - _Exposure: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _ImageType: 0
-    - _Intensity: 1.66
+    - _Intensity: 1.85
     - _Layout: 0
     - _Mapping: 1
     - _Metallic: 0
@@ -160,8 +160,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 1, g: 0.83946395, b: 0.5518868, a: 1}
-    - _Color1: {r: 0, g: 0.597173, b: 1, a: 1}
+    - _Color0: {r: 1, g: 0.78454983, b: 0.4009434, a: 1}
+    - _Color1: {r: 0, g: 0.5960784, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Rotation: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
