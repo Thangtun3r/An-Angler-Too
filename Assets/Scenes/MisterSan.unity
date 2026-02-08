@@ -6298,22 +6298,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1897631877}
     m_Modifications:
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 95.56
+      value: 19.76928
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.44
+      value: 185.1779
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -46.13926
+      value: -86.53637
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
@@ -6323,17 +6323,17 @@ PrefabInstance:
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
@@ -6779,6 +6779,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0097d5ef415d1ef4992758aa31c00e54,
     type: 3}
   m_PrefabInstance: {fileID: 820499636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &833395062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1436083425147138925, guid: 9c858b4672f354a46a6f6f08de2d9711,
+    type: 3}
+  m_PrefabInstance: {fileID: 793498311}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &845230828
 PrefabInstance:
@@ -15313,6 +15319,28 @@ MonoBehaviour:
     _prefab: Assets/Resources/3D/van.fbx
   - _gameObject: {fileID: 1859176122}
     _prefab: Assets/Resources/3D/van.fbx
+  - _gameObject: {fileID: 793498312}
+    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
+  - _gameObject: {fileID: 793498318}
+    _prefab: Assets/preFabs/NPCPrefab.prefab
+  - _gameObject: {fileID: 793498312}
+    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
+  - _gameObject: {fileID: 793498317}
+    _prefab: Assets/preFabs/NPCPrefab.prefab
+  - _gameObject: {fileID: 793498312}
+    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
+  - _gameObject: {fileID: 793498316}
+    _prefab: Assets/Resources/3D/Church/Church.fbx
+  - _gameObject: {fileID: 793498312}
+    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
+  - _gameObject: {fileID: 793498312}
+    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
+  - _gameObject: {fileID: 793498315}
+    _prefab: Assets/Resources/3D/Church/GodRay.fbx
+  - _gameObject: {fileID: 793498314}
+    _prefab: Assets/Resources/3D/Church/Lighting.fbx
+  - _gameObject: {fileID: 793498313}
+    _prefab: Assets/Resources/3D/Kitty house.fbx
   - _gameObject: {fileID: 2134547119}
     _prefab: Assets/preFabs/Fishable Objects/Box of canned food.prefab
   - _gameObject: {fileID: 1604824280}
@@ -15451,28 +15479,6 @@ MonoBehaviour:
     _prefab: Assets/preFabs/Rnder fish.prefab
   - _gameObject: {fileID: 523181233}
     _prefab: Assets/preFabs/AudioManager.prefab
-  - _gameObject: {fileID: 793498312}
-    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
-  - _gameObject: {fileID: 793498318}
-    _prefab: Assets/preFabs/NPCPrefab.prefab
-  - _gameObject: {fileID: 793498312}
-    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
-  - _gameObject: {fileID: 793498317}
-    _prefab: Assets/preFabs/NPCPrefab.prefab
-  - _gameObject: {fileID: 793498312}
-    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
-  - _gameObject: {fileID: 793498316}
-    _prefab: Assets/Resources/3D/Church/Church.fbx
-  - _gameObject: {fileID: 793498312}
-    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
-  - _gameObject: {fileID: 793498312}
-    _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
-  - _gameObject: {fileID: 793498315}
-    _prefab: Assets/Resources/3D/Church/GodRay.fbx
-  - _gameObject: {fileID: 793498314}
-    _prefab: Assets/Resources/3D/Church/Lighting.fbx
-  - _gameObject: {fileID: 793498313}
-    _prefab: Assets/Resources/3D/Kitty house.fbx
 --- !u!4 &1698574706
 Transform:
   m_ObjectHideFlags: 11
@@ -16930,6 +16936,7 @@ Transform:
   - {fileID: 1485212736}
   - {fileID: 1752886593}
   - {fileID: 1122914893}
+  - {fileID: 833395062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1933321367
@@ -18311,7 +18318,7 @@ Transform:
   m_GameObject: {fileID: 2057316127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 145.00217, y: 8.059999, z: -394.16998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19657,6 +19664,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PLAYER==========================
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071241019850901613, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 144.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071241019850901613, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071241019850901613, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -394.3
       objectReference: {fileID: 0}
     - target: {fileID: 7812115583514573663, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
@@ -21876,4 +21898,3 @@ SceneRoots:
   - {fileID: 448966184}
   - {fileID: 1057387137}
   - {fileID: 445476432}
-  - {fileID: 793498311}
