@@ -18,7 +18,7 @@ position: 234,-374
 title: Start
 when: once
 ---
-YOU ARE AN ANGLER. LEFT CLICK TO PROGRESS DIALOGUE
+YOU ARE AN ANGLER. LEFT CLICK ON THE ARROW BELOW TO PROGRESS DIALOGUE.
 WHEN NOT IN DIALOGUE, LEFT CLICK TO CAST YOUR LINE
 DIALOGUE WILL END AFTER THIS, CATCH A FISH
 ===
@@ -28,17 +28,33 @@ DIALOGUE WILL END AFTER THIS, CATCH A FISH
 
 
 title:Bob
+when: always
+position: 389,-87
+---
+<<checkForItem Bob StarringWheel>>
+BOB: Did you do it?
+<<if $StarringWheel>>
+-> Does this fish works?
+    BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
+        //<<jump Shopkeeper>>
+
+<<else>>
+    <<jump End>>
+<<endif>>
+===
+
+title:Bob
 when: once
 position: 106,-88
 ---
-YOU: Hello good sir, rumour has brought me here. Is this the town with the LEGENDARY fish? How do I find it?
-BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help to find me a new Starring Wheel. They get old so quickly these days.
+YOU: Hello good sir, rumour has brought me here searching for the LEGENDARY fish, you must know where it is?
+BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help finding a new steering wheel.
 YOU: Sure, I can help you with tha-
--> Wait, starring what now?
-    BOB: Just cast your line at the billboard behind me and find out yourself!
+-> Sure, I can help you find it.
+    BOB: Great! Just cast your line at the billboard behind me and reel in a fresh steering wheel.
         <<jump Tutorial>>
--> Huh? What do you mean?
-    BOB: Silly boy... Just cast your line at the billboard behind me. I trust you bud!
+-> Im an angler, I don't know where to find steering wheels.
+    BOB: Silly boy... Just cast your line at the billboard behind me and fish out a fresh steering wheel.
         <<jump Tutorial>>
 ===
 
@@ -46,22 +62,22 @@ title:Tutorial
 position: 107,179
 ---
 YOU: Fish it our from a billboard? That sounds... ridiculous.
-YOU: Alright, I'll try.
-===
+BOB: A fisher man can fish from anything BLUE! The billboard is BLUE, just give it a try.
+YOU: Alright... I'll try?
+BOB: Also try pressing TAB after this dialogue ends.
 
 title:Bob
 when: always
 position: 389,-87
 ---
 <<checkForItem Bob StarringWheel>>
-BOB: Did you do it?
+BOB: Did you do it? You can press TAB to check your inventory.
+
 <<if $StarringWheel>>
--> This silly looking thing?
+-> This starfish is the steering wheel?
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
-    BOB: And now, farewell fella! Hope you find YOURS Legendary fish!
     YOU: Wait, where are you going? Where's the shopkeeper?
         <<bobFlyAway Bob>>
-        //<<jump Shopkeeper>>
 
 <<else>>
     <<jump End>>
