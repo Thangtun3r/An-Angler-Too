@@ -741,7 +741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad57f2bfd80e2f84eae1b5e44c829d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificCommandName: 
 --- !u!4 &123453222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3542852092398272455, guid: ea61e004efba7f944bd4283efc812b7a,
@@ -1106,6 +1105,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193565091}
   m_CullTransparentMesh: 1
+--- !u!114 &199269087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 18288640582944946, guid: 5c7b9b44621cab5428167e3a35c23628,
+    type: 3}
+  m_PrefabInstance: {fileID: 2205399906766923437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72509d40b2c7c42408ebe454c1906dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &249474330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8275,6 +8286,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1486747984}
   m_LocalEulerAnglesHint: {x: 90, y: -9.337, z: -9.474}
+--- !u!1 &955207022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1650478335147388347, guid: 5c7b9b44621cab5428167e3a35c23628,
+    type: 3}
+  m_PrefabInstance: {fileID: 2205399906766923437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &972608192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2164178356643892986, guid: 5c7b9b44621cab5428167e3a35c23628,
@@ -19238,6 +19255,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18288640582944946, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
+      propertyPath: storeObj
+      value: 
+      objectReference: {fileID: 955207022}
+    - target: {fileID: 18288640582944946, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
       propertyPath: storeCamera
       value: 
       objectReference: {fileID: 177099458}
@@ -19356,6 +19378,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 199269087}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnExitButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: StoreToggle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908751546789955223, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2199700315974942824, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -19556,6 +19613,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4621741821824141608, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: storeToggle
+      value: 
+      objectReference: {fileID: 199269087}
     - target: {fileID: 5320197662139414016, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: m_AnchorMax.y
