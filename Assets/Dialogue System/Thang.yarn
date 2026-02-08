@@ -1,9 +1,24 @@
 ﻿title: Trader
 ---
-Trader: Sup buds, you lookin' to trade?
+TRADER: Sup, bud. You give me fish, I give you gadgets.
 -> Show me what you got.
     <<open_store>>
+-> Bob guy said you got a good fishing rod?
+    TRADER: Less talk, more trade!
+    <<open_store>>
+-> What's with the cat?
+    TRADER: You give me fish, I give you gadgets. Then I give the cat fish.
+-> I took the cat to the church over there. <<if $LaidCat == true>>
+    TRADER: I'll take note. Thanks, bud.
+===
 
-
-
+title: Final
+---
+TRADER: Rod's inside the van.
+-> [Scream from the top of your lungs] YEAHHHHHHHHHHHHHHHHHHHHH!
+    TRADER:[Smirks] You earned it, champ.
+    <<changeRodMat RodMatChange>>
+-> Thank you, sir!
+    TRADER: [Nods] Happy fishing, champ.
+    <<changeRodMat RodMatChange>>
 ===

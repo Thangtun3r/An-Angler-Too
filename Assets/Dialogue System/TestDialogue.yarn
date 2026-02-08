@@ -13,6 +13,9 @@ position: 234,-374
 
 //BSOD scenario
 <<declare $JellyGlitch = false>>
+
+//ShopKeeper
+<<declare $LaidCat = false>>
 ===
 
 title: Start
@@ -65,6 +68,7 @@ YOU: Fish it our from a billboard? That sounds... ridiculous.
 BOB: A fisher man can fish from anything BLUE! The billboard is BLUE, just give it a try.
 YOU: Alright... I'll try?
 BOB: Also try pressing TAB after this dialogue ends.
+===
 
 title:Bob
 when: always
@@ -161,7 +165,8 @@ title: PutDown
 -> Lay cat on the rug <<if $OnRug>>
     KITTY: Prrrrrr... (I love you)
     <<toggleRugCat Player>>
--> Put the cat down.
+    <<set $LaidCat = true>>
+-> Put the cat down. <<if $OnRug == false>>
     KITTY: [Kitty hops back on you]
     KITTY: Ks! (Hey! Only put me down somewhere indoor, soft and bright.)
 -> Pet the cat.

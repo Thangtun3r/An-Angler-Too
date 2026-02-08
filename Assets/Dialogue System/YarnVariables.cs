@@ -34,5 +34,11 @@ namespace Yarn.Unity.ExposedVariables {
             set => this.SetValue<bool>("$JellyGlitch", value);
         }
 
+        // Accessor for Bool $LaidCat
+        public bool LaidCat {
+            get => this.GetValueOrDefault<bool>("$LaidCat");
+            set => this.SetValue<bool>("$LaidCat", value);
+        }
+
     }
 }
