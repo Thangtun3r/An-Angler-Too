@@ -21897,6 +21897,13 @@ MonoBehaviour:
       Data3: -1217754722
       Data4: 903820825
     Path: event:/Fishing Rod_Rollback
+  <fishingRodRollbackRetrieved>k__BackingField:
+    Guid:
+      Data1: -398974800
+      Data2: 1294019886
+      Data3: 1359242683
+      Data4: -948922785
+    Path: event:/Fishing Rod_Rollback_Retrieved
   <uiClick>k__BackingField:
     Guid:
       Data1: 1182682285

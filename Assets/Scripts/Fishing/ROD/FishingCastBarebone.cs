@@ -39,6 +39,7 @@ public class FishingCast : MonoBehaviour
 
     private EventInstance reelingIdleInstance;
     private EventInstance rollbackLoopInstance;
+    private bool rollbackActive;
 
     private void Start()
     {
@@ -77,6 +78,7 @@ public class FishingCast : MonoBehaviour
 
         StopLoop(ref reelingIdleInstance);
         StopLoop(ref rollbackLoopInstance);
+        rollbackActive = false;
         PlayOneShot(FMODEvents.Instance.fishingRodReelingThrow);
     
         bobber.ResetBobber();
@@ -117,14 +119,22 @@ public class FishingCast : MonoBehaviour
 
                 PlayOneShot(FMODEvents.Instance.fishingPullUp);
             }
+            else
+            {
+                StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+                rollbackActive = true;
+            }
         }
         else if (bobber.currentFish != null)
         {
             bobber.currentFish.BobberLeft();
+            StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            rollbackActive = true;
         }
-        else if (bobber != null && !bobber.HasLanded)
+        else
         {
             StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            rollbackActive = true;
         }
 
         isReeling = true;
@@ -150,8 +160,11 @@ public class FishingCast : MonoBehaviour
             hasCasted = false;
             AttachToRodIdle();
             StopLoop(ref rollbackLoopInstance);
+            if (rollbackActive && FMODEvents.Instance != null)
+                PlayOneShot(FMODEvents.Instance.fishingRodRollbackRetrieved);
             // Pull-up SFX is triggered immediately on successful catch (in StartReel).
             hasFishToPullUp = false;
+            rollbackActive = false;
         }
     }
 
@@ -182,6 +195,7 @@ public class FishingCast : MonoBehaviour
         StopLoop(ref reelingIdleInstance);
         StopLoop(ref rollbackLoopInstance);
         hasFishToPullUp = false;
+        rollbackActive = false;
     }
 
     private void PlayOneShot(EventReference evt)
