@@ -4780,13 +4780,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4451268673241400853, guid: 5a8824e37e2c52447b0e229570917fd2, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4518212485059796502, guid: 5a8824e37e2c52447b0e229570917fd2,
-        type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 7788684400166585450}
+    - {fileID: 9212727459648987320, guid: 5a8824e37e2c52447b0e229570917fd2, type: 3}
+    - {fileID: 2325324619081096961, guid: 5a8824e37e2c52447b0e229570917fd2, type: 3}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a8824e37e2c52447b0e229570917fd2, type: 3}
+--- !u!1 &703877808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8937084429875205834, guid: 5a8824e37e2c52447b0e229570917fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 703877807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704911884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20420,6 +20424,10 @@ MonoBehaviour:
     _prefab: Assets/preFabs/Fishable Objects/Car Billboard.prefab
   - _gameObject: {fileID: 313980853}
     _prefab: Assets/preFabs/NPCPrefab.prefab
+  - _gameObject: {fileID: 2012506374}
+    _prefab: Assets/preFabs/Scenarios/Bob Scenario.prefab
+  - _gameObject: {fileID: 703877808}
+    _prefab: Assets/preFabs/Fish_Prefabs/StarringWheel.prefab
   - _gameObject: {fileID: 940365009}
     _prefab: Assets/preFabs/Scenarios/Kitty Scenario.prefab
   - _gameObject: {fileID: 940365011}
@@ -24726,110 +24734,11 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 44}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &7788684400166585448
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2012506375}
-    m_Modifications:
-    - target: {fileID: 185305748546341045, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3869813979507996653, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Name
-      value: Car Billboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3869813979507996653, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 26.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -10.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7347946
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.6782897
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -85.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678692087980213566, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399013658172993121, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445382408570136292, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f0cba58c9da3734a9a925dd80e65ec0, type: 3}
 --- !u!1 &7788684400166585449 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3869813979507996653, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
+  m_CorrespondingSourceObject: {fileID: 7263877531215247533, guid: 5a8824e37e2c52447b0e229570917fd2,
     type: 3}
-  m_PrefabInstance: {fileID: 7788684400166585448}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7788684400166585450 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4539496359276473687, guid: 1f0cba58c9da3734a9a925dd80e65ec0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7788684400166585448}
+  m_PrefabInstance: {fileID: 703877807}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7985477256073413849
 Transform:
