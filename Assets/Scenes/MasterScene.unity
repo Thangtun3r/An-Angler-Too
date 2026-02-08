@@ -702,6 +702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 98161262}
+  - component: {fileID: 98161263}
   m_Layer: 0
   m_Name: SYSTEM==========================
   m_TagString: Untagged
@@ -728,6 +729,19 @@ Transform:
   - {fileID: 7985477256073413849}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98161263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98161261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad57f2bfd80e2f84eae1b5e44c829d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specificCommandName: 
 --- !u!4 &123453222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3542852092398272455, guid: ea61e004efba7f944bd4283efc812b7a,
@@ -996,8 +1010,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 9
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 1569787948}
+  m_Follow: {fileID: 976825829}
   m_Lens:
     FieldOfView: 68.73
     OrthographicSize: 5
@@ -19227,6 +19241,11 @@ PrefabInstance:
       propertyPath: storeCamera
       value: 
       objectReference: {fileID: 177099458}
+    - target: {fileID: 18288640582944946, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: traderAnimator
+      value: 
+      objectReference: {fileID: 759522985}
     - target: {fileID: 259028460003416644, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: m_AnchorMax.y
