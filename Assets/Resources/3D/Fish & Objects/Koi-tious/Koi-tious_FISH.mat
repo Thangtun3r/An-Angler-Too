@@ -19,7 +19,6 @@ Material:
   - _MK_OUTLINE_HULL_CLIP
   - _MK_OUTLINE_NOISE
   - _MK_RECEIVE_SHADOWS
-  - _MK_VERTEX_ANIMATION_PULSE
   m_InvalidKeywords:
   - _ALPHACLIPPING_ON
   - _MK_ARTISTIC_ANIMATION_STUTTER
@@ -218,7 +217,7 @@ Material:
     - _StylizeTab: 1
     - _Surface: 0
     - _ThresholdMapScale: 1
-    - _VertexAnimation: 2
+    - _VertexAnimation: 0
     - _VertexAnimationIntensity: 0.04
     - _VertexAnimationStutter: 0
     - _WrappedLighting: 1
