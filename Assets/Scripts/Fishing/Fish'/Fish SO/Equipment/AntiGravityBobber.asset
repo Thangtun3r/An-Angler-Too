@@ -17,7 +17,5 @@ MonoBehaviour:
   item_name: AntiGravityBobber
   item_sprite: {fileID: 21300000, guid: 7985066f146b3d148abfe31e242edd3b, type: 3}
   item_prefab: {fileID: 0}
-  ItemDescription: 'Zooming through the fields
-
-'
-  HintDescription: 
+  ItemDescription: j
+  HintDescription: j

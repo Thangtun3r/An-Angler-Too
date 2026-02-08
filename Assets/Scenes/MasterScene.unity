@@ -10569,7 +10569,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224307253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -17080,7 +17080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zOffset: -1.268
-  duration: 1
+  duration: 2
   ease: 6
   prevCar: {fileID: 2037087589}
   newCar: {fileID: 1859176122}
@@ -18283,7 +18283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76da2b47c9847084981f26da0e0fcf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.25
+  duration: 2
   ease: 6
 --- !u!1 &2053605849
 GameObject:
