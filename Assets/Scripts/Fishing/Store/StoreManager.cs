@@ -12,6 +12,9 @@ public class StoreManager : MonoBehaviour
     [Header("Feedback")]
     [SerializeField] private NotEnoughFihFeedback notEnoughFeedback;
 
+    [Header("Store Control")]
+    [SerializeField] private StoreToggle storeToggle;
+
     private UIStoreSlot currentStoreSlot;
     private FishInventory playerInventory;
 
@@ -30,7 +33,7 @@ public class StoreManager : MonoBehaviour
         playerInventory = FindObjectOfType<PlayerInventory>().Inventory;
     }
 
-    // ---------------- Display ----------------
+    // ---------------- UI ----------------
 
     public void DisplayItemDetails(UIStoreSlot storeSlot, ItemSO item)
     {
@@ -41,16 +44,16 @@ public class StoreManager : MonoBehaviour
         itemPriceText.text = BuildPriceText(storeSlot);
     }
 
-    // ---------------- Buy ----------------
+    // ---------------- BUY ----------------
 
     public void BuyItem()
     {
-        if (currentStoreSlot == null) return;
-        if (currentStoreSlot.soldOut) return;
+        if (currentStoreSlot == null || currentStoreSlot.soldOut)
+            return;
 
         if (!CanAfford(playerInventory, currentStoreSlot))
         {
-            notEnoughFeedback?.Play(); // 👈 ONLY ADDITION
+            notEnoughFeedback?.Play();
             return;
         }
 
@@ -63,7 +66,15 @@ public class StoreManager : MonoBehaviour
         }
     }
 
-    // ---------------- Cost Logic ----------------
+    // ---------------- EXIT ----------------
+
+    public void CloseStore()
+    {
+        StoreYarn.CloseStore(); // ✅ CORRECT
+    }
+
+
+    // ---------------- COST ----------------
 
     bool CanAfford(FishInventory inv, UIStoreSlot slot)
     {
@@ -153,14 +164,12 @@ public class StoreManager : MonoBehaviour
     string BuildPriceText(UIStoreSlot slot)
     {
         if (slot.acceptAnyFish)
-            return $"Cost:\n{slot.anyFishAmount}x Different fih";
+            return $"Cost:\n{slot.anyFishAmount}x Different fish";
 
         string text = "Cost:\n";
 
         foreach (var cost in slot.costs)
-        {
             text += $"{cost.amount}x {cost.fish.item_name}\n";
-        }
 
         return text;
     }

@@ -1,4 +1,13 @@
 using UnityEngine;
+using System.Diagnostics;
+
+public enum PlayerLockSource
+{
+    Unknown,
+    Inventory,
+    Shop,
+    System
+}
 
 public class Player : MonoBehaviour
 {
@@ -22,18 +31,23 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         PlayerInventory.OnInventoryToggled += HandleInventoryToggle;
-        StoreYarn.OnStoreOpened += HandleShopToggle;
+        StoreYarn.OnStoreStateChanged += HandleShopState;
     }
 
     private void OnDisable()
     {
         PlayerInventory.OnInventoryToggled -= HandleInventoryToggle;
-        StoreYarn.OnStoreOpened -= HandleShopToggle;
+        StoreYarn.OnStoreStateChanged -= HandleShopState;
+    }
+
+    private void HandleShopState(bool isOpen)
+    {
+        shopOpen = isOpen;
+        RefreshPlayerState();
     }
 
     private void Start()
     {
-        // Default mouse state
         if (!CursorLockManager.IsUnlockedBySomeone)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -46,6 +60,11 @@ public class Player : MonoBehaviour
     private void HandleInventoryToggle(bool isOpen)
     {
         inventoryOpen = isOpen;
+
+        // FIX: inventory opening clears shop lock
+        if (inventoryOpen && shopOpen)
+            shopOpen = false;
+
         RefreshPlayerState();
     }
 
@@ -53,8 +72,12 @@ public class Player : MonoBehaviour
 
     private void HandleShopToggle()
     {
-        // Shop toggle event has no bool → flip state
         shopOpen = !shopOpen;
+
+        // FIX: shop opening clears inventory lock
+        if (shopOpen && inventoryOpen)
+            inventoryOpen = false;
+
         RefreshPlayerState();
     }
 
@@ -63,28 +86,55 @@ public class Player : MonoBehaviour
     private void RefreshPlayerState()
     {
         if (inventoryOpen || shopOpen)
-            DisablePlayer();
+        {
+            DisablePlayer(
+                inventoryOpen ? PlayerLockSource.Inventory : PlayerLockSource.Shop
+            );
+        }
         else
-            EnablePlayer();
+        {
+            EnablePlayer(PlayerLockSource.System);
+        }
     }
 
-    public void DisablePlayer()
+    // ---------------- Player Control ----------------
+
+    public void DisablePlayer(PlayerLockSource source = PlayerLockSource.Unknown)
     {
+        UnityEngine.Debug.Log(
+            $"<color=red>[Player DISABLED]</color> by <b>{source}</b>\n{GetStackTrace()}"
+        );
+
         if (movement != null) movement.enabled = false;
         if (interaction != null) interaction.enabled = false;
         if (fishingCast != null) fishingCast.enabled = false;
         if (characterController != null) characterController.enabled = false;
     }
 
-    public void EnablePlayer()
+    public void EnablePlayer(PlayerLockSource source = PlayerLockSource.Unknown)
     {
+        // 🔒 Guard: don't allow enable if something still owns the lock
+        if (inventoryOpen || shopOpen)
+        {
+            UnityEngine.Debug.Log(
+                $"<color=yellow>[Player ENABLE BLOCKED]</color> by <b>{source}</b> " +
+                $"(inventoryOpen={inventoryOpen}, shopOpen={shopOpen})"
+            );
+            return;
+        }
+
+        UnityEngine.Debug.Log(
+            $"<color=green>[Player ENABLED]</color> by <b>{source}</b>\n{GetStackTrace()}"
+        );
+
         if (movement != null) movement.enabled = true;
         if (interaction != null) interaction.enabled = true;
         if (fishingCast != null) fishingCast.enabled = true;
         if (characterController != null) characterController.enabled = true;
     }
 
-    // ---------------- Partial Control ----------------
+
+    // ---------------- Partial Control (DEPENDENCY SAFE) ----------------
 
     public void FreezeMovementOnly()
     {
@@ -113,5 +163,12 @@ public class Player : MonoBehaviour
             movement.ResetHead();
 
         characterController.enabled = true;
+    }
+
+    // ---------------- Debug Helper ----------------
+
+    private string GetStackTrace()
+    {
+        return new StackTrace(2, true).ToString();
     }
 }
