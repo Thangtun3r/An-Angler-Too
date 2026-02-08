@@ -18,5 +18,7 @@ MonoBehaviour:
   item_sprite: {fileID: 21300000, guid: f004f328958e6a7478fdcf7f5ed47636, type: 3}
   item_prefab: {fileID: 2550319684618975683, guid: ef0907b9aa9ddb14fb6300760b87bb5a,
     type: 3}
-  ItemDescription: 
-  HintDescription: 
+  ItemDescription: "It holds the second most precious gem in the whole world. \nSecond?\nYes,
+    second, just right after you <3"
+  HintDescription: Can only be found from far far away. Far Far Away. Far far far
+    far.... Away away away away....
