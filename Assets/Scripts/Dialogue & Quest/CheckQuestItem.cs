@@ -12,20 +12,14 @@ public class CheckQuestItem : MonoBehaviour
     }
 
     [YarnCommand("checkForItem")]
-    public void CheckForItem(string itemName)
+    public void CheckForItem(params string[] args)
     {
-        CheckForItemInternal(itemName);
-    }
+        if (args == null || args.Length == 0)
+            return;
 
-    // Support scripts that pass a speaker name before the item ID.
-    [YarnCommand("checkForItem")]
-    public void CheckForItem(string _speakerName, string itemName)
-    {
-        CheckForItemInternal(itemName);
-    }
+        // Support either <<checkForItem ItemID>> or <<checkForItem Speaker ItemID>>
+        string itemName = args.Length == 1 ? args[0] : args[1];
 
-    private void CheckForItemInternal(string itemName)
-    {
         FishInventory inventory = InventoryService.PlayerInventory;
 
         ItemSO item = ItemDatabase.GetByID(itemName);
