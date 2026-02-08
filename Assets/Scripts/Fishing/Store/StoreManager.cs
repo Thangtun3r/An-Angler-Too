@@ -143,7 +143,7 @@ public class StoreManager : MonoBehaviour
     string BuildPriceText(UIStoreSlot slot)
     {
         if (slot.acceptAnyFish)
-            return $"Cost:\n{slot.anyFishAmount}x Different Fish";
+            return $"Cost:\n{slot.anyFishAmount}x Different fih";
 
         string text = "Cost:\n";
 
@@ -154,4 +154,5 @@ public class StoreManager : MonoBehaviour
 
         return text;
     }
+
 }
