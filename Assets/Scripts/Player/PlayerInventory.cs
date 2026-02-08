@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using FMODUnity;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class PlayerInventory : MonoBehaviour
 
         isOpen = !isOpen;
         inventoryAnimator.SetBool("isOpen", isOpen);
+        if (FMODEvents.Instance != null)
+        {
+            PlayUiOneShot(isOpen ? FMODEvents.Instance.uiBoxOpen : FMODEvents.Instance.uiBoxClose);
+        }
 
         // Cursor handling (prevents overlap fights)
         if (isOpen)
@@ -46,5 +51,13 @@ public class PlayerInventory : MonoBehaviour
 
         if (!isOpen)
             OnInventoryClosed?.Invoke();
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }

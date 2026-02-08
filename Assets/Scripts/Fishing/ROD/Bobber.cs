@@ -12,6 +12,7 @@ public class Bobber : MonoBehaviour
     
     private Rigidbody rb;
     private bool hasLanded;
+    public bool HasLanded => hasLanded;
 
     private void Start()
     {

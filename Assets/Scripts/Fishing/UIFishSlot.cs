@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using FMODUnity;
 
 public class UIFishSlot : MonoBehaviour,
     IPointerClickHandler,
@@ -82,6 +83,9 @@ public class UIFishSlot : MonoBehaviour,
 
         if (fishInventory.GetItem(slotIndex) == null) return;
 
+        if (FMODEvents.Instance != null)
+            PlayUiOneShot(FMODEvents.Instance.uiHover);
+
         ApplyHoverVisuals();
     }
 
@@ -98,6 +102,12 @@ public class UIFishSlot : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiClick);
+        }
+
         if (selectedIndex == -1)
         {
             if (isDiscardSlot) return;
@@ -106,6 +116,8 @@ public class UIFishSlot : MonoBehaviour,
             if (item == null) return;
 
             selectedIndex = slotIndex;
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiPickUp);
 
             // Hide this slot image while dragging
             fishImage.color = new Color(1, 1, 1, 0);
@@ -124,6 +136,8 @@ public class UIFishSlot : MonoBehaviour,
 
             CursorFollower.Instance?.Clear();
             ApplyHoverVisuals();
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiPlaceDown);
             return;
         }
         
@@ -136,6 +150,8 @@ public class UIFishSlot : MonoBehaviour,
             fishInventory.RemoveAt(fromIndex);
 
             CursorFollower.Instance?.Clear();
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiDiscard);
             return;
         }
 
@@ -144,6 +160,8 @@ public class UIFishSlot : MonoBehaviour,
 
         CursorFollower.Instance?.Clear();
         ApplyHoverVisuals();
+        if (FMODEvents.Instance != null)
+            PlayUiOneShot(FMODEvents.Instance.uiPlaceDown);
     }
 
     public void RefreshSlot()
@@ -182,5 +200,13 @@ public class UIFishSlot : MonoBehaviour,
         }
 
         hadItemLastFrame = true;
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }
