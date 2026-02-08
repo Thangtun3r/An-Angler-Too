@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class StoreToggle : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class StoreToggle : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera storeCamera;
     [SerializeField] private int priorityOffset = 2;
 
+    [Header("Timing")]
+    [SerializeField] private float openDelay = 0.3f; // 👈 delay before store shows
+
     private int baseCameraPriority;
+    private Coroutine openRoutine;
 
     private static readonly int IsToggleStore = Animator.StringToHash("isToggleStore");
 
@@ -35,11 +40,56 @@ public class StoreToggle : MonoBehaviour
         if (StoreObj == null) return;
 
         bool opening = !StoreObj.activeSelf;
-        SetStore(opening);
+
+        if (opening)
+            StartOpenDelayed();
+        else
+            CloseStore();
     }
 
-    public void CloseStore() => SetStore(false);
-    public void OpenStore() => SetStore(true);
+    public void OpenStore()
+    {
+        StartOpenDelayed();
+    }
+
+    public void CloseStore()
+    {
+        // cancel pending open
+        if (openRoutine != null)
+        {
+            StopCoroutine(openRoutine);
+            openRoutine = null;
+        }
+
+        SetStore(false);
+    }
+
+    // ---------------- Delay Logic ----------------
+
+    private void StartOpenDelayed()
+    {
+        if (openRoutine != null) return; // already opening
+
+        openRoutine = StartCoroutine(OpenAfterDelay());
+    }
+
+    private IEnumerator OpenAfterDelay()
+    {
+        // Animator + camera react immediately
+        if (traderAnimator != null)
+            traderAnimator.SetBool(IsToggleStore, true);
+
+        UpdateCameraPriority(true);
+        CursorLockManager.RequestUnlock("Shop");
+
+        yield return new WaitForSeconds(openDelay);
+
+        SetStore(true);
+
+        openRoutine = null;
+    }
+
+    // ---------------- Core ----------------
 
     private void SetStore(bool open)
     {
@@ -47,15 +97,14 @@ public class StoreToggle : MonoBehaviour
 
         StoreObj.SetActive(open);
 
-        if (traderAnimator != null)
-            traderAnimator.SetBool(IsToggleStore, open);
+        if (!open)
+        {
+            if (traderAnimator != null)
+                traderAnimator.SetBool(IsToggleStore, false);
 
-        UpdateCameraPriority(open);
-
-        if (open)
-            CursorLockManager.RequestUnlock("Shop");
-        else
+            UpdateCameraPriority(false);
             CursorLockManager.ReleaseUnlock("Shop");
+        }
     }
 
     private void UpdateCameraPriority(bool open)

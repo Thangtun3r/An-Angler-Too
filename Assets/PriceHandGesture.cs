@@ -6,13 +6,13 @@ public class PriceHandGesture : MonoBehaviour
     [Header("Renderer")]
     [SerializeField] private SpriteRenderer handRenderer;
 
-    [Header("Animated Object")]
-    [SerializeField] private Transform handVisual; // CHILD transform to move
+    [Header("Animated Object (Child)")]
+    [SerializeField] private Transform handVisual;
 
     [Header("Gesture Sprites (index = amount - 1)")]
     [SerializeField] private Sprite[] gestureSprites;
 
-    [Header("Positions")]
+    [Header("Positions (Local Y)")]
     [SerializeField] private float shownY;
     [SerializeField] private float hiddenY;
 
@@ -27,26 +27,31 @@ public class PriceHandGesture : MonoBehaviour
         if (handVisual == null)
             handVisual = transform;
 
-        // Auto-capture shown position if not set
+        // Auto-capture shown position if not manually set
         if (Mathf.Approximately(shownY, 0f))
             shownY = handVisual.localPosition.y;
     }
 
     private void OnEnable()
     {
-        UIStoreSlot.OnStoreSlotSelected += UpdateGesture;
+        // CLICK-ONLY signal from UIStoreSlot
+        UIStoreSlot.OnStoreSlotClickedForGesture += OnSlotClicked;
     }
 
     private void OnDisable()
     {
-        UIStoreSlot.OnStoreSlotSelected -= UpdateGesture;
+        UIStoreSlot.OnStoreSlotClickedForGesture -= OnSlotClicked;
     }
 
-    private void UpdateGesture(UIStoreSlot slot, ItemSO item)
+    // ---------------- Event ----------------
+
+    private void OnSlotClicked(UIStoreSlot slot)
     {
         int amount = GetPriceAmount(slot);
         AnimateGestureChange(amount);
     }
+
+    // ---------------- Price Logic ----------------
 
     int GetPriceAmount(UIStoreSlot slot)
     {
@@ -60,17 +65,20 @@ public class PriceHandGesture : MonoBehaviour
         return total;
     }
 
+    // ---------------- Animation ----------------
+
     void AnimateGestureChange(int amount)
     {
-        if (handRenderer == null || gestureSprites.Length == 0 || handVisual == null)
+        if (handRenderer == null || handVisual == null || gestureSprites.Length == 0)
             return;
 
         int index = Mathf.Clamp(amount - 1, 0, gestureSprites.Length - 1);
 
         currentTween?.Kill();
 
-        // Hide
-        currentTween = handVisual.DOLocalMoveY(hiddenY, tweenDuration)
+        // Hide hand
+        currentTween = handVisual
+            .DOLocalMoveY(hiddenY, tweenDuration)
             .SetEase(tweenEase)
             .OnComplete(() =>
             {
@@ -78,11 +86,14 @@ public class PriceHandGesture : MonoBehaviour
                 handRenderer.sprite = gestureSprites[index];
                 handRenderer.enabled = true;
 
-                // Show
-                handVisual.DOLocalMoveY(shownY, tweenDuration)
+                // Show hand
+                handVisual
+                    .DOLocalMoveY(shownY, tweenDuration)
                     .SetEase(tweenEase);
             });
     }
+
+    // ---------------- Public ----------------
 
     public void HideInstant()
     {
@@ -92,10 +103,12 @@ public class PriceHandGesture : MonoBehaviour
             handRenderer.enabled = false;
 
         if (handVisual != null)
+        {
             handVisual.localPosition = new Vector3(
                 handVisual.localPosition.x,
                 hiddenY,
                 handVisual.localPosition.z
             );
+        }
     }
 }

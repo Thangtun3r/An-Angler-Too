@@ -25,20 +25,27 @@ public class UIStoreSlot : MonoBehaviour, IPointerClickHandler
     public bool acceptAnyFish = false;
     public int anyFishAmount = 0;
 
+    // EXISTING (used by StoreManager / popup)
     public static event Action<UIStoreSlot, ItemSO> OnStoreSlotSelected;
+
+    // NEW (used ONLY by hand gesture)
+    public static event Action<UIStoreSlot> OnStoreSlotClickedForGesture;
 
     private void Start()
     {
         iconImage = GetComponent<Image>();
-        
         iconImage.sprite = shopItem.item_sprite;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (shopItem != null && !soldOut)
-        {
-            OnStoreSlotSelected?.Invoke(this, shopItem);
-        }
+        if (shopItem == null || soldOut)
+            return;
+
+        // Existing behaviour (do NOT break)
+        OnStoreSlotSelected?.Invoke(this, shopItem);
+
+        // NEW: click-only gesture signal
+        OnStoreSlotClickedForGesture?.Invoke(this);
     }
 }
