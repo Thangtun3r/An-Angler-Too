@@ -5,16 +5,13 @@ using Yarn.Unity;
 
 public class MoveDown : MonoBehaviour
 {
-    public class MoveZByTween : MonoBehaviour
-    {
-        public float duration = 0.25f;
-        public Ease ease = Ease.OutQuad;
+    public float duration = 0.25f;
+    public Ease ease = Ease.OutQuad;
 
-        [YarnCommand("moveDown")]
-        public void MoveBack()
-        {
-            transform.DOLocalMoveZ(transform.localPosition.z - 19.83f, duration)
-                    .SetEase(ease);
-        }
+    [YarnCommand("moveDown")]
+    public void MoveBack()
+    {
+        transform.DOLocalMoveZ(transform.localPosition.z - 19.83f, duration)
+                .SetEase(ease);
     }
 }
