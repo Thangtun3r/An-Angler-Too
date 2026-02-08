@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
-  m_Name: BluePaint
+  m_Name: LEGENDARY ROD
   m_EditorClassIdentifier: 
   isQuestItem: 0
-  itemID: bluePaint
-  item_name: Blue Paint
+  itemID: LegendaryRod
+  item_name: LEGENDARY ROD
   item_sprite: {fileID: 0}
   item_prefab: {fileID: 0}
-  ItemDescription: Painting material. It comes with an artist's brush, too.
-  HintDescription: Paint! But blue!
+  ItemDescription: Thank you for playing!!!
+  HintDescription: Your life long dream, within arm's reach.
