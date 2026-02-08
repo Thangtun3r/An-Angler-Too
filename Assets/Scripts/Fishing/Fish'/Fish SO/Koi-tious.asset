@@ -18,5 +18,5 @@ MonoBehaviour:
   item_sprite: {fileID: 21300000, guid: 1fdfd82dfbb36fa49b99a745233f9784, type: 3}
   item_prefab: {fileID: 4543679944413041189, guid: d811e51bace7a4843998c2ed170cb4d3,
     type: 3}
-  ItemDescription: 
-  HintDescription: 
+  ItemDescription: Yea, keep it up. Keep fishing blue things.
+  HintDescription: 'What? No fishing you ask? I mean, who gon stop you anyway? '

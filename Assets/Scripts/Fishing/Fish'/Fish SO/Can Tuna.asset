@@ -18,5 +18,8 @@ MonoBehaviour:
   item_sprite: {fileID: 21300000, guid: 6352a1d38cf59354096bca5c2052665a, type: 3}
   item_prefab: {fileID: 2968311528089866289, guid: 2c25507d4ecb1ae449dd1ae961b79eea,
     type: 3}
-  ItemDescription: 
-  HintDescription: 
+  ItemDescription: 'Is Tuna capable? Can Tuna be....
+
+    Nvm'
+  HintDescription: Left behind by an unknown specie. They drive some unidentified
+    flying objects, and were claimed to be yappin' bout some "Egypt" thingy.

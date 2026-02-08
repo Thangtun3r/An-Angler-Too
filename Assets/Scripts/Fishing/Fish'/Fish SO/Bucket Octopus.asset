@@ -18,5 +18,6 @@ MonoBehaviour:
   item_sprite: {fileID: 21300000, guid: e4d23ade89cff8e4fb6d35704f3e4875, type: 3}
   item_prefab: {fileID: 6872746516685037215, guid: 42cdfee1fe9fd694ca6236ed472be186,
     type: 3}
-  ItemDescription: 
-  HintDescription: 
+  ItemDescription: An invertebrate specie that is... well, stuck in a bucket. Poor
+    'em.
+  HintDescription: Hmmmm. BUCKET Octopus, where could it be?
