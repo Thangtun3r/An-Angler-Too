@@ -17,5 +17,6 @@ MonoBehaviour:
   item_name: AntiGravityBobber
   item_sprite: {fileID: 21300000, guid: 7985066f146b3d148abfe31e242edd3b, type: 3}
   item_prefab: {fileID: 0}
-  ItemDescription: j
-  HintDescription: j
+  ItemDescription: While this is in your inventory, your line will go up instead!
+    Who knows what will happen... TAB to open inventory and discard.
+  HintDescription: Makes things fly upwards. Reach for the skies!
