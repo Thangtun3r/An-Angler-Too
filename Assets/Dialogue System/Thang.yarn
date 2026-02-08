@@ -1,0 +1,9 @@
+﻿title: Trader
+---
+Trader: Sup buds, you lookin' to trade?
+-> Show me what you got.
+    <<open_store>>
+
+
+
+===

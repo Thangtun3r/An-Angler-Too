@@ -9,16 +9,14 @@ public class PlayerInventory : MonoBehaviour
     private bool isOpen;
 
     public static event Action<bool> OnInventoryToggled;
-    public static event Action OnInventoryClosed; 
+    public static event Action OnInventoryClosed;
 
     private void Awake()
     {
         Inventory = GetComponent<FishInventory>();
 
         if (inventoryAnimator != null)
-        {
             inventoryAnimator.SetBool("isOpen", false);
-        }
 
         isOpen = false;
     }
@@ -38,11 +36,15 @@ public class PlayerInventory : MonoBehaviour
         isOpen = !isOpen;
         inventoryAnimator.SetBool("isOpen", isOpen);
 
+        // Cursor handling (prevents overlap fights)
+        if (isOpen)
+            CursorLockManager.RequestUnlock("Inventory");
+        else
+            CursorLockManager.ReleaseUnlock("Inventory");
+
         OnInventoryToggled?.Invoke(isOpen);
 
         if (!isOpen)
-        {
-            OnInventoryClosed?.Invoke(); 
-        }
+            OnInventoryClosed?.Invoke();
     }
 }

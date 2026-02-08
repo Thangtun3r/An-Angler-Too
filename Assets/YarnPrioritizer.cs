@@ -13,14 +13,10 @@ public class DialogueNodeMouseAndCanvasControl : MonoBehaviour
     [Tooltip("These canvases will be DISABLED while dialogue nodes are running")]
     [SerializeField] private Canvas[] canvasesToDisable;
 
-    private bool wasMouseLockedBeforeDialogue;
-
     private void Awake()
     {
         if (dialogueRunner == null)
-        {
             dialogueRunner = FindFirstObjectByType<DialogueRunner>();
-        }
     }
 
     private void OnEnable()
@@ -28,7 +24,6 @@ public class DialogueNodeMouseAndCanvasControl : MonoBehaviour
         if (dialogueRunner == null) return;
 
         dialogueRunner.onNodeStart.AddListener(OnNodeStarted);
-        dialogueRunner.onNodeComplete.AddListener(OnNodeCompleted);
         dialogueRunner.onDialogueComplete.AddListener(OnDialogueCompleted);
     }
 
@@ -37,46 +32,23 @@ public class DialogueNodeMouseAndCanvasControl : MonoBehaviour
         if (dialogueRunner == null) return;
 
         dialogueRunner.onNodeStart.RemoveListener(OnNodeStarted);
-        dialogueRunner.onNodeComplete.RemoveListener(OnNodeCompleted);
         dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueCompleted);
     }
-    
 
     private void OnNodeStarted(string nodeName)
     {
         if (unlockMouseOnDialogue)
-        {
-            StoreAndUnlockMouse();
-        }
+            CursorLockManager.RequestUnlock("Dialogue");
 
         SetCanvasesActive(false);
     }
 
-    private void OnNodeCompleted(string nodeName)
-    {
-    }
-
     private void OnDialogueCompleted()
     {
-        RestoreMouseState();
+        if (unlockMouseOnDialogue)
+            CursorLockManager.ReleaseUnlock("Dialogue");
+
         SetCanvasesActive(true);
-    }
-
-    private void StoreAndUnlockMouse()
-    {
-        wasMouseLockedBeforeDialogue = Cursor.lockState == CursorLockMode.Locked;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    private void RestoreMouseState()
-    {
-        if (wasMouseLockedBeforeDialogue)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
     }
 
     private void SetCanvasesActive(bool active)
