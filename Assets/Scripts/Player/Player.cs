@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,8 +12,7 @@ public class Player : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         interaction = GetComponent<PlayerInteraction>();
         characterController = GetComponent<CharacterController>();
-        fishingCast = GetComponent<FishingCast>(); 
-        
+        fishingCast = GetComponent<FishingCast>();
     }
 
     private void OnEnable()
@@ -26,70 +24,59 @@ public class Player : MonoBehaviour
     {
         PlayerInventory.OnInventoryToggled -= HandleInventoryToggle;
     }
-    
+
     private void HandleInventoryToggle(bool isOpen)
     {
-        if (isOpen)
-        {
-            DisablePlayer();
-            UnlockMouse();
-        }
-        else
-        {
-            EnablePlayer();
-            LockMouse();
-        }
+        if (isOpen) DisablePlayer();
+        else EnablePlayer();
     }
 
     private void Start()
     {
-        LockMouse();
+        // Default: lock mouse only if no UI is requesting it unlocked
+        if (!CursorLockManager.IsUnlockedBySomeone)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void DisablePlayer()
     {
-        movement.enabled = false;
-        interaction.enabled = false;
-        characterController.enabled = false;
-        fishingCast.enabled = false;
+        if (movement != null) movement.enabled = false;
+        if (interaction != null) interaction.enabled = false;
+        if (characterController != null) characterController.enabled = false;
+        if (fishingCast != null) fishingCast.enabled = false;
     }
 
     public void EnablePlayer()
     {
-        movement.enabled = true;
-        interaction.enabled = true;
-        characterController.enabled = true;
-        fishingCast.enabled = true;
+        if (movement != null) movement.enabled = true;
+        if (interaction != null) interaction.enabled = true;
+        if (characterController != null) characterController.enabled = true;
+        if (fishingCast != null) fishingCast.enabled = true;
     }
 
     public void FreezeMovementOnly()
     {
-        movement.IsFrozen = true;
+        if (movement != null) movement.IsFrozen = true;
     }
 
     public void UnFreezeMovementOnly()
     {
-        movement.IsFrozen = false;
-    }
-
-    public void LockMouse()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    public void UnlockMouse()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (movement != null) movement.IsFrozen = false;
     }
 
     public void SetPlayerSpawnPoint(Transform spawnPoint)
     {
+        if (characterController == null) return;
+
         characterController.enabled = false;
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
-        movement.ResetHead();
+
+        if (movement != null) movement.ResetHead();
+
         characterController.enabled = true;
     }
 }

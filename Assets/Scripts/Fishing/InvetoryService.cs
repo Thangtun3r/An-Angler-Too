@@ -1,10 +1,11 @@
 using System;
-    
+
 public static class InventoryService
 {
     public static FishInventory PlayerInventory { get; private set; }
 
     public static event Action<ItemSO> OnItemAdded;
+    public static event Action<ItemSO> OnItemRemoved; // NEW
 
     public static void RegisterPlayerInventory(FishInventory inventory)
     {
@@ -18,9 +19,7 @@ public static class InventoryService
         bool added = PlayerInventory.AddItem(item);
 
         if (added)
-        {
             OnItemAdded?.Invoke(item);
-        }
 
         return added;
     }
@@ -29,6 +28,12 @@ public static class InventoryService
     {
         if (PlayerInventory == null) return false;
         if (!PlayerInventory.Contains(item)) return false;
-        return PlayerInventory.RemoveItem(item);
+
+        bool removed = PlayerInventory.RemoveItem(item);
+
+        if (removed)
+            OnItemRemoved?.Invoke(item); // NEW
+
+        return removed;
     }
 }

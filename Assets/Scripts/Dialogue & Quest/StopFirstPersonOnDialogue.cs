@@ -54,7 +54,6 @@ public class StopFirstPersonOnDialogue : MonoBehaviour
     {
         if (talking)
         {
-            player.UnlockMouse();
             playerMovement.isTalking = true;
             playerInteraction.isTalking = true;
             fishingCast.isTalking = true;
@@ -63,7 +62,6 @@ public class StopFirstPersonOnDialogue : MonoBehaviour
         }
         else
         {
-            player.LockMouse();
             playerMovement.isTalking = false;
             playerInteraction.isTalking = false;
             fishingCast.isTalking = false;
