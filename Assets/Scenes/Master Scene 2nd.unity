@@ -20043,6 +20043,8 @@ MonoBehaviour:
     _prefab: Assets/preFabs/Fishable Objects/No Fishing Sign.prefab
   - _gameObject: {fileID: 1951823260}
     _prefab: Assets/Resources/3D/Fish & Objects/Crash Carp/Tent.fbx
+  - _gameObject: {fileID: 2076204744}
+    _prefab: Assets/preFabs/Church.prefab
 --- !u!4 &1698574706
 Transform:
   m_ObjectHideFlags: 11
@@ -22232,6 +22234,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053605849}
   m_Mesh: {fileID: -944563635335726766, guid: c5c07538c0eb9e4438cde41400fcb605, type: 3}
+--- !u!1 &2076204744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 566032602843103146, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1505051154316087637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2084984858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22908,6 +22916,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5603912656931892989}
   m_Mesh: {fileID: -2865104911859505335, guid: 21c973c1b8ce06648a92e5029101a0b7, type: 3}
+--- !u!1001 &1505051154316087637
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 566032602843103146, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_Name
+      value: Church
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 157.92499
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2353935
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.309067
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905543533005432080, guid: 73ec9edbaf38aeb458e50318ecceec2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73ec9edbaf38aeb458e50318ecceec2e, type: 3}
 --- !u!23 &1512378983600717269
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25176,3 +25252,4 @@ SceneRoots:
   - {fileID: 1698574706}
   - {fileID: 142986427}
   - {fileID: 2023727233}
+  - {fileID: 1505051154316087637}
