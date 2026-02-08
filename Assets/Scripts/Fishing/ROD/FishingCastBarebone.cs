@@ -79,7 +79,9 @@ public class FishingCast : MonoBehaviour
         StopLoop(ref reelingIdleInstance);
         StopLoop(ref rollbackLoopInstance);
         rollbackActive = false;
-        PlayOneShot(FMODEvents.Instance.fishingRodReelingThrow);
+        var events = FMODEvents.Instance;
+        if (events != null)
+            PlayOneShot(events.fishingRodReelingThrow);
     
         bobber.ResetBobber();
     
@@ -102,7 +104,8 @@ public class FishingCast : MonoBehaviour
         bobberRT.angularVelocity = Vector3.zero;
     
         bobberRT.AddForce(dir * castForce, ForceMode.Impulse);
-        StartLoop(ref reelingIdleInstance, FMODEvents.Instance.fishingRodReelingIdle);
+        if (events != null)
+            StartLoop(ref reelingIdleInstance, events.fishingRodReelingIdle);
     }
 
     private void StartReel()
@@ -117,23 +120,31 @@ public class FishingCast : MonoBehaviour
                 if (rodAnimationController != null)
                     rodAnimationController.StopBiteLoopsImmediate();
 
-                PlayOneShot(FMODEvents.Instance.fishingPullUp);
+                var events = FMODEvents.Instance;
+                if (events != null)
+                    PlayOneShot(events.fishingPullUp);
             }
             else
             {
-                StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+                var events = FMODEvents.Instance;
+                if (events != null)
+                    StartLoop(ref rollbackLoopInstance, events.fishingRodRollback);
                 rollbackActive = true;
             }
         }
         else if (bobber.currentFish != null)
         {
             bobber.currentFish.BobberLeft();
-            StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            var events = FMODEvents.Instance;
+            if (events != null)
+                StartLoop(ref rollbackLoopInstance, events.fishingRodRollback);
             rollbackActive = true;
         }
         else
         {
-            StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            var events = FMODEvents.Instance;
+            if (events != null)
+                StartLoop(ref rollbackLoopInstance, events.fishingRodRollback);
             rollbackActive = true;
         }
 
@@ -160,8 +171,9 @@ public class FishingCast : MonoBehaviour
             hasCasted = false;
             AttachToRodIdle();
             StopLoop(ref rollbackLoopInstance);
-            if (rollbackActive && FMODEvents.Instance != null)
-                PlayOneShot(FMODEvents.Instance.fishingRodRollbackRetrieved);
+            var events = FMODEvents.Instance;
+            if (rollbackActive && events != null)
+                PlayOneShot(events.fishingRodRollbackRetrieved);
             // Pull-up SFX is triggered immediately on successful catch (in StartReel).
             hasFishToPullUp = false;
             rollbackActive = false;

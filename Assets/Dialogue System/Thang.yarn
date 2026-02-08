@@ -1,4 +1,21 @@
 ﻿title: Trader
+when: once
+---
+<<moveDown van>>
+TRADER: Sup, bud. You give me fish, I give you gadgets.
+-> Show me what you got.
+    <<open_store>>
+-> Bob guy said you got a good fishing rod?
+    TRADER: Less talk, more trade!
+    <<open_store>>
+-> What's with the cat?
+    TRADER: You give me fish, I give you gadgets. Then I give the cat fish.
+-> I took the cat to the church over there. <<if $LaidCat == true>>
+    TRADER: I'll take note. Thanks, bud.
+===
+
+title: Trader
+when: always
 ---
 TRADER: Sup, bud. You give me fish, I give you gadgets.
 -> Show me what you got.
@@ -14,11 +31,14 @@ TRADER: Sup, bud. You give me fish, I give you gadgets.
 
 title: Final
 ---
-TRADER: Rod's inside the van.
--> [Scream from the top of your lungs] YEAHHHHHHHHHHHHHHHHHHHHH!
-    TRADER:[Smirks] You earned it, champ.
+<<turnFinalOn Cube.001>>
+TRADER: Before you take the rod, lemme tell ya this.
+TRADER: The LEGENDARY FISH is inside my van.
+TRADER: Here's yur rod, bud, go achieve your dream.
+-> [Scream] WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!
+    TRADER:[Smirks] HA! Can't say you didn't earn it, champ.
     <<changeRodMat RodMatChange>>
--> Thank you, sir!
+-> Thank you so much, sir!
     TRADER: [Nods] Happy fishing, champ.
     <<changeRodMat RodMatChange>>
 ===

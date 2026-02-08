@@ -12,7 +12,7 @@ public class RodMaterialChange : MonoBehaviour
     public Transform player;          // You
 
     [Header("Collider Settings")]
-    public Vector3 colliderSize = new Vector3(2f, 2f, 2f);
+    public float colliderSize;
 
     public Material alwaysOnTopMaterial;
     private GameObject mirrorCollider;
@@ -55,8 +55,8 @@ public class RodMaterialChange : MonoBehaviour
     {
         mirrorCollider = new GameObject("MirroredGroundCollider");
 
-        BoxCollider col = mirrorCollider.AddComponent<BoxCollider>();
-        col.size = colliderSize;
+        SphereCollider col = mirrorCollider.AddComponent<SphereCollider>();
+        col.radius = colliderSize;
         col.isTrigger = false;
 
         int groundLayer = LayerMask.NameToLayer("Ground");
@@ -87,7 +87,7 @@ public class RodMaterialChange : MonoBehaviour
         gizmoPos.y = player.position.y;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(gizmoPos, colliderSize);
+        Gizmos.DrawSphere(gizmoPos, colliderSize);
 
         // Optional: draw symmetry line
         Gizmos.color = Color.cyan;

@@ -20043,6 +20043,8 @@ MonoBehaviour:
     _prefab: Assets/preFabs/Fishable Objects/No Fishing Sign.prefab
   - _gameObject: {fileID: 1951823260}
     _prefab: Assets/Resources/3D/Fish & Objects/Crash Carp/Tent.fbx
+  - _gameObject: {fileID: 2023727230}
+    _prefab: Assets/preFabs/AudioManager.prefab
   - _gameObject: {fileID: 2076204744}
     _prefab: Assets/preFabs/Church.prefab
 --- !u!4 &1698574706
@@ -21794,189 +21796,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 703877807}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2023727230
+--- !u!1 &2023727230 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5589088382179772380}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2023727233}
-  - component: {fileID: 2023727232}
-  - component: {fileID: 2023727231}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2023727231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023727230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ab12cb94b4dc9489e3169ff25e6200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2023727232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023727230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1076e01ce0396104fb030be6ffd1b090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ambience>k__BackingField:
-    Guid:
-      Data1: -292308070
-      Data2: 1285405819
-      Data3: -105768298
-      Data4: 1342419505
-    Path: event:/Ambience/Ambience_Nature
-  <ambienceWater>k__BackingField:
-    Guid:
-      Data1: 2083993946
-      Data2: 1241475125
-      Data3: -855063917
-      Data4: -1068811505
-    Path: event:/Ambience/Ambience_Water
-  <fishingRodBaitDown>k__BackingField:
-    Guid:
-      Data1: -1523405013
-      Data2: 1273206896
-      Data3: -1148725573
-      Data4: 162507478
-    Path: event:/Fishing Rod_Bait Down
-  <fishingRodReelingThrow>k__BackingField:
-    Guid:
-      Data1: -1476105230
-      Data2: 1158131974
-      Data3: 1094663324
-      Data4: 59983363
-    Path: event:/Fishing Rod_Reeling_Throw
-  <fishingRodReelingIdle>k__BackingField:
-    Guid:
-      Data1: -237239394
-      Data2: 1328534794
-      Data3: 1408496297
-      Data4: -439546340
-    Path: event:/Fishing Rod_Reeling_Idle
-  <fishingRodFishCaughtLoop>k__BackingField:
-    Guid:
-      Data1: -619536522
-      Data2: 1125646769
-      Data3: -749295731
-      Data4: -1342715832
-    Path: event:/Fishing Rod_Fish Caught Loop
-  <fishingRodReelingLoop>k__BackingField:
-    Guid:
-      Data1: 1069329517
-      Data2: 1194095916
-      Data3: 2111976329
-      Data4: 1145626941
-    Path: event:/Fishing Rod_Reeling Loop
-  <fishingPullUp>k__BackingField:
-    Guid:
-      Data1: 126902233
-      Data2: 1238776777
-      Data3: -1975183225
-      Data4: -1092759795
-    Path: event:/Fishing_Pull Up
-  <fishingRodRollback>k__BackingField:
-    Guid:
-      Data1: -276271634
-      Data2: 1182941905
-      Data3: -1217754722
-      Data4: 903820825
-    Path: event:/Fishing Rod_Rollback
-  <fishingRodRollbackRetrieved>k__BackingField:
-    Guid:
-      Data1: -398974800
-      Data2: 1294019886
-      Data3: 1359242683
-      Data4: -948922785
-    Path: event:/Fishing Rod_Rollback_Retrieved
-  <uiClick>k__BackingField:
-    Guid:
-      Data1: 1182682285
-      Data2: 1252686890
-      Data3: -460301657
-      Data4: 1542773037
-    Path: event:/UI/UI_Click
-  <uiPickUp>k__BackingField:
-    Guid:
-      Data1: 411812259
-      Data2: 1203732152
-      Data3: -1666143869
-      Data4: -1501468957
-    Path: event:/UI/UI_Pick Up
-  <uiPlaceDown>k__BackingField:
-    Guid:
-      Data1: 1358493394
-      Data2: 1163819215
-      Data3: -901324874
-      Data4: -723149228
-    Path: event:/UI/UI_Place Down
-  <uiBoxOpen>k__BackingField:
-    Guid:
-      Data1: -287072259
-      Data2: 1092297410
-      Data3: -491801459
-      Data4: 15699043
-    Path: event:/UI/UI_Box Open
-  <uiBoxClose>k__BackingField:
-    Guid:
-      Data1: -250891739
-      Data2: 1208872062
-      Data3: 731874231
-      Data4: 152770551
-    Path: event:/UI/UI_Box Close
-  <uiDiscard>k__BackingField:
-    Guid:
-      Data1: 2028761718
-      Data2: 1090896700
-      Data3: 1450559888
-      Data4: 1996717224
-    Path: event:/UI/UI_Discard
-  <uiPageTurn>k__BackingField:
-    Guid:
-      Data1: -643059679
-      Data2: 1095025122
-      Data3: -404408654
-      Data4: -1626236098
-    Path: event:/UI/UI_Page Turn
-  <uiHover>k__BackingField:
-    Guid:
-      Data1: 178777291
-      Data2: 1326998869
-      Data3: 1767972740
-      Data4: 258782515
-    Path: event:/UI/UI_Hover
---- !u!4 &2023727233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023727230}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 147.67934, y: -1.6662925, z: -309.54684}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025820376
 GameObject:
   m_ObjectHideFlags: 0
@@ -24379,6 +24204,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519806199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5589088382179772380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 147.67934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6662925
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -309.54684
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9812fdf1e123a4c82cfb7a2455b71b, type: 3}
 --- !u!1 &5603912656931892989
 GameObject:
   m_ObjectHideFlags: 0
@@ -25251,5 +25144,5 @@ SceneRoots:
   - {fileID: 1897631877}
   - {fileID: 1698574706}
   - {fileID: 142986427}
-  - {fileID: 2023727233}
+  - {fileID: 5589088382179772380}
   - {fileID: 1505051154316087637}
