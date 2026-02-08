@@ -23,13 +23,6 @@ WHEN NOT IN DIALOGUE, LEFT CLICK TO CAST YOUR LINE
 DIALOGUE WILL END AFTER THIS, CATCH A FISH
 ===
 
-title: Ready
-when: once
----
-YOU'RE READY, FIND THE LEGENDARY FISH!
-    <<changeScene DialogueSystem MaterScene>>
-===
-
 
 //_______________________________________________
 
@@ -38,13 +31,14 @@ title:Bob
 when: once
 position: 106,-88
 ---
-YOU: Hello good sir, rumour has brought me here searching for the LEGENDARY fish, you must know where it is?
-BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help finding a new steering wheel.
--> Sure, I can help you find it.
-    BOB: Great! Just cast your line at the billboard behind me and reel in a fresh steering wheel.
+YOU: Hello good sir, rumour has brought me here. Is this the town with the LEGENDARY fish? How do I find it?
+BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help to find me a new Starring Wheel. They get old so quickly these days.
+YOU: Sure, I can help you with tha-
+-> Wait, starring what now?
+    BOB: Just cast your line at the billboard behind me and find out yourself!
         <<jump Tutorial>>
--> Im an angler, I don't know where to find steering wheels.
-    BOB: Silly boy... Just cast your line at the billboard behind me and fish out a fresh steering wheel.
+-> Huh? What do you mean?
+    BOB: Silly boy... Just cast your line at the billboard behind me. I trust you bud!
         <<jump Tutorial>>
 ===
 
@@ -52,7 +46,6 @@ title:Tutorial
 position: 107,179
 ---
 YOU: Fish it our from a billboard? That sounds... ridiculous.
-BOB: Trust me, it works! Just give it a go.
 YOU: Alright, I'll try.
 ===
 
@@ -63,8 +56,11 @@ position: 389,-87
 <<checkForItem Bob StarringWheel>>
 BOB: Did you do it?
 <<if $StarringWheel>>
--> Does this fish works?
+-> This silly looking thing?
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
+    BOB: And now, farewell fella! Hope you find YOURS Legendary fish!
+    YOU: Wait, where are you going? Where's the shopkeeper?
+        <<bobFlyAway Bob>>
         //<<jump Shopkeeper>>
 
 <<else>>
