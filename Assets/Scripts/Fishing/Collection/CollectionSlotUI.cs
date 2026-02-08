@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using DG.Tweening;
+using FMODUnity;
 
 public class CollectionSlotUI : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -99,6 +100,8 @@ public class CollectionSlotUI : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         isHovered = true;
+        if (FMODEvents.Instance != null)
+            PlayUiOneShot(FMODEvents.Instance.uiHover);
         ScaleTo(baseScale * hoverScale, hoverDuration, hoverEase);
     }
 
@@ -110,6 +113,12 @@ public class CollectionSlotUI : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiClick);
+        }
+
         if (manager == null || data == null) return;
 
         scaleTween?.Kill();
@@ -143,5 +152,13 @@ public class CollectionSlotUI : MonoBehaviour,
             .DOScale(target, duration)
             .SetEase(ease)
             .SetUpdate(true);
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }

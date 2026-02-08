@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class FishingCast : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class FishingCast : MonoBehaviour
     public Transform head;
     public Transform rodHead;
     public LineRenderer line;
+    [SerializeField] private RodAnimationController rodAnimationController;
 
     [Header("Tuning")]
     public float castForce = 15f;
@@ -32,9 +35,17 @@ public class FishingCast : MonoBehaviour
     private bool hasCasted;
     private bool isReeling;
     [HideInInspector] public bool isTalking;
+    private bool hasFishToPullUp;
+
+    private EventInstance reelingIdleInstance;
+    private EventInstance rollbackLoopInstance;
+    private bool rollbackActive;
 
     private void Start()
     {
+        if (rodAnimationController == null)
+            rodAnimationController = GetComponentInChildren<RodAnimationController>();
+
         line.positionCount = 2;
         line.useWorldSpace = true;
         AttachToRodIdle();
@@ -63,6 +74,12 @@ public class FishingCast : MonoBehaviour
     {
         hasCasted = true;
         isReeling = false;
+        hasFishToPullUp = false;
+
+        StopLoop(ref reelingIdleInstance);
+        StopLoop(ref rollbackLoopInstance);
+        rollbackActive = false;
+        PlayOneShot(FMODEvents.Instance.fishingRodReelingThrow);
     
         bobber.ResetBobber();
     
@@ -85,21 +102,44 @@ public class FishingCast : MonoBehaviour
         bobberRT.angularVelocity = Vector3.zero;
     
         bobberRT.AddForce(dir * castForce, ForceMode.Impulse);
+        StartLoop(ref reelingIdleInstance, FMODEvents.Instance.fishingRodReelingIdle);
     }
 
     private void StartReel()
     {
-        if (bobber.currentFish != null && bobber.currentFish.IsBiting())
+        bool fishBiting = bobber.currentFish != null && bobber.currentFish.IsBiting();
+        if (fishBiting)
         {
-            bobber.currentFish.TryCatchFish(handTransform);
+            bool caught = bobber.currentFish.TryCatchFish(handTransform);
+            hasFishToPullUp = true;
+            if (caught)
+            {
+                if (rodAnimationController != null)
+                    rodAnimationController.StopBiteLoopsImmediate();
+
+                PlayOneShot(FMODEvents.Instance.fishingPullUp);
+            }
+            else
+            {
+                StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+                rollbackActive = true;
+            }
         }
         else if (bobber.currentFish != null)
         {
             bobber.currentFish.BobberLeft();
+            StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            rollbackActive = true;
+        }
+        else
+        {
+            StartLoop(ref rollbackLoopInstance, FMODEvents.Instance.fishingRodRollback);
+            rollbackActive = true;
         }
 
         isReeling = true;
         bobberRT.isKinematic = true;
+        StopLoop(ref reelingIdleInstance);
     }
 
 
@@ -119,6 +159,12 @@ public class FishingCast : MonoBehaviour
             isReeling = false;
             hasCasted = false;
             AttachToRodIdle();
+            StopLoop(ref rollbackLoopInstance);
+            if (rollbackActive && FMODEvents.Instance != null)
+                PlayOneShot(FMODEvents.Instance.fishingRodRollbackRetrieved);
+            // Pull-up SFX is triggered immediately on successful catch (in StartReel).
+            hasFishToPullUp = false;
+            rollbackActive = false;
         }
     }
 
@@ -142,5 +188,41 @@ public class FishingCast : MonoBehaviour
     {
         line.SetPosition(0, rodHead.position);
         line.SetPosition(1, bobberRT.transform.position);
+    }
+
+    private void OnDisable()
+    {
+        StopLoop(ref reelingIdleInstance);
+        StopLoop(ref rollbackLoopInstance);
+        hasFishToPullUp = false;
+        rollbackActive = false;
+    }
+
+    private void PlayOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, rodHead != null ? rodHead.position : transform.position);
+    }
+
+    private void StartLoop(ref EventInstance instance, EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        if (instance.isValid())
+            return;
+
+        instance = AudioManager.Instance.CreateEventInstance(evt);
+        instance.start();
+    }
+
+    private void StopLoop(ref EventInstance instance)
+    {
+        if (AudioManager.Instance == null)
+            return;
+
+        AudioManager.Instance.StopEventInstance(ref instance);
     }
 }

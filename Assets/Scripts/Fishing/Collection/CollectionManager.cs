@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
 
 public class CollectionManager : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class CollectionManager : MonoBehaviour
     private void OnEnable()
     {
         InventoryService.OnItemAdded += HandleItemAdded;
+        if (FMODEvents.Instance != null)
+            PlayUiOneShot(FMODEvents.Instance.uiPageTurn);
     }
 
     private void OnDisable()
@@ -126,5 +129,13 @@ public class CollectionManager : MonoBehaviour
         }
 
         UpdateProgressText();
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 [System.Serializable]
 public class FishCost
@@ -11,7 +12,7 @@ public class FishCost
     public int amount;
 }
 
-public class UIStoreSlot : MonoBehaviour, IPointerClickHandler
+public class UIStoreSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     public Image iconImage;
     public Sprite iconSprite;
@@ -47,5 +48,19 @@ public class UIStoreSlot : MonoBehaviour, IPointerClickHandler
 
         // NEW: click-only gesture signal
         OnStoreSlotClickedForGesture?.Invoke(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (FMODEvents.Instance != null)
+            PlayUiOneShot(FMODEvents.Instance.uiHover);
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }

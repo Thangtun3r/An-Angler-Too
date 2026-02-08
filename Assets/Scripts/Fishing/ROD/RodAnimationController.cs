@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class RodAnimationController : MonoBehaviour
 {
@@ -47,6 +49,8 @@ public class RodAnimationController : MonoBehaviour
 
     bool fishBiting;
     IFish currentFish;
+    private EventInstance reelingLoopInstance;
+    private EventInstance fishCaughtLoopInstance;
 
     void Awake()
     {
@@ -66,6 +70,8 @@ public class RodAnimationController : MonoBehaviour
     {
         Bobber.OnBobberLanded -= HandleBobberLanded;
         UnsubscribeFromFish();
+        StopLoop(ref reelingLoopInstance);
+        StopLoop(ref fishCaughtLoopInstance);
     }
 
     void Start()
@@ -83,6 +89,7 @@ public class RodAnimationController : MonoBehaviour
     void HandleBobberLanded()
     {
         castImpulseActive = false;
+        PlayOneShot(FMODEvents.Instance.fishingRodBaitDown);
 
         UnsubscribeFromFish();
 
@@ -147,6 +154,11 @@ public class RodAnimationController : MonoBehaviour
             currentSpinSpeed = -castSpinSpeed;
             castImpulseActive = true;
         }
+        else if (newState == RodState.Idle_Rod)
+        {
+            StopLoop(ref reelingLoopInstance);
+            StopLoop(ref fishCaughtLoopInstance);
+        }
 
         rodAnimator.SetInteger(rodStateParam, (int)newState);
     }
@@ -162,6 +174,8 @@ public class RodAnimationController : MonoBehaviour
         currentBiteHoldTime = Random.Range(biteHoldTimeMin, biteHoldTimeMax);
 
         SetState(RodState.FishBite_Rod);
+        StartLoop(ref reelingLoopInstance, FMODEvents.Instance.fishingRodReelingLoop);
+        StartLoop(ref fishCaughtLoopInstance, FMODEvents.Instance.fishingRodFishCaughtLoop);
     }
 
     void OnFishGoAway()
@@ -169,6 +183,42 @@ public class RodAnimationController : MonoBehaviour
         fishBiting = false;
         reelTransform.localRotation = reelBaseRotation;
         SetState(RodState.Reel_Rod);
+        StopLoop(ref reelingLoopInstance);
+        StopLoop(ref fishCaughtLoopInstance);
+    }
+
+    private void PlayOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, reelTransform != null ? reelTransform.position : transform.position);
+    }
+
+    private void StartLoop(ref EventInstance instance, EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        if (instance.isValid())
+            return;
+
+        instance = AudioManager.Instance.CreateEventInstance(evt);
+        instance.start();
+    }
+
+    private void StopLoop(ref EventInstance instance)
+    {
+        if (AudioManager.Instance == null)
+            return;
+
+        AudioManager.Instance.StopEventInstance(ref instance);
+    }
+
+    public void StopBiteLoopsImmediate()
+    {
+        StopLoop(ref reelingLoopInstance);
+        StopLoop(ref fishCaughtLoopInstance);
     }
 
     float GetNextBiteStep()
