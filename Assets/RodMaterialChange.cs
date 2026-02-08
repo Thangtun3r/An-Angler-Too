@@ -21,7 +21,7 @@ public class RodMaterialChange : MonoBehaviour
 
     void Awake()
     {
-        GameObject sourceObject = GameObject.FindGameObjectWithTag("Player");
+        GameObject sourceObject = GameObject.FindGameObjectWithTag("MainCamera");
         player = sourceObject.transform;
 
         GameObject mirrorPlaneObject = GameObject.FindGameObjectWithTag("Mirror");
@@ -68,14 +68,29 @@ public class RodMaterialChange : MonoBehaviour
 
     void UpdateMirrorPosition()
     {
-        if (center == null || player == null) return;
+        if (mirrorCollider == null) return;
 
         // Mirror math
-        Vector3 mirroredPosition =
-            center.position * 2f - player.position;
+        mirroredPosition = center.position * 2f - player.position;
 
         mirroredPosition.y = player.position.y;
         mirrorCollider.transform.position = mirroredPosition;
+    }
 
+        void OnDrawGizmos()
+    {
+        if (center == null || player == null) return;
+
+        // Recalculate in editor so it shows without Play mode
+        Vector3 gizmoPos =
+            center.position * 2f - player.position;
+        gizmoPos.y = player.position.y;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(gizmoPos, colliderSize);
+
+        // Optional: draw symmetry line
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(player.position, gizmoPos);
     }
 }
