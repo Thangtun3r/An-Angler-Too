@@ -31,7 +31,7 @@ TRADER: Sup, bud. You give me fish, I give you gadgets.
 
 title: Final
 ---
-<<turnFinalOn Cube.001>>
+<<turnFinalOn DoorFinal>>
 TRADER: Before you take the rod, lemme tell ya this.
 TRADER: The LEGENDARY FISH is inside my van.
 TRADER: Here's yur rod, bud, go achieve your dream.

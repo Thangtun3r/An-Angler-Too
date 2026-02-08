@@ -12,7 +12,7 @@ position: 234,-374
 <<declare $OnRug = false>>
 
 //BSOD scenario
-<<declare $JellyGlitch = false>>
+<<declare $JellyElectric = false>>
 
 //ShopKeeper
 <<declare $LaidCat = false>>
@@ -196,14 +196,20 @@ YOU: Leave it to me, brother.
 title: Puter
 when: always
 ---
-<<checkForItem Puter JellyGlitch>>
+<<checkForItem Puter JellyElectric>>
 PUTER: Ohh... The headache...
 
-<<if $JellyGlitch>>
+<<if $JellyElectric>>
 -> I'll short the system. Good night, brother.
+    <<changeMaterial Screen>>
     <<changeMaterial Puter>>
 
 <<else>>
 YOU: Hang on, brother.
 <<endif>>
 ===
+
+//______________________________________________
+
+
+

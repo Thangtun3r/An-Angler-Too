@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeMaterial : MonoBehaviour
 {
-    public int layerMask;
+    private int layerMask = 6;
     public Material material;
     [Yarn.Unity.YarnCommand("changeMaterial")]
     public void ChangeMat()
