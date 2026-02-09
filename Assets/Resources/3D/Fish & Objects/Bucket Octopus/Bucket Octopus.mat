@@ -230,7 +230,7 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _BlendSrc: 1
     - _BlendSrcAlpha: 1
-    - _Brightness: 1
+    - _Brightness: 1.64
     - _BumpScale: 1
     - _CameraFade: 0
     - _CameraFadeFarDistance: 2
@@ -323,7 +323,7 @@ Material:
     - _RimSmoothness: 0.5
     - _RimThresholdOffset: 0.25
     - _Roughness: 0.5
-    - _Saturation: 2
+    - _Saturation: 1.91
     - _Shades: 0.15
     - _SketchMapScale: 1
     - _Smoothness: 0.458
