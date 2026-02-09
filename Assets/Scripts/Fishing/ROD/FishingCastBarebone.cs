@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
@@ -40,6 +41,7 @@ public class FishingCast : MonoBehaviour
     private EventInstance reelingIdleInstance;
     private EventInstance rollbackLoopInstance;
     private bool rollbackActive;
+    private Coroutine rollbackStopRoutine;
 
     private void Start()
     {
@@ -79,6 +81,7 @@ public class FishingCast : MonoBehaviour
         StopLoop(ref reelingIdleInstance);
         StopLoop(ref rollbackLoopInstance);
         rollbackActive = false;
+        StopRollbackStopRoutine();
         var events = FMODEvents.Instance;
         if (events != null)
             PlayOneShot(events.fishingRodReelingThrow);
@@ -170,13 +173,12 @@ public class FishingCast : MonoBehaviour
             isReeling = false;
             hasCasted = false;
             AttachToRodIdle();
-            StopLoop(ref rollbackLoopInstance);
             var events = FMODEvents.Instance;
             if (rollbackActive && events != null)
                 PlayOneShot(events.fishingRodRollbackRetrieved);
+            ScheduleRollbackStop();
             // Pull-up SFX is triggered immediately on successful catch (in StartReel).
             hasFishToPullUp = false;
-            rollbackActive = false;
         }
     }
 
@@ -208,6 +210,33 @@ public class FishingCast : MonoBehaviour
         StopLoop(ref rollbackLoopInstance);
         hasFishToPullUp = false;
         rollbackActive = false;
+        StopRollbackStopRoutine();
+    }
+
+    private void ScheduleRollbackStop()
+    {
+        StopRollbackStopRoutine();
+        rollbackStopRoutine = StartCoroutine(RollbackStopRoutine());
+    }
+
+    private void StopRollbackStopRoutine()
+    {
+        if (rollbackStopRoutine == null)
+            return;
+
+        StopCoroutine(rollbackStopRoutine);
+        rollbackStopRoutine = null;
+    }
+
+    private IEnumerator RollbackStopRoutine()
+    {
+        if (rollbackActive)
+            yield return new WaitForSeconds(0.5f);
+
+        StopLoop(ref rollbackLoopInstance);
+
+        rollbackActive = false;
+        rollbackStopRoutine = null;
     }
 
     private void PlayOneShot(EventReference evt)
