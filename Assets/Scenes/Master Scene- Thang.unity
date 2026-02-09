@@ -15288,6 +15288,7 @@ MonoBehaviour:
   itemDescriptionText: {fileID: 1211124925}
   itemPriceText: {fileID: 1055427656}
   notEnoughFeedback: {fileID: 1490565214}
+  storeToggle: {fileID: 0}
 --- !u!1 &1538629469
 GameObject:
   m_ObjectHideFlags: 0
@@ -22454,7 +22455,7 @@ Transform:
   m_GameObject: {fileID: 5769030000291317619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.27900004, z: -0}
+  m_LocalPosition: {x: 144.28615, y: 2.439, z: -394.93533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24264,6 +24265,7 @@ MonoBehaviour:
   triggerTag: Bobber
   attempts: 2
   attemptsCounter: 0
+  waitTime: 0
 --- !u!4 &2483455355635703607
 Transform:
   m_ObjectHideFlags: 0
@@ -28058,7 +28060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089bd94ed2589bd4d8abb3398715472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggledY: -304
+  toggleOffsetY: 300
   hoverOffsetY: 20
   hoverDuration: 0.15
   toggleDuration: 0.25
@@ -29940,7 +29942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72509d40b2c7c42408ebe454c1906dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoreObj: {fileID: 1365494461}
+  storeObj: {fileID: 0}
   traderAnimator: {fileID: 1162881026}
   storeCamera: {fileID: 1227687545}
   priorityOffset: 2
@@ -32384,6 +32386,7 @@ MonoBehaviour:
   minAngle: -90
   mouseSensitivity: 10
   isTalking: 0
+  gravityTweaker: 0
 --- !u!1 &6867570077245778408
 GameObject:
   m_ObjectHideFlags: 0

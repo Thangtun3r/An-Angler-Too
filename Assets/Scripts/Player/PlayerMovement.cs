@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private Vector3 moveDirection;
     private const float gravity = -9.81f;
+    [SerializeField] private float gravityTweaker;
     private float verticalVelocity = 0f;
     private float xRotation = 0f;
     
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            verticalVelocity += gravity * Time.deltaTime;
+            verticalVelocity += (gravity - gravityTweaker) * Time.deltaTime;
         }
 
         move.y = verticalVelocity;
