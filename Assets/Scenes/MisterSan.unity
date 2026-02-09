@@ -2745,6 +2745,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bomb>k__BackingField.Path
+      value: event:/Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bobTalk1>k__BackingField.Path
+      value: event:/Bob/Bob Talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bomb>k__BackingField.Guid.Data1
+      value: -156594526
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bomb>k__BackingField.Guid.Data2
+      value: 1179947284
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bomb>k__BackingField.Guid.Data3
+      value: 305325207
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bomb>k__BackingField.Guid.Data4
+      value: -433520225
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bobTalk1>k__BackingField.Guid.Data1
+      value: -76153068
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bobTalk1>k__BackingField.Guid.Data2
+      value: 1151801496
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bobTalk1>k__BackingField.Guid.Data3
+      value: -2035388528
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <bobTalk1>k__BackingField.Guid.Data4
+      value: 907117692
+      objectReference: {fileID: 0}
     - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
         type: 3}
       propertyPath: m_LocalPosition.x

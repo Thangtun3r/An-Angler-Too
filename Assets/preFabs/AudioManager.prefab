@@ -186,6 +186,41 @@ MonoBehaviour:
       Data3: -570733159
       Data4: 929015785
     Path: event:/UI_Error
+  <catMeow>k__BackingField:
+    Guid:
+      Data1: 1778998224
+      Data2: 1256036745
+      Data3: -1751758682
+      Data4: -684275905
+    Path: event:/Cat_Meow
+  <catPurr>k__BackingField:
+    Guid:
+      Data1: -428889132
+      Data2: 1247313203
+      Data3: -1473129069
+      Data4: 59692170
+    Path: event:/Cat_Purr
+  <catHiss>k__BackingField:
+    Guid:
+      Data1: 251749377
+      Data2: 1086282495
+      Data3: -1014476639
+      Data4: 1439885830
+    Path: event:/Cat_Hiss
+  <catCuteMeow>k__BackingField:
+    Guid:
+      Data1: -1158710603
+      Data2: 1193220260
+      Data3: 1147559854
+      Data4: -1251265244
+    Path: event:/Cat_Cute Meow
+  <catTeleport>k__BackingField:
+    Guid:
+      Data1: 2060068005
+      Data2: 1257067262
+      Data3: 3318670
+      Data4: -2112244015
+    Path: event:/Cat_Teleport
 --- !u!114 &2582239297714671918
 MonoBehaviour:
   m_ObjectHideFlags: 0
