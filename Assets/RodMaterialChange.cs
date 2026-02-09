@@ -14,6 +14,9 @@ public class RodMaterialChange : MonoBehaviour
     [Header("Collider Settings")]
     public float colliderSize;
 
+    [Header("Fish Settings")]
+    public ItemSO fishToCatch;
+
     public Material alwaysOnTopMaterial;
     private GameObject mirrorCollider;
 
@@ -53,6 +56,9 @@ public class RodMaterialChange : MonoBehaviour
 
     void CreateCollider()
     {
+        if (mirrorCollider != null)
+            Destroy(mirrorCollider);
+
         mirrorCollider = new GameObject("MirroredGroundCollider");
 
         SphereCollider col = mirrorCollider.AddComponent<SphereCollider>();
@@ -64,6 +70,18 @@ public class RodMaterialChange : MonoBehaviour
             Debug.LogError("Layer 'Ground' does not exist!");
 
         mirrorCollider.layer = groundLayer;
+
+        FishContainer fishContainer = mirrorCollider.AddComponent<FishContainer>();
+        if (fishToCatch == null)
+        {
+            Debug.LogWarning("RodMaterialChange: fishToCatch is not set. Bobber will land but no fish will be caught.");
+        }
+        else
+        {
+            fishContainer.fishSO = fishToCatch;
+        }
+
+        UpdateMirrorPosition();
     }
 
     void UpdateMirrorPosition()
