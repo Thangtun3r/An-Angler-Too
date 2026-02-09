@@ -18,5 +18,7 @@ MonoBehaviour:
   item_sprite: {fileID: 1618581513, guid: 7f0ce61fc5059cc4d81b1c914cc5005d, type: 3}
   item_prefab: {fileID: 6885332304120830621, guid: f598b0956870d2946abff7980a450071,
     type: 3}
-  ItemDescription: 
-  HintDescription: 
+  ItemDescription: Placeholder of the game's first prototype stage. Went all the
+    way from 10 seconds of rough modeling to making it to the final cut. Good for
+    him
+  HintDescription: Can find anywhere. Represents pretty much any fish. So lame
