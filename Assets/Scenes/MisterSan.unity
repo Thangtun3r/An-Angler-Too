@@ -3128,6 +3128,31 @@ PrefabInstance:
       propertyPath: <bobTalk1>k__BackingField.Guid.Data4
       value: 907117692
       objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <shopkeeperTalk>k__BackingField.Path
+      value: event:/Shopkeeper/Shopkeeper
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <shopkeeperTalk>k__BackingField.Guid.Data1
+      value: -372433958
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <shopkeeperTalk>k__BackingField.Guid.Data2
+      value: 1219654640
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <shopkeeperTalk>k__BackingField.Guid.Data3
+      value: -1411897957
+      objectReference: {fileID: 0}
+    - target: {fileID: 588560329383281475, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: <shopkeeperTalk>k__BackingField.Guid.Data4
+      value: -1498366373
+      objectReference: {fileID: 0}
     - target: {fileID: 1642834831901907185, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
         type: 3}
       propertyPath: m_LocalPosition.x
