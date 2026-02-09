@@ -14,10 +14,17 @@ public class StopFirstPersonOnDialogue : MonoBehaviour
         dialogueRunner = FindFirstObjectByType<DialogueRunner>(FindObjectsInactive.Include);
 
         var playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerMovement = playerGO.GetComponent<PlayerMovement>();
-        fishingCast = playerGO.GetComponent<FishingCast>();
-        playerInteraction = playerGO.GetComponent<PlayerInteraction>();
+        if (playerGO != null)
+        {
+            playerGO.TryGetComponent(out player);
+            playerGO.TryGetComponent(out playerMovement);
+            playerGO.TryGetComponent(out fishingCast);
+            playerGO.TryGetComponent(out playerInteraction);
+        }
+        else
+        {
+            Debug.LogWarning("StopFirstPersonOnDialogue: Player tag not found in scene.");
+        }
     }
 
     void OnEnable()
@@ -54,19 +61,25 @@ public class StopFirstPersonOnDialogue : MonoBehaviour
     {
         if (talking)
         {
-            playerMovement.isTalking = true;
-            playerInteraction.isTalking = true;
-            fishingCast.isTalking = true;
-            player.FreezeMovementOnly();
-            player.DisablePlayer();
+            if (playerMovement != null) playerMovement.isTalking = true;
+            if (playerInteraction != null) playerInteraction.isTalking = true;
+            if (fishingCast != null) fishingCast.isTalking = true;
+            if (player != null)
+            {
+                player.FreezeMovementOnly();
+                player.DisablePlayer();
+            }
         }
         else
         {
-            playerMovement.isTalking = false;
-            playerInteraction.isTalking = false;
-            fishingCast.isTalking = false;
-            player.UnFreezeMovementOnly();
-            player.EnablePlayer();
+            if (playerMovement != null) playerMovement.isTalking = false;
+            if (playerInteraction != null) playerInteraction.isTalking = false;
+            if (fishingCast != null) fishingCast.isTalking = false;
+            if (player != null)
+            {
+                player.UnFreezeMovementOnly();
+                player.EnablePlayer();
+            }
         }
     }
 }

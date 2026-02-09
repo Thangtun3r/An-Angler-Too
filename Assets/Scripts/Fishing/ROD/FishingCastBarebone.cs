@@ -48,6 +48,16 @@ public class FishingCast : MonoBehaviour
         if (rodAnimationController == null)
             rodAnimationController = GetComponentInChildren<RodAnimationController>();
 
+        // Cache camera for WebGL performance/reliability
+        if (cam == null) cam = Camera.main;
+
+        // Validation to prevent potential NREs
+        if (rodHead == null) Debug.LogError("FishingCast: rodHead is not assigned!");
+        if (bobberRT == null) Debug.LogError("FishingCast: bobberRT is not assigned!");
+
+        // Ensure we don't start in a talking state
+        isTalking = false;
+
         line.positionCount = 2;
         line.useWorldSpace = true;
         AttachToRodIdle();
@@ -74,6 +84,7 @@ public class FishingCast : MonoBehaviour
 
     private void CastRod()
     {
+        Debug.Log("FishingCast: CastRod called");
         hasCasted = true;
         isReeling = false;
         hasFishToPullUp = false;
@@ -113,6 +124,7 @@ public class FishingCast : MonoBehaviour
 
     private void StartReel()
     {
+        Debug.Log("FishingCast: StartReel called");
         bool fishBiting = bobber.currentFish != null && bobber.currentFish.IsBiting();
         if (fishBiting)
         {
