@@ -93,8 +93,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            EnablePlayer(PlayerLockSource.System);
+            EnablePlayer(
+                inventoryOpen ? PlayerLockSource.Inventory :
+                shopOpen ? PlayerLockSource.Shop :
+                PlayerLockSource.System
+            );
         }
+
     }
 
     // ---------------- Player Control ----------------

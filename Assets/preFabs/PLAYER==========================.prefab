@@ -5384,6 +5384,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2796108177740724111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4551458227964946586}
+  m_Layer: 5
+  m_Name: Wrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4551458227964946586
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796108177740724111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4712306248337218626}
+  m_Father: {fileID: 3086289054035924937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1156}
+  m_SizeDelta: {x: 1351.2869, y: 1564.4067}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2901188995754336985
 GameObject:
   m_ObjectHideFlags: 0
@@ -5964,7 +6000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72509d40b2c7c42408ebe454c1906dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoreObj: {fileID: 1650478335147388347}
+  storeObj: {fileID: 0}
   traderAnimator: {fileID: 0}
   storeCamera: {fileID: 0}
   priorityOffset: 2
@@ -7883,7 +7919,7 @@ Transform:
   m_GameObject: {fileID: 3977015122720301187}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.27900004, z: -0}
+  m_LocalPosition: {x: 145.00217, y: 1.9919999, z: -394.16998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12772,6 +12808,7 @@ MonoBehaviour:
   center: {fileID: 0}
   player: {fileID: 0}
   colliderSize: 1
+  fishToCatch: {fileID: 0}
   alwaysOnTopMaterial: {fileID: 2100000, guid: a96d9c91af8281c4e97694c1920e24cc, type: 2}
 --- !u!1 &6636221561754132411
 GameObject:
@@ -12798,7 +12835,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636221561754132411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12808,11 +12845,11 @@ RectTransform:
   - {fileID: 4770752663966866458}
   - {fileID: 2037517533529090816}
   - {fileID: 380522007190748592}
-  m_Father: {fileID: 3086289054035924937}
+  m_Father: {fileID: 4551458227964946586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1351.2869, y: 1564.4067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &8988281972499831743
@@ -12839,7 +12876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089bd94ed2589bd4d8abb3398715472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggledY: -304
+  toggleOffsetY: 300
   hoverOffsetY: 20
   hoverDuration: 0.15
   toggleDuration: 0.25
@@ -12902,6 +12939,7 @@ MonoBehaviour:
   itemDescriptionText: {fileID: 7042713999224634589}
   itemPriceText: {fileID: 5015511922207209973}
   notEnoughFeedback: {fileID: 2122550923726233959}
+  storeToggle: {fileID: 0}
 --- !u!1 &6931024234537468971
 GameObject:
   m_ObjectHideFlags: 0
@@ -15639,7 +15677,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5114540841192595377}
-  - {fileID: 4712306248337218626}
+  - {fileID: 4551458227964946586}
   m_Father: {fileID: 5375311847864943981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
