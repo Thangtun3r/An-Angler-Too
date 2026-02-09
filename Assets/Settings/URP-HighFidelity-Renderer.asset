@@ -54,8 +54,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 7542395792742350005}
-  - {fileID: 9062113090827399087}
-  m_RendererFeatureMap: adc0de57c6d2eee5b5fcce1d03f9ab68af2f2fcdd717c37d
+  - {fileID: 1672656963377958114}
+  m_RendererFeatureMap: adc0de57c6d2eee5b5fcce1d03f9ab68e20c3a65a5783617
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -104,51 +104,29 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
---- !u!114 &2509117846150572840
+--- !u!114 &1672656963377958114
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c2a0ff44a297c4083246f72b8baae5, type: 3}
-  m_Name: 
+  m_Script: {fileID: 11500000, guid: a1614fc811f8f184697d9bee70ab9fe5, type: 3}
+  m_Name: DecalRendererFeature
   m_EditorClassIdentifier: 
-  _active: 1
-  _shader: {fileID: 4800000, guid: 2bf2830f83506eb4097cdebfd30a7bb8, type: 3}
-  _scaleLerp:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.0049
-      inSlope: 0.0508
-      outSlope: 0.0508
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0
-      outWeight: 0.742
-    - serializedVersion: 3
-      time: 1
-      value: 0.5095
-      inSlope: 3.6093
-      outSlope: 3.6093
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.1646
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _gridReveal: 1
-  _gridDiscrete: 1
-  _crisp: 0
-  _roundnessDefault: 0
-  _palette:
-    enabled: 0
-    value: {fileID: 0}
+  m_Active: 1
+  m_Settings:
+    technique: 0
+    maxDrawDistance: 1000
+    decalLayers: 0
+    dBufferSettings:
+      surfaceData: 2
+    screenSpaceSettings:
+      normalBlend: 0
+  m_CopyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
+  m_DBufferClear: {fileID: 4800000, guid: f056d8bd2a1c7e44e9729144b4c70395, type: 3}
 --- !u!114 &7542395792742350005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,19 +143,3 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9062113090827399087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb609ae800d4ad4ea60345e8437077c, type: 3}
-  m_Name: Pixelation
-  m_EditorClassIdentifier: 
-  m_Active: 1
-  _event: 550
-  _pass: {fileID: 2509117846150572840}
-  _blitShader: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
