@@ -285,7 +285,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639062978033854330
+  lastModified: 639062998469337714
   FileSizes: []
   Exists: 1
 --- !u!114 &-1457195843367540547
@@ -330,7 +330,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639062978032921207
+  lastModified: 639062965267389975
   FileSizes:
   - Name: 
     Value: 2078
@@ -431,7 +431,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639062800009915800
+  lastModified: 639062965267379999
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -485,7 +485,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -1115764618773716170}
   cacheVersion: 131849
-  cacheTime: 639062978033854330
+  cacheTime: 639062998469337714
   SerializableEventsDict:
   - key: event:/Bob/Bob Talk
     index: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2010
+  Length: 2000
 --- !u!114 &3716025071971409031
 MonoBehaviour:
   m_ObjectHideFlags: 0
