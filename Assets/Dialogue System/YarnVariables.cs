@@ -52,5 +52,11 @@ namespace Yarn.Unity.ExposedVariables {
             set => this.SetValue<bool>("$LaidCat", value);
         }
 
+        // Accessor for Bool $LegendaryRod
+        public bool LegendaryRod {
+            get => this.GetValueOrDefault<bool>("$LegendaryRod");
+            set => this.SetValue<bool>("$LegendaryRod", value);
+        }
+
     }
 }

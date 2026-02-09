@@ -17,5 +17,6 @@ MonoBehaviour:
   item_name: LEGENDARY ROD
   item_sprite: {fileID: 21300000, guid: 1be9f7172a0604043bf40da7c52a4301, type: 3}
   item_prefab: {fileID: 0}
-  ItemDescription: Thank you for playing!!!
+  ItemDescription: Talk to the trader again to trigger the ending scene. Thank you
+    for playing!!!
   HintDescription: Your life long dream, within arm's reach.
