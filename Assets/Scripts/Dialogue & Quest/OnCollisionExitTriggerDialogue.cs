@@ -6,6 +6,10 @@ using Yarn.Unity;
 
 public class OnCollisionExitTriggerDialogue : MonoBehaviour
 {
+
+    public bool isFinale = false;
+    public GameObject finaleSceneObject;
+
     
     private DialogueRunner dialogueRunner;
     [SerializeField] private string node;
@@ -53,5 +57,9 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
         dialogueRunner.StartDialogue(node);
+        if (isFinale && finaleSceneObject != null)
+        {
+            finaleSceneObject.SetActive(true);
+        }
     }
 }
