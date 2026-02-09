@@ -15,7 +15,7 @@ MonoBehaviour:
   isQuestItem: 0
   itemID: CrashCarp
   item_name: Crash Carp
-  item_sprite: {fileID: 21300000, guid: 1f71c843923509947a10b04501a7de9c, type: 3}
+  item_sprite: {fileID: 21300000, guid: 0772f5e569ba41545860338fbd539a4d, type: 3}
   item_prefab: {fileID: 2961489933550163214, guid: 600a451c263fe0442b950ea260b7b6d5,
     type: 3}
   ItemDescription: '...

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
   m_Name: HoverBoard
   m_EditorClassIdentifier: 
-  isQuestItem: 0
+  isQuestItem: 1
   itemID: HoverBoard
   item_name: Hover Board
-  item_sprite: {fileID: 21300000, guid: 4d18b80c56e6c0542afea9a397fc0391, type: 3}
+  item_sprite: {fileID: 21300000, guid: 092d2c2e6ea81114c8b961395b4d5476, type: 3}
   item_prefab: {fileID: 0}
   ItemDescription: 'While in your inventory, this item will increase your move speed.
     TAB to open inventory and discard.
