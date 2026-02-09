@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
+using FMODUnity;
 
 public class StoreManager : MonoBehaviour
 {
@@ -54,6 +55,8 @@ public class StoreManager : MonoBehaviour
         if (!CanAfford(playerInventory, currentStoreSlot))
         {
             notEnoughFeedback?.Play();
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiError);
             return;
         }
 
@@ -63,6 +66,8 @@ public class StoreManager : MonoBehaviour
         {
             currentStoreSlot.soldOut = true;
             currentStoreSlot.iconImage.color = Color.gray;
+            if (FMODEvents.Instance != null)
+                PlayUiOneShot(FMODEvents.Instance.uiPurchase);
         }
     }
 
@@ -172,5 +177,13 @@ public class StoreManager : MonoBehaviour
             text += $"{cost.amount}x {cost.fish.item_name}\n";
 
         return text;
+    }
+
+    private void PlayUiOneShot(EventReference evt)
+    {
+        if (AudioManager.Instance == null || FMODEvents.Instance == null)
+            return;
+
+        AudioManager.Instance.PlayOneShot(evt, transform.position);
     }
 }

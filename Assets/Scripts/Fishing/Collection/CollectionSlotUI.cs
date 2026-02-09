@@ -113,12 +113,6 @@ public class CollectionSlotUI : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (FMODEvents.Instance != null)
-                PlayUiOneShot(FMODEvents.Instance.uiClick);
-        }
-
         if (manager == null || data == null) return;
 
         scaleTween?.Kill();

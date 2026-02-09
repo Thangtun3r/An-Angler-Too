@@ -18,8 +18,8 @@ MonoBehaviour:
   item_sprite: {fileID: 21300000, guid: 98011bd538dc181449859ad48573a460, type: 3}
   item_prefab: {fileID: 8949644257746499597, guid: f82b85bf63d40b946a2879f009153eba,
     type: 3}
-  ItemDescription: Absolute nightmare fuel with its appearance. Nevertheless, it
-    snatches people's legs when they try to clean their feet on the lovely rugs.
-    I lied about the second part, but still.
+  ItemDescription: Unlike its nightmareish appearence, this fish is considered friendly
+    by many. Cats love rubbing their body with Rugfish, which would leave behind
+    a distint scent
   HintDescription: A super flat fish that crawls on the ground. Don't rub your feet
     wherever you go. You are warned...

@@ -38,12 +38,14 @@ when: once
 position: 106,-88
 ---
 YOU: Hello good sir, rumour has brought me here searching for the LEGENDARY fish, you must know where it is?
+<<bobTalk1>>
 BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help finding a new steering wheel.
-YOU: Sure, I can help you with tha-
 -> Sure, I can help you find it.
+    <<bobTalk1>>
     BOB: Great! Just cast your line at the billboard behind me and reel in a fresh steering wheel.
         <<jump Tutorial>>
--> Im an angler, I don't know where to find steering wheels.
+-> Im an angler, how do I know where to find steering wheels?
+    <<bobTalk1>>
     BOB: Silly boy... Just cast your line at the billboard behind me and fish out a fresh steering wheel.
         <<jump Tutorial>>
 ===
@@ -52,8 +54,10 @@ title:Tutorial
 position: 107,179
 ---
 YOU: Fish it our from a billboard? That sounds... ridiculous.
+<<bobTalk1>>
 BOB: A fisher man can fish from anything BLUE! The billboard is BLUE, just give it a try.
 YOU: Alright... I'll try?
+<<bobTalk1>>
 BOB: Also try pressing TAB after this dialogue ends.
 ===
 
@@ -62,10 +66,12 @@ when: always
 position: 389,-87
 ---
 <<checkForItem Bob StarringWheel>>
+<<bobTalk1>>
 BOB: Did you do it? You can press TAB to check your inventory.
 
 <<if $StarringWheel>>
 -> This starfish is the steering wheel?
+    <<bobTalk1>>
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
     YOU: Wait, where are you going? Where's the shopkeeper?
         <<bobFlyAway Bob>>
@@ -79,6 +85,7 @@ title:End
 position: 392,178
 ---
 YOU: I'll get to it...
+<<bobTalk1>>
 BOB: Okay good luck.
 ===
 
@@ -140,25 +147,31 @@ VINYL PLAYER: Cry me a river, hehe.
 title: Kitty
 when: always
 ---
+<<catMeow>>
 KITTY: Mrrr... Meow (I love laying in the sun)
 -> [Pick up] the cat
     <<toggleCat Player>>
 -> Pet the cat
+    <<catPurr>>
     KITTY: Mrrrrrrrrrrrrrrrrrrrrrrrrrr...
 ===
 
 title: PutDown
 ---
 -> Lay cat on the rug <<if $OnRug>>
+    <<catCuteMeow>>
     KITTY: Prrrrrr... (I love you)
     <<toggleRugCat Player>>
     <<set $LaidCat = true>>
 -> Put the cat down. <<if $OnRug == false>>
+    <<catHiss>>
     KITTY: [Kitty hops back on you]
     KITTY: Ks! (Hey! Only put me down somewhere indoor, soft and bright.)
 -> Pet the cat.
+    <<catPurr>>
     KITTY: Aur... Mrrrrr...
 -> Teleport the cat back to where it was
+    <<catTeleport>>
     KITTY: OOOooo..
         <<toggleCat Player>>
 ===
@@ -190,6 +203,7 @@ PUTER: Ohh... The headache...
 -> I'll short the system. Good night, brother.
     <<changeMaterial Screen>>
     <<changeMaterial Puter>>
+    <<puterBomb>>
 
 <<else>>
 YOU: Hang on, brother.

@@ -28,6 +28,19 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference uiDiscard { get; private set; }
     [field: SerializeField] public EventReference uiPageTurn { get; private set; }
     [field: SerializeField] public EventReference uiHover { get; private set; }
+    [field: SerializeField] public EventReference uiPurchase { get; private set; }
+    [field: SerializeField] public EventReference uiError { get; private set; }
+
+    [field: Header("Cat SFX")]
+    [field: SerializeField] public EventReference catMeow { get; private set; }
+    [field: SerializeField] public EventReference catPurr { get; private set; }
+    [field: SerializeField] public EventReference catHiss { get; private set; }
+    [field: SerializeField] public EventReference catCuteMeow { get; private set; }
+    [field: SerializeField] public EventReference catTeleport { get; private set; }
+
+    [field: Header("Dialogue SFX")]
+    [field: SerializeField] public EventReference bobTalk1 { get; private set; }
+    [field: SerializeField] public EventReference bomb { get; private set; }
 
     public static FMODEvents Instance { get; private set; }
 

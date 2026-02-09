@@ -105,12 +105,6 @@ public class UIFishSlot : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (FMODEvents.Instance != null)
-                PlayUiOneShot(FMODEvents.Instance.uiClick);
-        }
-
         if (selectedIndex == -1)
         {
             if (isDiscardSlot) return;
