@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using FMOD.Studio;
@@ -5,6 +6,9 @@ using FMODUnity;
 
 public class FishingCast : MonoBehaviour
 {
+    
+    
+    public static event Action OnForceReel;
 
     [SerializeField] private Camera cam;   // assign in Inspector (or use Camera.main)
     public float aimDistance = 25f;
@@ -62,6 +66,35 @@ public class FishingCast : MonoBehaviour
         line.useWorldSpace = true;
         AttachToRodIdle();
     }
+
+    private void OnEnable()
+    {
+        OnForceReel += HandleForceReel;
+    }
+    
+    
+    private void OnDisable()
+    {
+        StopLoop(ref reelingIdleInstance);
+        StopLoop(ref rollbackLoopInstance);
+        hasFishToPullUp = false;
+        rollbackActive = false;
+        StopRollbackStopRoutine();
+        
+        OnForceReel -= HandleForceReel;
+    }
+
+
+    
+    private void HandleForceReel()
+    {
+        if (isTalking) return;
+        if (!hasCasted) return;
+        if (isReeling) return;
+
+        StartReel();
+    }
+
 
     private void Update()
     {
@@ -214,15 +247,6 @@ public class FishingCast : MonoBehaviour
     {
         line.SetPosition(0, rodHead.position);
         line.SetPosition(1, bobberRT.transform.position);
-    }
-
-    private void OnDisable()
-    {
-        StopLoop(ref reelingIdleInstance);
-        StopLoop(ref rollbackLoopInstance);
-        hasFishToPullUp = false;
-        rollbackActive = false;
-        StopRollbackStopRoutine();
     }
 
     private void ScheduleRollbackStop()

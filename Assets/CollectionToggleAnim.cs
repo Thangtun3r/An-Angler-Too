@@ -7,8 +7,8 @@ public class CollectionToggleAnim : MonoBehaviour,
     IPointerExitHandler,
     IPointerClickHandler
 {
-    [Header("Positions")]
-    [SerializeField] private float toggledY = 300f;
+    [Header("Offsets")]
+    [SerializeField] private float toggleOffsetY = 300f;
     [SerializeField] private float hoverOffsetY = 20f;
 
     [Header("Tween Settings")]
@@ -20,15 +20,18 @@ public class CollectionToggleAnim : MonoBehaviour,
     [SerializeField] private Ease toggleOffEase = Ease.OutExpo;
 
     private RectTransform rect;
-    private Vector2 originalPos;
-    private bool isToggled;
+    private float baseY;
 
+    private float currentHoverOffset;
+    private float currentToggleOffset;
+
+    private bool isToggled;
     private Tween activeTween;
 
     void Awake()
     {
         rect = GetComponent<RectTransform>();
-        originalPos = rect.anchoredPosition;
+        baseY = rect.anchoredPosition.y;
     }
 
     void OnEnable()
@@ -45,25 +48,26 @@ public class CollectionToggleAnim : MonoBehaviour,
     {
         if (!isToggled) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsPointerInside())
         {
-            if (!IsPointerInside())
-            {
-                ToggleOff();
-            }
+            ToggleOff();
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isToggled) return;
-        MoveY(originalPos.y + hoverOffsetY, hoverDuration, hoverEase);
+
+        currentHoverOffset = hoverOffsetY;
+        MoveTo(baseY + currentToggleOffset + currentHoverOffset, hoverDuration, hoverEase);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (isToggled) return;
-        MoveY(originalPos.y, hoverDuration, hoverEase);
+
+        currentHoverOffset = 0f;
+        MoveTo(baseY + currentToggleOffset, hoverDuration, hoverEase);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -75,13 +79,18 @@ public class CollectionToggleAnim : MonoBehaviour,
     private void ToggleOn()
     {
         isToggled = true;
-        MoveY(toggledY, toggleDuration, toggleOnEase);
+        currentHoverOffset = 0f;
+        currentToggleOffset = toggleOffsetY;
+
+        MoveTo(baseY + currentToggleOffset, toggleDuration, toggleOnEase);
     }
 
     private void ToggleOff()
     {
         isToggled = false;
-        MoveY(originalPos.y, toggleDuration, toggleOffEase);
+        currentToggleOffset = 0f;
+
+        MoveTo(baseY, toggleDuration, toggleOffEase);
     }
 
     public void ForceToggleOff()
@@ -92,10 +101,10 @@ public class CollectionToggleAnim : MonoBehaviour,
 
     private bool IsPointerInside()
     {
-        Camera cam = null;
-
-        if (GetComponentInParent<Canvas>().renderMode != RenderMode.ScreenSpaceOverlay)
-            cam = GetComponentInParent<Canvas>().worldCamera;
+        Canvas canvas = GetComponentInParent<Canvas>();
+        Camera cam = canvas.renderMode == RenderMode.ScreenSpaceOverlay
+            ? null
+            : canvas.worldCamera;
 
         return RectTransformUtility.RectangleContainsScreenPoint(
             rect,
@@ -104,9 +113,11 @@ public class CollectionToggleAnim : MonoBehaviour,
         );
     }
 
-    private void MoveY(float y, float duration, Ease ease)
+    private void MoveTo(float targetY, float duration, Ease ease)
     {
         activeTween?.Kill();
-        activeTween = rect.DOAnchorPosY(y, duration).SetEase(ease);
+        activeTween = rect
+            .DOAnchorPosY(targetY, duration)
+            .SetEase(ease);
     }
 }
