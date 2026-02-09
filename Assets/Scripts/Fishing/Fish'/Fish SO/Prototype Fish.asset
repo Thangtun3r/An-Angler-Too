@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
-  m_Name: Tuna
+  m_Name: Prototype Fish
   m_EditorClassIdentifier: 
   isQuestItem: 0
-  item_name: Tuna
+  itemID: PrototypeFish
+  item_name: Prototype Fish
   item_sprite: {fileID: 1618581513, guid: 7f0ce61fc5059cc4d81b1c914cc5005d, type: 3}
   item_prefab: {fileID: 6885332304120830621, guid: f598b0956870d2946abff7980a450071,
     type: 3}
   ItemDescription: 
+  HintDescription: 
