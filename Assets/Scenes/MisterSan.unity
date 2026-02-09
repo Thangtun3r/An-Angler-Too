@@ -6393,8 +6393,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6730723668721021691, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -79.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730723668721021691, guid: 9c858b4672f354a46a6f6f08de2d9711,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 6730723668721021691, guid: 9c858b4672f354a46a6f6f08de2d9711,
         type: 3}
@@ -6426,7 +6431,8 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 2.887124
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 244123163131350863, guid: 9c858b4672f354a46a6f6f08de2d9711, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4729970117075466761, guid: 9c858b4672f354a46a6f6f08de2d9711, type: 3}
     - {fileID: 3256133221514703004, guid: 9c858b4672f354a46a6f6f08de2d9711, type: 3}
@@ -8875,7 +8881,7 @@ MonoBehaviour:
   soldOut: 0
   costs: []
   acceptAnyFish: 1
-  anyFishAmount: 0
+  anyFishAmount: 5
 --- !u!114 &1051769261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19693,7 +19699,7 @@ PrefabInstance:
     - target: {fileID: 3552770477175626970, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: anyFishAmount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3621281134956310358, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
@@ -19782,6 +19788,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6cb55fe2b7c022d4e994c8265d9761aa,
         type: 2}
+    - target: {fileID: 5912736701607640955, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: anyFishAmount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912736701607640955, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: costs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6090204356635659964, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -19881,7 +19897,7 @@ PrefabInstance:
     - target: {fileID: 6464764876366240218, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: anyFishAmount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6476914285438604946, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
