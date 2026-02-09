@@ -15,7 +15,7 @@ MonoBehaviour:
   isQuestItem: 0
   itemID: RayObscur
   item_name: Ray Obscur
-  item_sprite: {fileID: 21300000, guid: 9c1404a3ef9a3f4459d0ff00a5f9efb2, type: 3}
+  item_sprite: {fileID: 21300000, guid: ed9b913b7c468e843b2bafeee68a122c, type: 3}
   item_prefab: {fileID: 6329739262999727025, guid: 131dcd36b6f86de41b89f2b33d064999,
     type: 3}
   ItemDescription: A special fish with paint strokes all over its body. It's so special,
