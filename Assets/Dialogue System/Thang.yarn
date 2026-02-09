@@ -1,6 +1,7 @@
-﻿title: Trader
+title: Trader
 when: once
 ---
+<<shopkeeperTalk>>
 <<moveDown LastScenario>>
 TRADER: Sup, bud. You give me fish, I give you gadgets.
 -> Show me what you got.
@@ -17,6 +18,7 @@ TRADER: Sup, bud. You give me fish, I give you gadgets.
 title: Trader
 when: always
 ---
+<<shopkeeperTalk>>
 TRADER: Sup, bud. You give me fish, I give you gadgets. Press TAB, open inventory to check what your gadgets does.
 -> Show me what you got for sale.
     <<open_store>>
@@ -32,6 +34,7 @@ TRADER: Sup, bud. You give me fish, I give you gadgets. Press TAB, open inventor
 title: Final
 when: once
 ---
+<<shopkeeperTalk>>
 <<turnFinalOn LastScenario>>
 TRADER: Before you take the rod, lemme tell ya this.
 TRADER: The LEGENDARY FISH is inside my van.

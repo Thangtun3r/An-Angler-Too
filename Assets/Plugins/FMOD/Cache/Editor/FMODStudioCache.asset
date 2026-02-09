@@ -285,7 +285,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639062946076675976
+  lastModified: 639062974365990029
   FileSizes: []
   Exists: 1
 --- !u!114 &-1457195843367540547
@@ -330,10 +330,10 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639062946075839535
+  lastModified: 639062965267389975
   FileSizes:
   - Name: 
-    Value: 2026
+    Value: 2078
   Exists: 1
 --- !u!114 &-928420293684942252
 MonoBehaviour:
@@ -431,7 +431,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639062800009915800
+  lastModified: 639062965267379999
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -478,13 +478,14 @@ MonoBehaviour:
   - {fileID: 7634257252967843114}
   - {fileID: 1949775098638827679}
   - {fileID: 5459122972811943504}
+  - {fileID: 3385919364152315934}
   EditorParameters: []
   MasterBanks:
   - {fileID: -623608912394839629}
   StringsBanks:
   - {fileID: -1115764618773716170}
   cacheVersion: 131849
-  cacheTime: 639062946076675976
+  cacheTime: 639062974365990029
   SerializableEventsDict:
   - key: event:/Bob/Bob Talk
     index: 0
@@ -540,6 +541,8 @@ MonoBehaviour:
     index: 25
   - key: event:/Bomb
     index: 26
+  - key: event:/Shopkeeper/Shopkeeper
+    index: 27
 --- !u!114 &1949775098638827679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +624,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 914
+--- !u!114 &3385919364152315934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shopkeeper/Shopkeeper
+  m_EditorClassIdentifier: 
+  Path: event:/Shopkeeper/Shopkeeper
+  Guid:
+    Data1: -372433958
+    Data2: 1219654640
+    Data3: -1411897957
+    Data4: -1498366373
+  Banks:
+  - {fileID: -1767729818975953168}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2010
 --- !u!114 &3716025071971409031
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Dialogue SFX")]
     [field: SerializeField] public EventReference bobTalk1 { get; private set; }
     [field: SerializeField] public EventReference bomb { get; private set; }
+    [field: SerializeField] public EventReference shopkeeperTalk { get; private set; }
 
     public static FMODEvents Instance { get; private set; }
 
