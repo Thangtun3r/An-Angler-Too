@@ -8,37 +8,32 @@ public class UIScaleInOnEnable : MonoBehaviour
     [SerializeField] private float duration = 0.25f;
     [SerializeField] private Ease ease = Ease.OutBack;
 
+    public Vector3 DefaultScale { get; private set; }
+
     private RectTransform rect;
-    private Vector3 defaultScale;
     private Tween tween;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
-        defaultScale = rect.localScale;
+        DefaultScale = rect.localScale; // capture once, forever
     }
 
     private void OnEnable()
     {
-        if (rect == null) return;
-
         tween?.Kill();
-
-        // Force invisible BEFORE layout & render
         rect.localScale = Vector3.zero;
-
-        // Wait 1 frame so Canvas + Layout settle
-        StartCoroutine(PlayScaleInNextFrame());
+        StartCoroutine(PlayNextFrame());
     }
 
-    private IEnumerator PlayScaleInNextFrame()
+    private IEnumerator PlayNextFrame()
     {
-        yield return null; // ← critical line
+        yield return null;
 
         tween = rect
-            .DOScale(defaultScale, duration)
+            .DOScale(DefaultScale, duration)
             .SetEase(ease)
-            .SetUpdate(true); // works even if timescale = 0
+            .SetUpdate(true);
     }
 
     private void OnDisable()

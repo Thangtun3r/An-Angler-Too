@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private FishingCast fishingCast;
     public CharacterController characterController;
 
-    // Track who is currently locking the player
+    // Lock flags (OWNED ONLY by their systems)
     private bool inventoryOpen;
     private bool shopOpen;
 
@@ -40,12 +40,6 @@ public class Player : MonoBehaviour
         StoreYarn.OnStoreStateChanged -= HandleShopState;
     }
 
-    private void HandleShopState(bool isOpen)
-    {
-        shopOpen = isOpen;
-        RefreshPlayerState();
-    }
-
     private void Start()
     {
         if (!CursorLockManager.IsUnlockedBySomeone)
@@ -60,24 +54,14 @@ public class Player : MonoBehaviour
     private void HandleInventoryToggle(bool isOpen)
     {
         inventoryOpen = isOpen;
-
-        // FIX: inventory opening clears shop lock
-        if (inventoryOpen && shopOpen)
-            shopOpen = false;
-
         RefreshPlayerState();
     }
 
     // ---------------- Shop ----------------
 
-    private void HandleShopToggle()
+    private void HandleShopState(bool isOpen)
     {
-        shopOpen = !shopOpen;
-
-        // FIX: shop opening clears inventory lock
-        if (shopOpen && inventoryOpen)
-            inventoryOpen = false;
-
+        shopOpen = isOpen;
         RefreshPlayerState();
     }
 
@@ -85,21 +69,22 @@ public class Player : MonoBehaviour
 
     private void RefreshPlayerState()
     {
-        if (inventoryOpen || shopOpen)
+        // Shop has highest priority
+        if (shopOpen)
         {
-            DisablePlayer(
-                inventoryOpen ? PlayerLockSource.Inventory : PlayerLockSource.Shop
-            );
-        }
-        else
-        {
-            EnablePlayer(
-                inventoryOpen ? PlayerLockSource.Inventory :
-                shopOpen ? PlayerLockSource.Shop :
-                PlayerLockSource.System
-            );
+            DisablePlayer(PlayerLockSource.Shop);
+            return;
         }
 
+        // Inventory is second priority
+        if (inventoryOpen)
+        {
+            DisablePlayer(PlayerLockSource.Inventory);
+            return;
+        }
+
+        // No locks remaining
+        EnablePlayer(PlayerLockSource.System);
     }
 
     // ---------------- Player Control ----------------
@@ -118,8 +103,8 @@ public class Player : MonoBehaviour
 
     public void EnablePlayer(PlayerLockSource source = PlayerLockSource.Unknown)
     {
-        // 🔒 Guard: don't allow enable if something still owns the lock
-        if (inventoryOpen || shopOpen)
+        // Absolute safety guard (should never hit now)
+        if (shopOpen || inventoryOpen)
         {
             UnityEngine.Debug.Log(
                 $"<color=yellow>[Player ENABLE BLOCKED]</color> by <b>{source}</b> " +
@@ -138,8 +123,7 @@ public class Player : MonoBehaviour
         if (characterController != null) characterController.enabled = true;
     }
 
-
-    // ---------------- Partial Control (DEPENDENCY SAFE) ----------------
+    // ---------------- Partial Control ----------------
 
     public void FreezeMovementOnly()
     {
