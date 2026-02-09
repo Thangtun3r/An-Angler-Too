@@ -19,5 +19,5 @@ MonoBehaviour:
   item_prefab: {fileID: 5018792642928505626, guid: b8daaa40c9764dd45b1e38df359ed7f4,
     type: 3}
   ItemDescription: 'Don''t you see the sign? Follow the rules sometimes. '
-  HintDescription: Appear in dangerous places. I highly recommend not to touch its
-    habitant.
+  HintDescription: Appear in dangerous places. Highly recommended not to touch it
+    and its habitant
