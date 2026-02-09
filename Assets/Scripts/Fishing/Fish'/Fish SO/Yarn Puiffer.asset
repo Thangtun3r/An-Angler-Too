@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
+  m_Name: Yarn Puiffer
+  m_EditorClassIdentifier: 
+  isQuestItem: 0
+  itemID: YarnPuffer
+  item_name: Yarn Puffer
+  item_sprite: {fileID: 21300000, guid: 81f3791b4b1e78e4c927f019eced28c5, type: 3}
+  item_prefab: {fileID: 674521306174499735, guid: e30672ffe16b4714daf88888a1dbb319,
+    type: 3}
+  ItemDescription: An invertebrate specie that is... well, stuck in a bucket. Poor
+    'em.
+  HintDescription: Hmmmm. BUCKET Octopus, where could it be?
