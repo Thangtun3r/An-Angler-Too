@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1642834831901907185}
   - component: {fileID: 588560329383281475}
   - component: {fileID: 2582239297714671918}
+  - component: {fileID: 4854166198933226299}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -171,6 +172,20 @@ MonoBehaviour:
       Data3: 1767972740
       Data4: 258782515
     Path: event:/UI/UI_Hover
+  <uiPurchase>k__BackingField:
+    Guid:
+      Data1: -1188258187
+      Data2: 1304037467
+      Data3: -615923027
+      Data4: 234226206
+    Path: event:/UI_Purchase
+  <uiError>k__BackingField:
+    Guid:
+      Data1: 1686963846
+      Data2: 1209985985
+      Data3: -570733159
+      Data4: 929015785
+    Path: event:/UI_Error
 --- !u!114 &2582239297714671918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +198,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ab12cb94b4dc9489e3169ff25e6200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4854166198933226299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035389132345453196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470b096ed640ab540921c05e810045a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}

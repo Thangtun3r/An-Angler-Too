@@ -28,6 +28,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference uiDiscard { get; private set; }
     [field: SerializeField] public EventReference uiPageTurn { get; private set; }
     [field: SerializeField] public EventReference uiHover { get; private set; }
+    [field: SerializeField] public EventReference uiPurchase { get; private set; }
+    [field: SerializeField] public EventReference uiError { get; private set; }
 
     public static FMODEvents Instance { get; private set; }
 

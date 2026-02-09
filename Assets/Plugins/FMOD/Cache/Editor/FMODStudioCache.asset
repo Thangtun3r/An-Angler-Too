@@ -258,7 +258,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639062862056112672
+  lastModified: 639062883440785803
   FileSizes: []
   Exists: 1
 --- !u!114 &-1457195843367540547
@@ -303,10 +303,10 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639061966888743237
+  lastModified: 639062882075197571
   FileSizes:
   - Name: 
-    Value: 1682
+    Value: 1782
   Exists: 1
 --- !u!114 &-681353549513421764
 MonoBehaviour:
@@ -377,7 +377,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639061966888733231
+  lastModified: 639062882075197571
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -416,13 +416,15 @@ MonoBehaviour:
   - {fileID: -5579020713414530320}
   - {fileID: -1457195843367540547}
   - {fileID: -5990398220337934178}
+  - {fileID: 4341105742526149902}
+  - {fileID: 3716025071971409031}
   EditorParameters: []
   MasterBanks:
   - {fileID: -623608912394839629}
   StringsBanks:
   - {fileID: -1115764618773716170}
   cacheVersion: 131849
-  cacheTime: 639062862056112672
+  cacheTime: 639062883440785803
   SerializableEventsDict:
   - key: event:/Bob/Bob Talk
     index: 0
@@ -462,6 +464,10 @@ MonoBehaviour:
     index: 17
   - key: event:/Fishing Rod_Rollback_Retrieved
     index: 18
+  - key: event:/UI_Purchase
+    index: 19
+  - key: event:/UI_Error
+    index: 20
 --- !u!114 &2375196765365971747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +495,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1800
+--- !u!114 &3716025071971409031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI_Error
+  m_EditorClassIdentifier: 
+  Path: event:/UI_Error
+  Guid:
+    Data1: 1686963846
+    Data2: 1209985985
+    Data3: -570733159
+    Data4: 929015785
+  Banks:
+  - {fileID: -1767729818975953168}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 850
 --- !u!114 &4143766926723107017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +549,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 280
+--- !u!114 &4341105742526149902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI_Purchase
+  m_EditorClassIdentifier: 
+  Path: event:/UI_Purchase
+  Guid:
+    Data1: -1188258187
+    Data2: 1304037467
+    Data3: -615923027
+    Data4: 234226206
+  Banks:
+  - {fileID: -1767729818975953168}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1025
 --- !u!114 &4862517186845859802
 MonoBehaviour:
   m_ObjectHideFlags: 0

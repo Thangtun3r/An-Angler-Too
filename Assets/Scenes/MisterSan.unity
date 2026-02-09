@@ -2953,6 +2953,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4854166198933226299, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 2086939195}
     - target: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
         type: 3}
       propertyPath: m_Name
@@ -2961,11 +2966,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9035389132345453196, guid: 2a9812fdf1e123a4c82cfb7a2455b71b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 523181237}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9812fdf1e123a4c82cfb7a2455b71b, type: 3}
 --- !u!1 &446206352
 GameObject:
@@ -3832,19 +3833,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 445476432}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &523181237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523181233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470b096ed640ab540921c05e810045a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 2086939195}
 --- !u!43 &524760251
 Mesh:
   m_ObjectHideFlags: 0
