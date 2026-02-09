@@ -17,8 +17,8 @@ TRADER: Sup, bud. You give me fish, I give you gadgets.
 title: Trader
 when: always
 ---
-TRADER: Sup, bud. You give me fish, I give you gadgets.
--> Show me what you got.
+TRADER: Sup, bud. You give me fish, I give you gadgets. Press TAB, open inventory to check what your gadgets does.
+-> Show me what you got for sale.
     <<open_store>>
 -> Bob guy said you got a good fishing rod?
     TRADER: Less talk, more trade!
@@ -29,7 +29,8 @@ TRADER: Sup, bud. You give me fish, I give you gadgets.
     TRADER: I'll take note. Thanks, bud.
 ===
 
-title: Final
+title: Trader
+when: $LegendaryRod == true
 ---
 <<turnFinalOn DoorFinal>>
 TRADER: Before you take the rod, lemme tell ya this.
@@ -41,4 +42,9 @@ TRADER: Here's yur rod, bud, go achieve your dream.
 -> Thank you so much, sir!
     TRADER: [Nods] Happy fishing, champ.
     <<changeRodMat RodMatChange>>
+===
+
+title: Goodbye
+---
+<<endGame EndingScene>>
 ===

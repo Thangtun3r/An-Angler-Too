@@ -16,6 +16,9 @@ position: 234,-374
 
 //ShopKeeper
 <<declare $LaidCat = false>>
+<<declare $LegendaryRod = false>>
+
+//
 ===
 
 title: Start
