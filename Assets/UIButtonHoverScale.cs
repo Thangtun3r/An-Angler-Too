@@ -17,7 +17,7 @@ public class UIButtonHoverScale : MonoBehaviour,
     [Header("Timing")]
     [SerializeField] private float duration = 0.12f;
 
-    private Vector3 defaultScale;
+    private UIScaleInOnEnable scaleOwner;
     private Tween tween;
     private bool isHovering;
 
@@ -26,42 +26,35 @@ public class UIButtonHoverScale : MonoBehaviour,
         if (target == null)
             target = transform as RectTransform;
 
-        defaultScale = target.localScale;
+        scaleOwner = target.GetComponent<UIScaleInOnEnable>();
     }
 
-    // ---------------- Hover ----------------
+    private Vector3 BaseScale =>
+        scaleOwner != null ? scaleOwner.DefaultScale : target.localScale;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         isHovering = true;
-        AnimateScale(defaultScale * hoverScale, Ease.OutBack);
+        Animate(BaseScale * hoverScale, Ease.OutBack);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         isHovering = false;
-        AnimateScale(defaultScale, Ease.OutSine);
+        Animate(BaseScale, Ease.OutSine);
     }
-
-    // ---------------- Press ----------------
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        AnimateScale(defaultScale * pressScale, Ease.OutSine);
+        Animate(BaseScale * pressScale, Ease.OutSine);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Return to hover if still hovering, otherwise normal
-        AnimateScale(
-            isHovering ? defaultScale * hoverScale : defaultScale,
-            Ease.OutBack
-        );
+        Animate(isHovering ? BaseScale * hoverScale : BaseScale, Ease.OutBack);
     }
 
-    // ---------------- Core ----------------
-
-    void AnimateScale(Vector3 scale, Ease ease)
+    private void Animate(Vector3 scale, Ease ease)
     {
         tween?.Kill();
         tween = target.DOScale(scale, duration).SetEase(ease);
