@@ -1,3 +1,6 @@
+
+using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -9,6 +12,7 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
     [SerializeField] private string triggerTag;
     [SerializeField] private int attempts;
     [SerializeField] private int attemptsCounter = 0;
+    [SerializeField] private float waitTime;
     void Awake()
     {
         dialogueRunner = GameObject.FindFirstObjectByType<DialogueRunner>();
@@ -36,8 +40,18 @@ public class OnCollisionExitTriggerDialogue : MonoBehaviour
     {
         if (attemptsCounter >= attempts)
         {
-            dialogueRunner.StartDialogue(node);
             attemptsCounter = 0;
+            StartCoroutine("StartDialogue");
         }
+    }
+
+    IEnumerator StartDialogue()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Player playerScript  = player.GetComponent<Player>();
+        playerScript.DisablePlayer();
+
+        yield return new WaitForSeconds(waitTime);
+        dialogueRunner.StartDialogue(node);
     }
 }

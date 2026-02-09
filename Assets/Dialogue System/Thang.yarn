@@ -1,7 +1,7 @@
 ﻿title: Trader
 when: once
 ---
-<<moveDown van>>
+<<moveDown LastScenario>>
 TRADER: Sup, bud. You give me fish, I give you gadgets.
 -> Show me what you got.
     <<open_store>>
@@ -29,10 +29,10 @@ TRADER: Sup, bud. You give me fish, I give you gadgets. Press TAB, open inventor
     TRADER: I'll take note. Thanks, bud.
 ===
 
-title: Trader
-when: $LegendaryRod == true
+title: Final
+when: once
 ---
-<<turnFinalOn DoorFinal>>
+<<turnFinalOn LastScenario>>
 TRADER: Before you take the rod, lemme tell ya this.
 TRADER: The LEGENDARY FISH is inside my van.
 TRADER: Here's yur rod, bud, go achieve your dream.

@@ -15,7 +15,10 @@ public class RodMaterialChange : MonoBehaviour
     public float colliderSize;
 
     [Header("Fish Settings")]
+    [Tooltip("Fish that spawns at the mirrored collider (legendary target, etc).")]
     public ItemSO fishToCatch;
+    [Tooltip("Optional: override fish SO specifically for the mirrored guy; falls back to Fish To Catch if null.")]
+    public ItemSO mirroredGuyFish;
 
     public Material alwaysOnTopMaterial;
     private GameObject mirrorCollider;
@@ -72,13 +75,15 @@ public class RodMaterialChange : MonoBehaviour
         mirrorCollider.layer = groundLayer;
 
         FishContainer fishContainer = mirrorCollider.AddComponent<FishContainer>();
-        if (fishToCatch == null)
+        ItemSO fish = mirroredGuyFish != null ? mirroredGuyFish : fishToCatch;
+
+        if (fish == null)
         {
             Debug.LogWarning("RodMaterialChange: fishToCatch is not set. Bobber will land but no fish will be caught.");
         }
         else
         {
-            fishContainer.fishSO = fishToCatch;
+            fishContainer.fishSO = fish;
         }
 
         UpdateMirrorPosition();
