@@ -74,6 +74,7 @@ public class UIFishSlot : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        UIFishSlotEvents.OnHoverEnter?.Invoke(this);
         if (selectedIndex != -1)
         {
             backgroundVisual.DOKill();
@@ -91,6 +92,8 @@ public class UIFishSlot : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        UIFishSlotEvents.OnHoverExit?.Invoke(this);
+
         backgroundVisual.DOKill();
         backgroundVisual.DOColor(normalTint, tintDuration);
         

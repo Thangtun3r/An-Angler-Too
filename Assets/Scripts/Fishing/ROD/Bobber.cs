@@ -20,9 +20,15 @@ public class Bobber : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
+    private float timeSinceCast;
+    private const float MIN_AIR_TIME = 0.1f;
+
     private void FixedUpdate()
     {
         if (hasLanded) return;
+        
+        timeSinceCast += Time.fixedDeltaTime;
+        if (timeSinceCast < MIN_AIR_TIME) return;
         
         float stepDistance = rb.velocity.magnitude * Time.fixedDeltaTime;
         Vector3 moveDirection = rb.velocity.normalized;
@@ -53,6 +59,7 @@ public class Bobber : MonoBehaviour
 
     public void ResetBobber()
     {
+        timeSinceCast = 0f;
         rb.isKinematic = false;
         hasLanded = false;
         currentFish = null;

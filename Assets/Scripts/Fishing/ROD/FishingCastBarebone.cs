@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using FMOD.Studio;
@@ -5,6 +6,9 @@ using FMODUnity;
 
 public class FishingCast : MonoBehaviour
 {
+    
+    
+    public static event Action OnForceReel;
 
     [SerializeField] private Camera cam;   // assign in Inspector (or use Camera.main)
     public float aimDistance = 25f;
@@ -48,10 +52,49 @@ public class FishingCast : MonoBehaviour
         if (rodAnimationController == null)
             rodAnimationController = GetComponentInChildren<RodAnimationController>();
 
+        // Cache camera for WebGL performance/reliability
+        if (cam == null) cam = Camera.main;
+
+        // Validation to prevent potential NREs
+        if (rodHead == null) Debug.LogError("FishingCast: rodHead is not assigned!");
+        if (bobberRT == null) Debug.LogError("FishingCast: bobberRT is not assigned!");
+
+        // Ensure we don't start in a talking state
+        isTalking = false;
+
         line.positionCount = 2;
         line.useWorldSpace = true;
         AttachToRodIdle();
     }
+
+    private void OnEnable()
+    {
+        OnForceReel += HandleForceReel;
+    }
+    
+    
+    private void OnDisable()
+    {
+        StopLoop(ref reelingIdleInstance);
+        StopLoop(ref rollbackLoopInstance);
+        hasFishToPullUp = false;
+        rollbackActive = false;
+        StopRollbackStopRoutine();
+        
+        OnForceReel -= HandleForceReel;
+    }
+
+
+    
+    private void HandleForceReel()
+    {
+        if (isTalking) return;
+        if (!hasCasted) return;
+        if (isReeling) return;
+
+        StartReel();
+    }
+
 
     private void Update()
     {
@@ -74,6 +117,7 @@ public class FishingCast : MonoBehaviour
 
     private void CastRod()
     {
+        Debug.Log("FishingCast: CastRod called");
         hasCasted = true;
         isReeling = false;
         hasFishToPullUp = false;
@@ -113,6 +157,7 @@ public class FishingCast : MonoBehaviour
 
     private void StartReel()
     {
+        Debug.Log("FishingCast: StartReel called");
         bool fishBiting = bobber.currentFish != null && bobber.currentFish.IsBiting();
         if (fishBiting)
         {
@@ -202,15 +247,6 @@ public class FishingCast : MonoBehaviour
     {
         line.SetPosition(0, rodHead.position);
         line.SetPosition(1, bobberRT.transform.position);
-    }
-
-    private void OnDisable()
-    {
-        StopLoop(ref reelingIdleInstance);
-        StopLoop(ref rollbackLoopInstance);
-        hasFishToPullUp = false;
-        rollbackActive = false;
-        StopRollbackStopRoutine();
     }
 
     private void ScheduleRollbackStop()
