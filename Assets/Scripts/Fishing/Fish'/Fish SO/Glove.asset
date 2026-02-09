@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
   m_Name: Glove
   m_EditorClassIdentifier: 
-  isQuestItem: 1
+  isQuestItem: 0
+  itemID: 
   item_name: Glove
   item_sprite: {fileID: -1192567643, guid: 58a0b67054e749c4dbe561218b1530f6, type: 3}
   item_prefab: {fileID: 0}
   ItemDescription: 'This is an glove
 
 '
+  HintDescription: 

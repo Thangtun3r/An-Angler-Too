@@ -108,33 +108,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1610
---- !u!114 &-6362796741970851109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Finale OST
-  m_EditorClassIdentifier: 
-  Path: event:/Finale OST
-  Guid:
-    Data1: 491802059
-    Data2: 1075513295
-    Data3: 1897830294
-    Data4: -1516925451
-  Banks:
-  - {fileID: -1767729818975953168}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 60000
 --- !u!114 &-5990398220337934178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +285,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639063004085975932
+  lastModified: 639063011175681408
   FileSizes: []
   Exists: 1
 --- !u!114 &-1457195843367540547
@@ -357,7 +330,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639063004085094562
+  lastModified: 639063011174611109
   FileSizes:
   - Name: 
     Value: 2130
@@ -458,7 +431,7 @@ MonoBehaviour:
   Path: Assets/FMOD Builds/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639062752368944271
+  lastModified: 639062800009915800
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -506,14 +479,14 @@ MonoBehaviour:
   - {fileID: 1949775098638827679}
   - {fileID: 5459122972811943504}
   - {fileID: 3385919364152315934}
-  - {fileID: -6362796741970851109}
+  - {fileID: 5127678179411544117}
   EditorParameters: []
   MasterBanks:
   - {fileID: -623608912394839629}
   StringsBanks:
   - {fileID: -1115764618773716170}
   cacheVersion: 131849
-  cacheTime: 639063004085975932
+  cacheTime: 639063011175681408
   SerializableEventsDict:
   - key: event:/Bob/Bob Talk
     index: 0
@@ -787,6 +760,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 30000
+--- !u!114 &5127678179411544117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Finale_OST
+  m_EditorClassIdentifier: 
+  Path: event:/Finale_OST
+  Guid:
+    Data1: 491802059
+    Data2: 1075513295
+    Data3: 1897830294
+    Data4: -1516925451
+  Banks:
+  - {fileID: -1767729818975953168}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 60000
 --- !u!114 &5459122972811943504
 MonoBehaviour:
   m_ObjectHideFlags: 0

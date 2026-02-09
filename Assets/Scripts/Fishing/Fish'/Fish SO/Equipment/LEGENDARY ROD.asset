@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3719dd15fb04a044ab5532c4673ef663, type: 3}
   m_Name: LEGENDARY ROD
   m_EditorClassIdentifier: 
-  isQuestItem: 1
+  isQuestItem: 0
   itemID: LegendaryRod
   item_name: LEGENDARY ROD
   item_sprite: {fileID: 21300000, guid: 1be9f7172a0604043bf40da7c52a4301, type: 3}

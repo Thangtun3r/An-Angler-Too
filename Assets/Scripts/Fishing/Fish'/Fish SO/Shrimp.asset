@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Shrimp
   m_EditorClassIdentifier: 
   isQuestItem: 0
+  itemID: 
   item_name: Shrimp
   item_sprite: {fileID: 1777253496, guid: 7f0ce61fc5059cc4d81b1c914cc5005d, type: 3}
   item_prefab: {fileID: 6885332304120830621, guid: aedb99c3b467e0949a8ce49135b0b556,
     type: 3}
   ItemDescription: 
+  HintDescription: 
