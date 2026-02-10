@@ -10,20 +10,15 @@ public class HoverBoard_Equipment : MonoBehaviour, IEquipment
     [SerializeField] private float speedMultiplier = 1.5f;
 
     private bool isEquipped;
-    private float cachedBaseSpeed;
+    private float baseSpeed; // true original speed
 
     private void Awake()
     {
         if (hoverboard != null)
             hoverboard.SetActive(false);
 
-        CacheBaseSpeed();
-    }
-
-    private void CacheBaseSpeed()
-    {
         if (playerMovement != null)
-            cachedBaseSpeed = playerMovement.speed;
+            baseSpeed = playerMovement.speed;
     }
 
     /// <summary>
@@ -38,12 +33,9 @@ public class HoverBoard_Equipment : MonoBehaviour, IEquipment
 
         if (playerMovement != null)
         {
-            // Re-cache base speed in case something else modified it
-            CacheBaseSpeed();
-
             playerMovement.speed = isEquipped
-                ? cachedBaseSpeed * speedMultiplier
-                : cachedBaseSpeed;
+                ? baseSpeed * speedMultiplier
+                : baseSpeed;
         }
 
         if (hoverboard != null)
