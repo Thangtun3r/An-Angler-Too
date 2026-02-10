@@ -23,13 +23,12 @@ position: 458,-112
 ---
 <<checkForItem Obscur bluePaint>>
 YOU: [Squint your eye at the empty canvas]
-
 <<if $bluePaint>>
--> Okay
-    YOU: *give it some simple strokes*
+->YOU: Okay! give it some strokes with the brush
     <<set $ObscurQuestComplete = true>>
+    <<changeMaterial Obscur>>
 <<else>>
-    OBSCUR: *Nothing special*
+    OBSCUR: Nothing special
 <<endif>>
 ===
 
