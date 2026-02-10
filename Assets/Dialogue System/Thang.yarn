@@ -20,15 +20,18 @@ when: always
 ---
 <<shopkeeperTalk>>
 TRADER: Sup, bud. You give me fish, I give you gadgets. Press TAB, open inventory to check what your gadgets does.
+
 -> Show me what you got for sale.
     <<open_store>>
+-> I took the cat to the church over there. <<if $LaidCat == true>>
+    TRADER: I'll take note. Thanks, bud.
 -> Bob guy said you got a good fishing rod?
     TRADER: Less talk, more trade!
     <<open_store>>
 -> What's with the cat?
     TRADER: You give me fish, I give you gadgets. Then I give the cat fish.
--> I took the cat to the church over there. <<if $LaidCat == true>>
-    TRADER: I'll take note. Thanks, bud.
+-> Bye.
+    TRADER: See ya.
 ===
 
 title: Final

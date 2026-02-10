@@ -13,6 +13,7 @@ position: 234,-374
 
 //BSOD scenario
 <<declare $JellyElectric = false>>
+<<declare $PuterPutDown = false>>
 
 //ShopKeeper
 <<declare $LaidCat = false>>
@@ -201,6 +202,7 @@ PUTER: Ohh... The headache...
 
 <<if $JellyElectric>>
 -> I'll short the system. Good night, brother.
+    <<set $PuterPutDown = true>>
     <<changeMaterial Screen>>
     <<changeMaterial Puter>>
     <<puterBomb>>
@@ -208,6 +210,12 @@ PUTER: Ohh... The headache...
 <<else>>
 YOU: Hang on, brother.
 <<endif>>
+===
+
+title:Puter
+when: $PuterPutDown == true
+---
+YOU: BSOD... RIP brother.
 ===
 
 //______________________________________________

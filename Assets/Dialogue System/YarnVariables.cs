@@ -46,6 +46,12 @@ namespace Yarn.Unity.ExposedVariables {
             set => this.SetValue<bool>("$JellyElectric", value);
         }
 
+        // Accessor for Bool $PuterPutDown
+        public bool PuterPutDown {
+            get => this.GetValueOrDefault<bool>("$PuterPutDown");
+            set => this.SetValue<bool>("$PuterPutDown", value);
+        }
+
         // Accessor for Bool $LaidCat
         public bool LaidCat {
             get => this.GetValueOrDefault<bool>("$LaidCat");
