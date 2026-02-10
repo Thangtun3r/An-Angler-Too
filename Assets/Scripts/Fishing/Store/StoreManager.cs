@@ -49,7 +49,10 @@ public class StoreManager : MonoBehaviour
 
     public void BuyItem()
     {
-        if (currentStoreSlot == null || currentStoreSlot.soldOut)
+        if (currentStoreSlot == null)
+            return;
+
+        if (currentStoreSlot.soldOut && !currentStoreSlot.allowRepeatPurchase)
             return;
 
         if (!CanAfford(playerInventory, currentStoreSlot))
@@ -64,8 +67,9 @@ public class StoreManager : MonoBehaviour
 
         if (playerInventory.AddItem(currentStoreSlot.shopItem))
         {
-            currentStoreSlot.soldOut = true;
-            currentStoreSlot.iconImage.color = Color.gray;
+            if (!currentStoreSlot.allowRepeatPurchase)
+                currentStoreSlot.MarkSoldOut();
+
             if (FMODEvents.Instance != null)
                 PlayUiOneShot(FMODEvents.Instance.uiPurchase);
         }
@@ -75,9 +79,8 @@ public class StoreManager : MonoBehaviour
 
     public void CloseStore()
     {
-        StoreYarn.CloseStore(); // ✅ CORRECT
+        StoreYarn.CloseStore();
     }
-
 
     // ---------------- COST ----------------
 
@@ -104,9 +107,7 @@ public class StoreManager : MonoBehaviour
         }
 
         foreach (var cost in slot.costs)
-        {
             RemoveItemAmount(inv, cost.fish, cost.amount);
-        }
     }
 
     int CountItem(FishInventory inv, ItemSO item)
@@ -157,7 +158,6 @@ public class StoreManager : MonoBehaviour
         for (int i = 0; i < inv.SlotCount && removedTypes.Count < amount; i++)
         {
             var fish = inv.GetItem(i);
-
             if (fish != null && !fish.isQuestItem && !removedTypes.Contains(fish))
             {
                 inv.RemoveAt(i);
@@ -172,7 +172,6 @@ public class StoreManager : MonoBehaviour
             return $"Cost:\n{slot.anyFishAmount}x Different fish";
 
         string text = "Cost:\n";
-
         foreach (var cost in slot.costs)
             text += $"{cost.amount}x {cost.fish.item_name}\n";
 

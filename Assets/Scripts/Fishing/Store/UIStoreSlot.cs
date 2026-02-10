@@ -12,12 +12,17 @@ public class FishCost
     public int amount;
 }
 
-public class UIStoreSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class UIStoreSlot : MonoBehaviour,
+    IPointerClickHandler,
+    IPointerEnterHandler
 {
+    [Header("Item")]
     public Image iconImage;
-    public Sprite iconSprite;
     public ItemSO shopItem;
-    public bool soldOut = false;
+
+    [Header("Purchase Rules")]
+    public bool allowRepeatPurchase = false;
+    [HideInInspector] public bool soldOut = false;
 
     [Header("Specific Fish Costs")]
     public List<FishCost> costs = new List<FishCost>();
@@ -26,10 +31,10 @@ public class UIStoreSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public bool acceptAnyFish = false;
     public int anyFishAmount = 0;
 
-    // EXISTING (used by StoreManager / popup)
+    // Existing (used by StoreManager / popup)
     public static event Action<UIStoreSlot, ItemSO> OnStoreSlotSelected;
 
-    // NEW (used ONLY by hand gesture)
+    // Used for gesture / hand feedback
     public static event Action<UIStoreSlot> OnStoreSlotClickedForGesture;
 
     private void Start()
@@ -40,13 +45,13 @@ public class UIStoreSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (shopItem == null || soldOut)
+        if (shopItem == null)
             return;
 
-        // Existing behaviour (do NOT break)
-        OnStoreSlotSelected?.Invoke(this, shopItem);
+        if (soldOut && !allowRepeatPurchase)
+            return;
 
-        // NEW: click-only gesture signal
+        OnStoreSlotSelected?.Invoke(this, shopItem);
         OnStoreSlotClickedForGesture?.Invoke(this);
     }
 
@@ -54,6 +59,16 @@ public class UIStoreSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (FMODEvents.Instance != null)
             PlayUiOneShot(FMODEvents.Instance.uiHover);
+    }
+
+    public void MarkSoldOut()
+    {
+        if (allowRepeatPurchase)
+            return;
+
+        soldOut = true;
+        if (iconImage != null)
+            iconImage.color = Color.gray;
     }
 
     private void PlayUiOneShot(EventReference evt)
