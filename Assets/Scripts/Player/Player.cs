@@ -6,7 +6,8 @@ public enum PlayerLockSource
     Unknown,
     Inventory,
     Shop,
-    System
+    System,
+    PauseMenu
 }
 
 public class Player : MonoBehaviour
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     // Lock flags (OWNED ONLY by their systems)
     private bool inventoryOpen;
     private bool shopOpen;
+    private bool pauseMenuOpen;
 
     private void Awake()
     {
@@ -65,6 +67,14 @@ public class Player : MonoBehaviour
         RefreshPlayerState();
     }
 
+    // ---------------- Pause Menu ----------------
+
+    private void HandlePauseMenuState(bool isOpen)
+    {
+        pauseMenuOpen = isOpen;
+        RefreshPlayerState();
+    }
+
     // ---------------- Core Logic ----------------
 
     private void RefreshPlayerState()
@@ -76,7 +86,14 @@ public class Player : MonoBehaviour
             return;
         }
 
-        // Inventory is second priority
+        // Pause menu is second priority
+        if (pauseMenuOpen)
+        {
+            DisablePlayer(PlayerLockSource.PauseMenu);
+            return;
+        }
+
+        // Inventory is third priority
         if (inventoryOpen)
         {
             DisablePlayer(PlayerLockSource.Inventory);
@@ -104,11 +121,11 @@ public class Player : MonoBehaviour
     public void EnablePlayer(PlayerLockSource source = PlayerLockSource.Unknown)
     {
         // Absolute safety guard (should never hit now)
-        if (shopOpen || inventoryOpen)
+        if (shopOpen || inventoryOpen || pauseMenuOpen)
         {
             UnityEngine.Debug.Log(
                 $"<color=yellow>[Player ENABLE BLOCKED]</color> by <b>{source}</b> " +
-                $"(inventoryOpen={inventoryOpen}, shopOpen={shopOpen})"
+                $"(inventoryOpen={inventoryOpen}, shopOpen={shopOpen}, pauseMenuOpen={pauseMenuOpen})"
             );
             return;
         }
