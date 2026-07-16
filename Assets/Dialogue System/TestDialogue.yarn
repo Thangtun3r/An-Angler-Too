@@ -74,7 +74,8 @@ BOB: Did you do it? You can press TAB to check your inventory.
 -> This starfish is the steering wheel?
     <<bobTalk1>>
     BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
-    YOU: Wait, where are you going? Where's the shopkeeper?
+    BOB: About the shopkeeper, look for the floating van.
+    BOB: By the way, did you notice anything about my clothing?... No? SO LONG!
         <<bobFlyAway Bob>>
 
 <<else>>
