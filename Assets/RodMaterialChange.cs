@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 using Yarn.Unity;
 
 public class RodMaterialChange : MonoBehaviour
@@ -13,6 +15,7 @@ public class RodMaterialChange : MonoBehaviour
 
     [Header("Collider Settings")]
     public float colliderSize;
+    public float colliderHeight;
 
     [Header("Fish Settings")]
     [Tooltip("Fish that spawns at the mirrored collider (legendary target, etc).")]
@@ -64,8 +67,11 @@ public class RodMaterialChange : MonoBehaviour
 
         mirrorCollider = new GameObject("MirroredGroundCollider");
 
-        SphereCollider col = mirrorCollider.AddComponent<SphereCollider>();
-        col.radius = colliderSize;
+        CapsuleCollider col = mirrorCollider.AddComponent<CapsuleCollider>();
+        col.radius = 1.6f;
+        col.height = 5.5f;
+        col.direction = 0;
+        col.center = new Vector3 (1.3f, 0f, 0f);
         col.isTrigger = false;
 
         int groundLayer = LayerMask.NameToLayer("Ground");
@@ -98,6 +104,7 @@ public class RodMaterialChange : MonoBehaviour
 
         mirroredPosition.y = player.position.y;
         mirrorCollider.transform.position = mirroredPosition;
+        mirrorCollider.transform.rotation = Quaternion.AngleAxis(270f, Vector3.up) * player.rotation;
     }
 
         void OnDrawGizmos()

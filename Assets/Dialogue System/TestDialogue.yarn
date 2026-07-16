@@ -38,10 +38,11 @@ title:Bob
 when: once
 position: 106,-88
 ---
-YOU: Hello good sir, rumour has brought me here searching for the LEGENDARY fish, you must know where it is?
+YOU: Hello good sir, rumour has brought me here searching for THE LEGENDARY fish, you must know where it is?
 <<bobTalk1>>
-BOB: The Fish? Ah yes, the shopkeeper has an idea. I can lead you to him, but first I need your help finding a new steering wheel.
--> Sure, I can help you find it.
+BOB: THE LEGENDARY Fish? You'll need the legendary fishing rod from the SHOPKEEPER first. 
+BOB: If you help me find my steering wheel, I'll lead you to him.
+-> Sure, I'll help you find it.
     <<bobTalk1>>
     BOB: Great! Just cast your line at the billboard behind me and reel in a fresh steering wheel.
         <<jump Tutorial>>
@@ -73,9 +74,10 @@ BOB: Did you do it? You can press TAB to check your inventory.
 <<if $StarringWheel>>
 -> This starfish is the steering wheel?
     <<bobTalk1>>
-    BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in the LEGENDARY fish in no time!
-    BOB: About the shopkeeper, look for the floating van.
-    BOB: By the way, did you notice anything about my clothing?... No? SO LONG!
+    BOB: Great work! Keep it up young man, keep casting your line into any and all things that is BLUE! You'll be reeling in THE LEGENDARY fish in no time!
+    BOB: I'll be moving now, young lad. Follow my direction, and keep an eye out for the FLOATING VAN. That's where you'll find the SHOPKEEPER.
+    BOB: Up and away!
+    YOU: Wait! You're going too fast!
         <<bobFlyAway Bob>>
 
 <<else>>
