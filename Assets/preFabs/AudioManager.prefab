@@ -88,6 +88,13 @@ MonoBehaviour:
       Data3: -749295731
       Data4: -1342715832
     Path: event:/Fishing Rod_Fish Caught Loop
+  <fishingRodFishSwam>k__BackingField:
+    Guid:
+      Data1: -661831334
+      Data2: 1120823205
+      Data3: 2058097559
+      Data4: -1019176532
+    Path: event:/Fishing Rod_Fish Swam
   <fishingRodReelingLoop>k__BackingField:
     Guid:
       Data1: 1069329517

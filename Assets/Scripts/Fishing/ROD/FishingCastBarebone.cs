@@ -348,6 +348,10 @@ public class FishingCast : MonoBehaviour
         if (fishBiteStartedThisCast && !isReeling && !fishEscapedThisCast)
         {
             fishEscapedThisCast = true;
+            var events = FMODEvents.Instance;
+            if (events != null)
+                PlayOneShot(events.fishingRodFishSwam);
+
             notifyFailedCatchWhenReelCompletes = true;
             StartReel();
         }

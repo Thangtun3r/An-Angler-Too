@@ -14,6 +14,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference fishingRodReelingThrow { get; private set; }
     [field: SerializeField] public EventReference fishingRodReelingIdle { get; private set; }
     [field: SerializeField] public EventReference fishingRodFishCaughtLoop { get; private set; }
+    [field: SerializeField] public EventReference fishingRodFishSwam { get; private set; }
     [field: SerializeField] public EventReference fishingRodReelingLoop { get; private set; }
     [field: SerializeField] public EventReference fishingPullUp { get; private set; }
     [field: SerializeField] public EventReference fishingRodRollback { get; private set; }
