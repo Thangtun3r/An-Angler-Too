@@ -34,12 +34,14 @@ public class Player : MonoBehaviour
     {
         PlayerInventory.OnInventoryToggled += HandleInventoryToggle;
         StoreYarn.OnStoreStateChanged += HandleShopState;
+        PauseMenuController.OnPauseStateChanged += HandlePauseMenuState;
     }
 
     private void OnDisable()
     {
         PlayerInventory.OnInventoryToggled -= HandleInventoryToggle;
         StoreYarn.OnStoreStateChanged -= HandleShopState;
+        PauseMenuController.OnPauseStateChanged -= HandlePauseMenuState;
     }
 
     private void Start()

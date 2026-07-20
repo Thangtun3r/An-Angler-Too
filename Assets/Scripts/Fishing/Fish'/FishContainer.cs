@@ -9,7 +9,7 @@ public class FishContainer : MonoBehaviour, IFish
 
     [Header("Bite Timing")]
     private float minWaitTime = 2f;
-    private float maxWaitTime = 8f;
+    private float maxWaitTime = 4f;
     float biteWindow = 1f;
 
     public event System.Action OnFishBite;
