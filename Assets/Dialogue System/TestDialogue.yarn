@@ -30,6 +30,12 @@ WHEN NOT IN DIALOGUE, LEFT CLICK TO CAST YOUR LINE
 DIALOGUE WILL END AFTER THIS, CATCH A FISH
 ===
 
+title: FishFailedTutorial
+when: once
+---
+The fish swam away. Try to time your hooks more precisely!
+===
+
 
 //_______________________________________________
 

@@ -9,6 +9,7 @@ public class FishingCast : MonoBehaviour
     
     
     public static event Action OnForceReel;
+    public static event Action OnFishCatchFailed;
 
     [SerializeField] private Camera cam;   // assign in Inspector (or use Camera.main)
     public float aimDistance = 25f;
@@ -41,6 +42,10 @@ public class FishingCast : MonoBehaviour
     private bool isReeling;
     [HideInInspector] public bool isTalking;
     private bool hasFishToPullUp;
+    private bool fishBiteStartedThisCast;
+    private bool fishEscapedThisCast;
+    private bool notifyFailedCatchWhenReelCompletes;
+    private IFish trackedFish;
 
     private EventInstance reelingIdleInstance;
     private EventInstance rollbackLoopInstance;
@@ -70,6 +75,7 @@ public class FishingCast : MonoBehaviour
     private void OnEnable()
     {
         OnForceReel += HandleForceReel;
+        Bobber.OnBobberLanded += HandleBobberLanded;
     }
     
     
@@ -79,9 +85,12 @@ public class FishingCast : MonoBehaviour
         StopLoop(ref rollbackLoopInstance);
         hasFishToPullUp = false;
         rollbackActive = false;
+        notifyFailedCatchWhenReelCompletes = false;
         StopRollbackStopRoutine();
+        UnsubscribeFromTrackedFish();
         
         OnForceReel -= HandleForceReel;
+        Bobber.OnBobberLanded -= HandleBobberLanded;
     }
 
 
@@ -121,6 +130,10 @@ public class FishingCast : MonoBehaviour
         hasCasted = true;
         isReeling = false;
         hasFishToPullUp = false;
+        fishBiteStartedThisCast = false;
+        fishEscapedThisCast = false;
+        notifyFailedCatchWhenReelCompletes = false;
+        UnsubscribeFromTrackedFish();
 
         StopLoop(ref reelingIdleInstance);
         StopLoop(ref rollbackLoopInstance);
@@ -223,6 +236,13 @@ public class FishingCast : MonoBehaviour
                 PlayOneShot(events.fishingRodRollbackRetrieved);
             ScheduleRollbackStop();
             // Pull-up SFX is triggered immediately on successful catch (in StartReel).
+            fishBiteStartedThisCast = false;
+            fishEscapedThisCast = false;
+            UnsubscribeFromTrackedFish();
+            if (notifyFailedCatchWhenReelCompletes)
+                OnFishCatchFailed?.Invoke();
+
+            notifyFailedCatchWhenReelCompletes = false;
             hasFishToPullUp = false;
         }
     }
@@ -301,5 +321,45 @@ public class FishingCast : MonoBehaviour
             return;
 
         AudioManager.Instance.StopEventInstance(ref instance);
+    }
+
+    private void HandleBobberLanded()
+    {
+        fishBiteStartedThisCast = false;
+        fishEscapedThisCast = false;
+        UnsubscribeFromTrackedFish();
+
+        if (bobber == null || bobber.currentFish == null)
+            return;
+
+        trackedFish = bobber.currentFish;
+        trackedFish.OnFishBite += HandleFishBite;
+        trackedFish.OnFishGoAway += HandleFishGoAway;
+    }
+
+    private void HandleFishBite()
+    {
+        fishBiteStartedThisCast = true;
+        fishEscapedThisCast = false;
+    }
+
+    private void HandleFishGoAway()
+    {
+        if (fishBiteStartedThisCast && !isReeling && !fishEscapedThisCast)
+        {
+            fishEscapedThisCast = true;
+            notifyFailedCatchWhenReelCompletes = true;
+            StartReel();
+        }
+    }
+
+    private void UnsubscribeFromTrackedFish()
+    {
+        if (trackedFish == null)
+            return;
+
+        trackedFish.OnFishBite -= HandleFishBite;
+        trackedFish.OnFishGoAway -= HandleFishGoAway;
+        trackedFish = null;
     }
 }
