@@ -25486,6 +25486,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2871696563243249935, guid: 5c7b9b44621cab5428167e3a35c23628,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3130910266229795241, guid: 5c7b9b44621cab5428167e3a35c23628,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -27620,6 +27625,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2611351530803716594, guid: 8c54dc56755f85142809bb82b25a19da,
+        type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4399631680479928871, guid: 8c54dc56755f85142809bb82b25a19da,
         type: 3}
       propertyPath: m_Pivot.x
@@ -27724,6 +27734,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278630763570985984, guid: 8c54dc56755f85142809bb82b25a19da,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278630763570985984, guid: 8c54dc56755f85142809bb82b25a19da,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278630763570985984, guid: 8c54dc56755f85142809bb82b25a19da,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8369961590273762867, guid: 8c54dc56755f85142809bb82b25a19da,
         type: 3}

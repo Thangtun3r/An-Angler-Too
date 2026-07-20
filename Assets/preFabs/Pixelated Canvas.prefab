@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 3823209175602291473}
   - component: {fileID: 7278630763570985984}
   - component: {fileID: 6525415065116299078}
+  - component: {fileID: 4761823510185729942}
+  - component: {fileID: 2153449985308470164}
   m_Layer: 5
   m_Name: Pixelated Canvas
   m_TagString: Untagged
@@ -174,3 +176,40 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4761823510185729942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369961590273762867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d1a82f0f8f4d64a9f7d2c01e4b7a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  presenterName: Display Presenter Camera
+  clearFlags: 2
+  clearColor: {r: 0, g: 0, b: 0, a: 1}
+  targetDisplay: 0
+  depth: -1000
+  createInEditMode: 1
+--- !u!114 &2153449985308470164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369961590273762867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3aa46e4b9f4b7dbd35d582747f899e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceRenderTexture: {fileID: 8400000, guid: 3d41c93da6f75e442ac4419ccb376e06, type: 2}
+  screenPixelsPerTexel: 4
+  minimumWidth: 16
+  minimumHeight: 16
+  previewInEditMode: 1
+  outputImage: {fileID: 2611351530803716594}
+  bindSceneCamerasUsingSourceTexture: 1
